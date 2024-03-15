@@ -68,7 +68,7 @@ public class DaoAdministrador implements IAdministrador {
         try {
             Conexion con = new Conexion();
             cnx = con.getConexion();
-            String sql = "INSERT INTO Gerentes(Nombre,Edad,Direccion,Genero,Telefono,Salario,Correo,Contraseña) VALUES(?,?,?,?,?,?,?,?);";
+            String sql = "INSERT INTO Administrador(Nombre,Edad,Direccion,Genero,Telefono,Salario,Correo,Contraseña) VALUES(?,?,?,?,?,?,?,?);";
             PreparedStatement ps ;
             ps = cnx.prepareStatement(sql);
             ps.setString(1, a.getNombre());
@@ -91,7 +91,7 @@ public class DaoAdministrador implements IAdministrador {
  
         Conexion con = new Conexion();
         cnx = con.getConexion();
-        String sql = "select * from Gerentes";
+        String sql = "select * from administrador";
         
          
         try {
