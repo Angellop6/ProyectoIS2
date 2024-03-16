@@ -91,7 +91,7 @@ public class DaoAdministrador implements IAdministrador {
  
         Conexion con = new Conexion();
         cnx = con.getConexion();
-        String sql = "select * from administrador";
+        String sql = "select * from Administrador";
         
          
         try {
@@ -116,7 +116,7 @@ public class DaoAdministrador implements IAdministrador {
         
         Conexion con = new Conexion();
         cnx = con.getConexion();
-        String sql = "update Gerentes set Nombre=?,Edad=?,Direccion=?,Genero=?,Telefono=?,Salario=?,Correo=?,Contraseña=? where Id = ? ;";
+        String sql = "update Administrador set Nombre=?,Edad=?,Direccion=?,Genero=?,Telefono=?,Salario=?,Correo=?,Contraseña=? where Id = ? ;";
         PreparedStatement ps ;
         try {
             ps = cnx.prepareStatement(sql);
@@ -141,7 +141,7 @@ public class DaoAdministrador implements IAdministrador {
     private void EliminarSQL(String id) {
         Conexion con = new Conexion();
         cnx = con.getConexion();
-        String sql = "delete from Gerentes where Id =" + id;     
+        String sql = "delete from Administrador where Id =" + id;     
             Statement st;
         try {
             st = cnx.createStatement();
@@ -159,7 +159,7 @@ public class DaoAdministrador implements IAdministrador {
         Administrador a = null ;
         Conexion con = new Conexion();
         cnx = con.getConexion();
-        String sql = "select * from Gerentes where Id=" + id;
+        String sql = "select * from Administrador where Id=" + id;
         
             Statement st;
         try {
@@ -181,7 +181,7 @@ public class DaoAdministrador implements IAdministrador {
          Administrador a = null ;
         Conexion con = new Conexion();
         cnx = con.getConexion();
-        String sql = "select * from Gerentes where Correo = " + Correo;
+        String sql = "select * from Administrador where Correo = " + Correo;
             Statement st;
         try {
             st = cnx.createStatement();
