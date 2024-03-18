@@ -4,19 +4,9 @@
  */
 package Ventanas;
 
-import Clases.Administrador;
-import Clases.Gerente;
-import dao.DaoAdministrador;
-import java.util.ArrayList;
-import javax.swing.table.DefaultTableModel;
-
-/**
- *
- * @author PC
- */
 public class Productos_Administracion extends javax.swing.JFrame {
 
-    DaoAdministrador dao = new DaoAdministrador();
+    
     public Productos_Administracion() {
         initComponents();
     }
@@ -26,249 +16,93 @@ public class Productos_Administracion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        Panelprincipal = new javax.swing.JTabbedPane();
         PaneldeAdministradores = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Tablareportes = new javax.swing.JTable();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        NombreCajaTexto = new javax.swing.JTextField();
-        DireccionCajaTexto = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        TelefonoCajaTexto = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        EdadeCajaTexto = new javax.swing.JTextField();
-        GeneroCajaTexto = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        SalarioCajaTexto = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        CorreoCajaTexto = new javax.swing.JTextField();
-        ContraseñaCajaTexto = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        Boton_guardar = new javax.swing.JButton();
-        Boton_Buscar = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        IdLeavel = new javax.swing.JLabel();
-        IdCajaTexto = new javax.swing.JTextField();
+        panel_Administradores1 = new Ventanas.Panel_Administradores();
         PanelEmpleados = new javax.swing.JPanel();
-        Paneldeclientes = new javax.swing.JPanel();
+        panelEmpleados1 = new Ventanas.PanelEmpleados();
         Paneldeproductos = new javax.swing.JPanel();
         paneldetickets = new javax.swing.JPanel();
+        Paneldeclientes = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         PaneldeAdministradores.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        PaneldeAdministradores.add(panel_Administradores1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(0, 51, 51));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Panelprincipal.addTab("Administradoes", PaneldeAdministradores);
 
-        Tablareportes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Id", "Nombre", "Edad", "Direccion", "Genero", "Telefono", "Salario", "Correo", "Contraseña"
-            }
-        ));
-        ActualisarTabla();
-        Tablareportes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TablareportesMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(Tablareportes);
+        PanelEmpleados.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        PanelEmpleados.add(panelEmpleados1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 700, 120));
-
-        PaneldeAdministradores.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 770, 350));
-
-        jPanel8.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setText("Nombre");
-        jPanel8.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 54, -1));
-
-        NombreCajaTexto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NombreCajaTextoActionPerformed(evt);
-            }
-        });
-        jPanel8.add(NombreCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 78, 165, -1));
-
-        DireccionCajaTexto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DireccionCajaTextoActionPerformed(evt);
-            }
-        });
-        jPanel8.add(DireccionCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 126, 165, -1));
-
-        jLabel2.setText("Direeccion");
-        jPanel8.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 104, 70, -1));
-
-        TelefonoCajaTexto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TelefonoCajaTextoActionPerformed(evt);
-            }
-        });
-        jPanel8.add(TelefonoCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 165, -1));
-
-        jLabel3.setText("Telefono");
-        jPanel8.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 158, 54, -1));
-
-        EdadeCajaTexto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EdadeCajaTextoActionPerformed(evt);
-            }
-        });
-        jPanel8.add(EdadeCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 78, 165, -1));
-
-        GeneroCajaTexto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GeneroCajaTextoActionPerformed(evt);
-            }
-        });
-        jPanel8.add(GeneroCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 130, 165, -1));
-
-        jLabel4.setText("Salario");
-        jPanel8.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 154, 54, -1));
-
-        SalarioCajaTexto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SalarioCajaTextoActionPerformed(evt);
-            }
-        });
-        jPanel8.add(SalarioCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 180, 165, -1));
-
-        jLabel5.setText("Genero");
-        jPanel8.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 108, 54, -1));
-
-        jLabel6.setText("Edad");
-        jPanel8.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 56, 54, -1));
-
-        jLabel7.setText("Contraseña");
-        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 208, 70, -1));
-
-        CorreoCajaTexto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CorreoCajaTextoActionPerformed(evt);
-            }
-        });
-        jPanel8.add(CorreoCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 236, 165, -1));
-
-        ContraseñaCajaTexto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ContraseñaCajaTextoActionPerformed(evt);
-            }
-        });
-        jPanel8.add(ContraseñaCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 236, 165, -1));
-
-        jLabel8.setText("Correo");
-        jPanel8.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 208, 54, -1));
-
-        Boton_guardar.setText("Guardar");
-        Boton_guardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Boton_guardarActionPerformed(evt);
-            }
-        });
-        jPanel8.add(Boton_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, -1, -1));
-
-        Boton_Buscar.setText("Buscar");
-        jPanel8.add(Boton_Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, -1, -1));
-
-        jButton4.setText("Editar");
-        jPanel8.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, -1));
-
-        jButton3.setText("Eliminar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel8.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, -1, -1));
-
-        IdLeavel.setText("Id");
-        jPanel8.add(IdLeavel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
-
-        IdCajaTexto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IdCajaTextoActionPerformed(evt);
-            }
-        });
-        jPanel8.add(IdCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 110, -1));
-
-        PaneldeAdministradores.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 350));
-
-        jTabbedPane1.addTab("Administradoes", PaneldeAdministradores);
-
-        javax.swing.GroupLayout PanelEmpleadosLayout = new javax.swing.GroupLayout(PanelEmpleados);
-        PanelEmpleados.setLayout(PanelEmpleadosLayout);
-        PanelEmpleadosLayout.setHorizontalGroup(
-            PanelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1120, Short.MAX_VALUE)
-        );
-        PanelEmpleadosLayout.setVerticalGroup(
-            PanelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 357, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Empleados", PanelEmpleados);
-
-        javax.swing.GroupLayout PaneldeclientesLayout = new javax.swing.GroupLayout(Paneldeclientes);
-        Paneldeclientes.setLayout(PaneldeclientesLayout);
-        PaneldeclientesLayout.setHorizontalGroup(
-            PaneldeclientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1120, Short.MAX_VALUE)
-        );
-        PaneldeclientesLayout.setVerticalGroup(
-            PaneldeclientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 357, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Clientes", Paneldeclientes);
+        Panelprincipal.addTab("Empleados", PanelEmpleados);
 
         javax.swing.GroupLayout PaneldeproductosLayout = new javax.swing.GroupLayout(Paneldeproductos);
         Paneldeproductos.setLayout(PaneldeproductosLayout);
         PaneldeproductosLayout.setHorizontalGroup(
             PaneldeproductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1120, Short.MAX_VALUE)
+            .addGap(0, 1130, Short.MAX_VALUE)
         );
         PaneldeproductosLayout.setVerticalGroup(
             PaneldeproductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 357, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Productos", Paneldeproductos);
+        Panelprincipal.addTab("Productos", Paneldeproductos);
 
         javax.swing.GroupLayout paneldeticketsLayout = new javax.swing.GroupLayout(paneldetickets);
         paneldetickets.setLayout(paneldeticketsLayout);
         paneldeticketsLayout.setHorizontalGroup(
             paneldeticketsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1120, Short.MAX_VALUE)
+            .addGap(0, 1130, Short.MAX_VALUE)
         );
         paneldeticketsLayout.setVerticalGroup(
             paneldeticketsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 357, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Tickets", paneldetickets);
+        Panelprincipal.addTab("Tickets", paneldetickets);
+
+        jPanel3.setBackground(new java.awt.Color(153, 153, 0));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout PaneldeclientesLayout = new javax.swing.GroupLayout(Paneldeclientes);
+        Paneldeclientes.setLayout(PaneldeclientesLayout);
+        PaneldeclientesLayout.setHorizontalGroup(
+            PaneldeclientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PaneldeclientesLayout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1030, Short.MAX_VALUE))
+        );
+        PaneldeclientesLayout.setVerticalGroup(
+            PaneldeclientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PaneldeclientesLayout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 257, Short.MAX_VALUE))
+        );
+
+        Panelprincipal.addTab("Clientes", Paneldeclientes);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(Panelprincipal)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(Panelprincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -276,80 +110,6 @@ public class Productos_Administracion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
-   
-    private void NombreCajaTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreCajaTextoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NombreCajaTextoActionPerformed
-
-    private void DireccionCajaTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DireccionCajaTextoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DireccionCajaTextoActionPerformed
-
-    private void TelefonoCajaTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TelefonoCajaTextoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TelefonoCajaTextoActionPerformed
-
-    private void EdadeCajaTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EdadeCajaTextoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EdadeCajaTextoActionPerformed
-
-    private void GeneroCajaTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GeneroCajaTextoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_GeneroCajaTextoActionPerformed
-
-    private void SalarioCajaTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalarioCajaTextoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SalarioCajaTextoActionPerformed
-
-    private void CorreoCajaTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CorreoCajaTextoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CorreoCajaTextoActionPerformed
-
-    private void ContraseñaCajaTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContraseñaCajaTextoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ContraseñaCajaTextoActionPerformed
-
-    private void Boton_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_guardarActionPerformed
-        dao.createAdministrador(new Administrador(1,
-                            NombreCajaTexto.getText(),
-                            Integer.valueOf(EdadeCajaTexto.getText()),
-                            DireccionCajaTexto.getText(),
-                            GeneroCajaTexto.getText(),
-                            TelefonoCajaTexto.getText(),
-                            Float.valueOf(SalarioCajaTexto.getText()),
-                            CorreoCajaTexto.getText(),
-                            ContraseñaCajaTexto.getText()));
-        
-        LimpiarCajas();
-        ActualisarTabla();
-        
-    }//GEN-LAST:event_Boton_guardarActionPerformed
-
-    private void IdCajaTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdCajaTextoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_IdCajaTextoActionPerformed
-
-    private void TablareportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablareportesMouseClicked
-        int filaSeleccionada = Tablareportes.rowAtPoint(evt.getPoint());
-        IdCajaTexto.setText(Tablareportes.getValueAt(filaSeleccionada, 0).toString());
-        NombreCajaTexto.setText(Tablareportes.getValueAt(filaSeleccionada, 1).toString());
-        EdadeCajaTexto.setText(Tablareportes.getValueAt(filaSeleccionada, 2).toString());
-        DireccionCajaTexto.setText(Tablareportes.getValueAt(filaSeleccionada, 3).toString());
-        GeneroCajaTexto.setText(Tablareportes.getValueAt(filaSeleccionada, 4).toString());
-        TelefonoCajaTexto.setText(Tablareportes.getValueAt(filaSeleccionada, 5).toString());
-        SalarioCajaTexto.setText(Tablareportes.getValueAt(filaSeleccionada, 6).toString());
-        CorreoCajaTexto.setText(Tablareportes.getValueAt(filaSeleccionada, 7).toString());
-        ContraseñaCajaTexto.setText(Tablareportes.getValueAt(filaSeleccionada, 8).toString()); 
-    }//GEN-LAST:event_TablareportesMouseClicked
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        dao.deleteAdministrador(IdCajaTexto.getText());
-        ActualisarTabla();
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -382,90 +142,17 @@ public class Productos_Administracion extends javax.swing.JFrame {
         });
     }
     
-    private void ActualisarTabla(){
-            
-        
-            ArrayList<Administrador> Administadores = dao.readAdministrador();
-        
-        
-        DefaultTableModel m;
-        m =(DefaultTableModel)Tablareportes.getModel();
-        while(m.getRowCount()>0){
-            m.removeRow(0);
-        
-        }
-        Object[] rowData = new Object[9];
-        for(int i = 0; i< Administadores.size();i++){
-                rowData[0] = Administadores.get(i).getId();
-                rowData[1] = Administadores.get(i).getNombre();
-                rowData[2] = Administadores.get(i).getEdad();
-                rowData[3] = Administadores.get(i).getDireccion();
-                rowData[4] = Administadores.get(i).getGenero();
-                rowData[5] = Administadores.get(i).getTelefono();
-                rowData[6] = Administadores.get(i).getSalario();
-                rowData[7] = Administadores.get(i).getCorreo();
-                rowData[8] = Administadores.get(i).getContraseña();
-               m.addRow(rowData);    
-        }
-        Tablareportes.setModel(m);
-        
-        
-        
-       
-    
-    }
-    
-    
-    private void LimpiarCajas(){
-        NombreCajaTexto.setText("");
-        EdadeCajaTexto.setText("");
-        DireccionCajaTexto.setText("");
-        GeneroCajaTexto.setText("");
-        TelefonoCajaTexto.setText("");
-        SalarioCajaTexto.setText("");
-        CorreoCajaTexto.setText("");
-        ContraseñaCajaTexto.setText("");
-         
-        
-    }
-    
-    
-    
-    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Boton_Buscar;
-    private javax.swing.JButton Boton_guardar;
-    private javax.swing.JTextField ContraseñaCajaTexto;
-    private javax.swing.JTextField CorreoCajaTexto;
-    private javax.swing.JTextField DireccionCajaTexto;
-    private javax.swing.JTextField EdadeCajaTexto;
-    private javax.swing.JTextField GeneroCajaTexto;
-    private javax.swing.JTextField IdCajaTexto;
-    private javax.swing.JLabel IdLeavel;
-    private javax.swing.JTextField NombreCajaTexto;
     private javax.swing.JPanel PanelEmpleados;
     private javax.swing.JPanel PaneldeAdministradores;
     private javax.swing.JPanel Paneldeclientes;
     private javax.swing.JPanel Paneldeproductos;
-    private javax.swing.JTextField SalarioCajaTexto;
-    private javax.swing.JTable Tablareportes;
-    private javax.swing.JTextField TelefonoCajaTexto;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    public javax.swing.JTabbedPane Panelprincipal;
+    private javax.swing.JPanel jPanel3;
+    private Ventanas.PanelEmpleados panelEmpleados1;
+    private Ventanas.Panel_Administradores panel_Administradores1;
     private javax.swing.JPanel paneldetickets;
     // End of variables declaration//GEN-END:variables
 }
