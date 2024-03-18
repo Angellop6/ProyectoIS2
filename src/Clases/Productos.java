@@ -10,10 +10,10 @@ public class Productos {
     private String Color;
     private double Precio;
     private String Descripcion;
-    private String Imagen;
-    private boolean Oferta;
+    private byte Imagen;
+    private int Oferta;
 
-    public Productos(int Id, String Nombre, String Marca, int Cantidad, String Color, double Precio, String Descripcion, String Imagen, boolean Oferta) {
+    public Productos(int Id, String Nombre, String Marca, int Cantidad, String Color, double Precio, String Descripcion, byte Imagen, int Oferta) {
         this.Id = Id;
         this.Nombre = Nombre;
         this.Marca = Marca;
@@ -87,28 +87,33 @@ public class Productos {
         this.Descripcion = Descripcion;
     }
 
-    public String getImagen() {
+    public byte getImagen() {
         return Imagen;
     }
 
-    public void setImagen(String Imagen) {
+    public void setImagen(byte Imagen) {
         this.Imagen = Imagen;
     }
 
-    public boolean isOferta() {
+    public int getOferta() {
         return Oferta;
     }
 
-    public void setOferta(boolean Oferta) {
+    public void setOferta(int Oferta) {
         this.Oferta = Oferta;
     }
-    
-    
 
     @Override
     public String toString() {
-        return "Productos{" + "Nombre=" + Nombre + ", Marca=" + Marca + ", Cantidad=" + Cantidad + ", Color=" + Color + ", Precio=" + Precio + '}';
+        return "Productos{" + "Id=" + Id + ", Nombre=" + Nombre + ", Marca=" + Marca + ", Cantidad=" + Cantidad + ", Color=" + Color + ", Precio=" + Precio + ", Descripcion=" + Descripcion + ", Imagen=" + Imagen + ", Oferta=" + Oferta + '}';
     }
+
+    
+
+   
+    
+
+   
     
     
 }

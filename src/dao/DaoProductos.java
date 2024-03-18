@@ -62,7 +62,7 @@ public class DaoProductos implements IProductos {
     private void createProductoSQl(Productos a) {
         Conexion con = new Conexion();
         cnx = con.getConexion();
-        String sql = "INSERT INTO Productos(Nombre,Marca,Cantidad,Color,Precio) VALUES(?,?,?,?,?);";
+        String sql = "INSERT INTO Productos(Nombre,Marca,Cantidad,Color,Precio,Descripcion,Imagen,Oferta) VALUES(?,?,?,?,?,?,?,?);";
         PreparedStatement ps ;
         try {
             ps = cnx.prepareStatement(sql);
@@ -71,6 +71,9 @@ public class DaoProductos implements IProductos {
             ps.setInt(3, a.getCantidad());
             ps.setString(4, a.getColor());
             ps.setDouble(5, a.getPrecio());
+            ps.setString(6, a.getDescripcion());
+            ps.setByte(7, a.getImagen());
+            ps.setInt(8, a.getOferta());
             ps.executeUpdate();  
         } catch (SQLException ex) {
             Logger.getLogger(DaoProductos.class.getName()).log(Level.SEVERE, null, ex);
@@ -90,8 +93,8 @@ public class DaoProductos implements IProductos {
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
                 Productos Producto = new Productos( rs.getInt("Id"),rs.getString("Nombre"),rs.getString("Marca"),
-                            rs.getInt("Cantidad"),rs.getString("Color"),rs.getFloat("Precio"),rs.getString("Descrpciom"),rs.getString("Imagen")
-                                ,rs.getBoolean("Oferta")); 
+                            rs.getInt("Cantidad"),rs.getString("Color"),rs.getFloat("Precio"),rs.getString("Descripcion"),rs.getByte("Imagen")
+                                ,rs.getInt("Oferta")); 
                 Productos.add(Producto);
             }
             
@@ -104,7 +107,7 @@ public class DaoProductos implements IProductos {
         
         Conexion con = new Conexion();
         cnx = con.getConexion();
-        String sql = "update Productos set Nombre=?,Marca=?,Cantidad=?,Color=?,Precio=? where Id = ? ;";
+        String sql = "update Productos set Nombre=?,Marca=?,Cantidad=?,Color=?,Precio=?,Descripcion=?, Imagen=?, Oferta=? where Id = ? ;";
         PreparedStatement ps ;
         try {
             ps = cnx.prepareStatement(sql);
@@ -112,8 +115,11 @@ public class DaoProductos implements IProductos {
             ps.setString(2, a.getMarca());
             ps.setInt(3, a.getCantidad());
             ps.setString(4, a.getColor());
-            ps.setDouble(5, a.getPrecio());  
-            ps.setString(6, id);
+            ps.setDouble(5, a.getPrecio());          
+            ps.setString(6, a.getDescripcion());
+            ps.setByte(7, a.getImagen());
+            ps.setInt(8, a.getOferta());
+             ps.setString(9, id);
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(DaoProductos.class.getName()).log(Level.SEVERE, null, ex);
@@ -153,8 +159,8 @@ public class DaoProductos implements IProductos {
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
                 a = new Productos( rs.getInt("Id"),rs.getString("Nombre"),rs.getString("Marca"),
-                            rs.getInt("Cantidad"),rs.getString("Color"),rs.getFloat("Precio"),rs.getString("Descrpciom"),rs.getString("Imagen")
-                                ,rs.getBoolean("Oferta"));  
+                            rs.getInt("Cantidad"),rs.getString("Color"),rs.getFloat("Precio"),rs.getString("Descrpciom"),rs.getByte("Imagen")
+                                ,rs.getInt("Oferta"));  
             } 
         } catch (SQLException ex) {
             Logger.getLogger(DaoProductos.class.getName()).log(Level.SEVERE, null, ex);
