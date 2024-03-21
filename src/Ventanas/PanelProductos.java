@@ -6,6 +6,7 @@ package Ventanas;
 
 import Clases.Productos;
 import dao.DaoProductos;
+import dao.RenderImagen;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -14,6 +15,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -25,8 +27,10 @@ import javax.swing.table.DefaultTableModel;
  * @author angel
  */
 public class PanelProductos extends javax.swing.JPanel {
-        DaoProductos dao = new DaoProductos();
-        String Ruta ="";
+
+    DaoProductos dao = new DaoProductos();
+    String Ruta = null;
+
     public PanelProductos() {
         initComponents();
     }
@@ -187,7 +191,7 @@ public class PanelProductos extends javax.swing.JPanel {
             }
         });
         jPanel8.add(Examinarboton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 160, -1));
-        jPanel8.add(Imagenleavel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 150, 100));
+        jPanel8.add(Imagenleavel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 150, 110));
 
         add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 350));
 
@@ -211,17 +215,17 @@ public class PanelProductos extends javax.swing.JPanel {
         jScrollPane1.setViewportView(Tablareportes);
         ActualisarTabla();
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 700, 120));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 750, 290));
 
         IdLeavel.setText("Id");
-        jPanel1.add(IdLeavel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, -1));
+        jPanel1.add(IdLeavel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
 
         IdCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IdCajaTextoActionPerformed(evt);
             }
         });
-        jPanel1.add(IdCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 110, -1));
+        jPanel1.add(IdCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 110, -1));
 
         Boton_Buscar.setText("Buscar");
         Boton_Buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -229,7 +233,7 @@ public class PanelProductos extends javax.swing.JPanel {
                 Boton_BuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(Boton_Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
+        jPanel1.add(Boton_Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, -1, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 770, 350));
     }// </editor-fold>//GEN-END:initComponents
@@ -264,17 +268,17 @@ public class PanelProductos extends javax.swing.JPanel {
 
     private void Boton_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_guardarActionPerformed
         dao.createProducto(new Productos(1,
-            NombreCajaTexto.getText(),
-            MarcaCajaTexto.getText(),
-            Integer.valueOf(CantidadCajaTexto.getText()),
-            ColorCajaTexto.getText(),
-            Float.valueOf(PrecioCajaTexto.getText()),
-            DescripcionCajaTexto.getText(),
-            getImagen(Ruta),
-            Integer.valueOf(OfertaCajaTexto.getText())));
+                NombreCajaTexto.getText(),
+                MarcaCajaTexto.getText(),
+                Integer.valueOf(CantidadCajaTexto.getText()),
+                ColorCajaTexto.getText(),
+                Float.valueOf(PrecioCajaTexto.getText()),
+                DescripcionCajaTexto.getText(),
+                getImagen(Ruta),
+                Integer.valueOf(OfertaCajaTexto.getText())));
 
-    LimpiarCajas();
-    ActualisarTabla();
+        LimpiarCajas();
+        ActualisarTabla();
     }//GEN-LAST:event_Boton_guardarActionPerformed
 
     private void NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoActionPerformed
@@ -288,14 +292,14 @@ public class PanelProductos extends javax.swing.JPanel {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         Productos b = (new Productos(1,
-            NombreCajaTexto.getText(),
-            MarcaCajaTexto.getText(),
-            Integer.valueOf(CantidadCajaTexto.getText()),
-            ColorCajaTexto.getText(),
-            Float.valueOf(PrecioCajaTexto.getText()),
-            DescripcionCajaTexto.getText(),
-            getImagen(Ruta),
-            Integer.valueOf(OfertaCajaTexto.getText())));
+                NombreCajaTexto.getText(),
+                MarcaCajaTexto.getText(),
+                Integer.valueOf(CantidadCajaTexto.getText()),
+                ColorCajaTexto.getText(),
+                Float.valueOf(PrecioCajaTexto.getText()),
+                DescripcionCajaTexto.getText(),
+                getImagen(Ruta),
+                Integer.valueOf(OfertaCajaTexto.getText())));
         LimpiarCajas();
         ActualisarTabla();
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -309,6 +313,10 @@ public class PanelProductos extends javax.swing.JPanel {
         ColorCajaTexto.setText(Tablareportes.getValueAt(filaSeleccionada, 4).toString());
         PrecioCajaTexto.setText(Tablareportes.getValueAt(filaSeleccionada, 5).toString());
         DescripcionCajaTexto.setText(Tablareportes.getValueAt(filaSeleccionada, 6).toString());
+        //Imagenleavel.setIcon(Tablareportes.getValueAt(filaSeleccionada, 7));
+        Object valor = Tablareportes.getValueAt(filaSeleccionada, 7);
+        Icon icono = ((JLabel) valor).getIcon();
+        Imagenleavel.setIcon(icono);
         OfertaCajaTexto.setText(Tablareportes.getValueAt(filaSeleccionada, 8).toString());
     }//GEN-LAST:event_TablareportesMouseClicked
 
@@ -321,7 +329,7 @@ public class PanelProductos extends javax.swing.JPanel {
         if (Producto == null) {
             System.out.println("la id no existe");
 
-        }else{
+        } else {
 
             NombreCajaTexto.setText(Producto.getNombre());
             MarcaCajaTexto.setText(Producto.getMarca());
@@ -336,9 +344,9 @@ public class PanelProductos extends javax.swing.JPanel {
 
     private void ExaminarbotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExaminarbotonActionPerformed
         JFileChooser fileChoser = new JFileChooser();
-        FileNameExtensionFilter extensionFilter = new FileNameExtensionFilter("JPG, PNG & GIF","jpg", "png", "gif");
+        FileNameExtensionFilter extensionFilter = new FileNameExtensionFilter("JPG, PNG & GIF", "jpg", "png", "gif");
         fileChoser.setFileFilter(extensionFilter);
-        if(fileChoser.showOpenDialog(this)== JFileChooser.APPROVE_OPTION){
+        if (fileChoser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             Ruta = fileChoser.getSelectedFile().getAbsolutePath();
             Image mImagen = new ImageIcon(Ruta).getImage();
             ImageIcon mIcono = new ImageIcon(mImagen.getScaledInstance(Imagenleavel.getWidth(), Imagenleavel.getHeight(), 0));
@@ -377,45 +385,44 @@ public class PanelProductos extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
-private void ActualisarTabla(){
-            
-        
-            ArrayList<Productos> Productos = dao.readProductos();
-        
-        
+private void ActualisarTabla() {
+        Tablareportes.setDefaultRenderer(Object.class, new RenderImagen());
+        ArrayList<Productos> Productos = dao.readProductos();
+
         DefaultTableModel m;
-        m =(DefaultTableModel)Tablareportes.getModel();
-        while(m.getRowCount()>0){
+        m = (DefaultTableModel) Tablareportes.getModel();
+        while (m.getRowCount() > 0) {
             m.removeRow(0);
-        
+
         }
         Object[] rowData = new Object[9];
-        for(int i = 0; i< Productos.size();i++){
-                rowData[0] = Productos.get(i).getId();
-                rowData[1] = Productos.get(i).getNombre();
-                rowData[2] = Productos.get(i).getMarca();
-                rowData[3] = Productos.get(i).getCantidad();
-                rowData[4] = Productos.get(i).getColor();
-                rowData[5] = Productos.get(i).getPrecio();
-                rowData[6] = Productos.get(i).getDescripcion();
-                try {
-                byte [] imagen = Productos.get(i).getImagen();
-                    BufferedImage bufferedImage = null;
-                    InputStream inputStream = new ByteArrayInputStream(imagen);
-                    bufferedImage = ImageIO.read(inputStream);
-                    ImageIcon mIcono = new ImageIcon(bufferedImage.getScaledInstance(60, 60, 0));
-                    rowData[7] = new JLabel(mIcono);
+        for (int i = 0; i < Productos.size(); i++) {
+            rowData[0] = Productos.get(i).getId();
+            rowData[1] = Productos.get(i).getNombre();
+            rowData[2] = Productos.get(i).getMarca();
+            rowData[3] = Productos.get(i).getCantidad();
+            rowData[4] = Productos.get(i).getColor();
+            rowData[5] = Productos.get(i).getPrecio();
+            rowData[6] = Productos.get(i).getDescripcion();
+            try {
+                byte[] imagen = Productos.get(i).getImagen();
+                BufferedImage bufferedImage = null;
+                InputStream inputStream = new ByteArrayInputStream(imagen);
+                bufferedImage = ImageIO.read(inputStream);
+                ImageIcon mIcono = new ImageIcon(bufferedImage.getScaledInstance(150, 110, 0));
+                rowData[7] = new JLabel(mIcono);
             } catch (Exception e) {
                 rowData[7] = new JLabel("no imagen");
             }
-                rowData[8] = Productos.get(i).getOferta();
-               m.addRow(rowData);    
+            rowData[8] = Productos.get(i).getOferta();
+            m.addRow(rowData);
         }
         Tablareportes.setModel(m);
+        Tablareportes.setRowHeight(110);
+        Tablareportes.getColumnModel().getColumn(7).setPreferredWidth(150);
     }
-    
-    
-    private void LimpiarCajas(){
+
+    private void LimpiarCajas() {
         IdCajaTexto.setText("");
         NombreCajaTexto.setText("");
         MarcaCajaTexto.setText("");
@@ -425,21 +432,22 @@ private void ActualisarTabla(){
         DescripcionCajaTexto.setText("");
         OfertaCajaTexto.setText("");
         IdCajaTexto.setText("");
-         
-        
+        Imagenleavel.setText("");
+        Ruta = null;
+
     }
-    
-    private byte[] getImagen(String Ruta){
+
+    private byte[] getImagen(String Ruta) {
         File imagen = new File(Ruta);
-        try{
+        try {
             byte[] icono = new byte[(int) imagen.length()];
             InputStream input = new FileInputStream(imagen);
             input.read(icono);
             return icono;
-        }catch(Exception ex){
-        return null;
+        } catch (Exception ex) {
+            return null;
         }
-    
+
     }
 
 }
