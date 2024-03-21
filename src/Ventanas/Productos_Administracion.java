@@ -18,10 +18,11 @@ public class Productos_Administracion extends javax.swing.JFrame {
 
         Panelprincipal = new javax.swing.JTabbedPane();
         PaneldeAdministradores = new javax.swing.JPanel();
-        panel_Administradores1 = new Ventanas.Panel_Administradores();
+        panel_Administradores2 = new Ventanas.Panel_Administradores();
         PanelEmpleados = new javax.swing.JPanel();
         panelEmpleados1 = new Ventanas.PanelEmpleados();
         Paneldeproductos = new javax.swing.JPanel();
+        panelProductos1 = new Ventanas.PanelProductos();
         paneldetickets = new javax.swing.JPanel();
         Paneldeclientes = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -29,7 +30,7 @@ public class Productos_Administracion extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         PaneldeAdministradores.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        PaneldeAdministradores.add(panel_Administradores1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        PaneldeAdministradores.add(panel_Administradores2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         Panelprincipal.addTab("Administradoes", PaneldeAdministradores);
 
@@ -42,11 +43,15 @@ public class Productos_Administracion extends javax.swing.JFrame {
         Paneldeproductos.setLayout(PaneldeproductosLayout);
         PaneldeproductosLayout.setHorizontalGroup(
             PaneldeproductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1130, Short.MAX_VALUE)
+            .addGroup(PaneldeproductosLayout.createSequentialGroup()
+                .addComponent(panelProductos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 10, Short.MAX_VALUE))
         );
         PaneldeproductosLayout.setVerticalGroup(
             PaneldeproductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 357, Short.MAX_VALUE)
+            .addGroup(PaneldeproductosLayout.createSequentialGroup()
+                .addComponent(panelProductos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 7, Short.MAX_VALUE))
         );
 
         Panelprincipal.addTab("Productos", Paneldeproductos);
@@ -152,7 +157,8 @@ public class Productos_Administracion extends javax.swing.JFrame {
     public javax.swing.JTabbedPane Panelprincipal;
     private javax.swing.JPanel jPanel3;
     private Ventanas.PanelEmpleados panelEmpleados1;
-    private Ventanas.Panel_Administradores panel_Administradores1;
+    private Ventanas.PanelProductos panelProductos1;
+    private Ventanas.Panel_Administradores panel_Administradores2;
     private javax.swing.JPanel paneldetickets;
     // End of variables declaration//GEN-END:variables
 }

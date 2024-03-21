@@ -10,10 +10,10 @@ public class Productos {
     private String Color;
     private double Precio;
     private String Descripcion;
-    private byte Imagen;
+    private byte[] Imagen;
     private int Oferta;
 
-    public Productos(int Id, String Nombre, String Marca, int Cantidad, String Color, double Precio, String Descripcion, byte Imagen, int Oferta) {
+    public Productos(int Id, String Nombre, String Marca, int Cantidad, String Color, double Precio, String Descripcion, byte[] Imagen, int Oferta) {
         this.Id = Id;
         this.Nombre = Nombre;
         this.Marca = Marca;
@@ -24,6 +24,8 @@ public class Productos {
         this.Imagen = Imagen;
         this.Oferta = Oferta;
     }
+
+    
 
    
 
@@ -87,13 +89,15 @@ public class Productos {
         this.Descripcion = Descripcion;
     }
 
-    public byte getImagen() {
+    public byte[] getImagen() {
         return Imagen;
     }
 
-    public void setImagen(byte Imagen) {
+    public void setImagen(byte[] Imagen) {
         this.Imagen = Imagen;
     }
+
+
 
     public int getOferta() {
         return Oferta;

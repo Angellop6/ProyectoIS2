@@ -72,7 +72,7 @@ public class DaoProductos implements IProductos {
             ps.setString(4, a.getColor());
             ps.setDouble(5, a.getPrecio());
             ps.setString(6, a.getDescripcion());
-            ps.setByte(7, a.getImagen());
+            ps.setBytes(7, a.getImagen());
             ps.setInt(8, a.getOferta());
             ps.executeUpdate();  
         } catch (SQLException ex) {
@@ -93,7 +93,7 @@ public class DaoProductos implements IProductos {
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
                 Productos Producto = new Productos( rs.getInt("Id"),rs.getString("Nombre"),rs.getString("Marca"),
-                            rs.getInt("Cantidad"),rs.getString("Color"),rs.getFloat("Precio"),rs.getString("Descripcion"),rs.getByte("Imagen")
+                            rs.getInt("Cantidad"),rs.getString("Color"),rs.getFloat("Precio"),rs.getString("Descripcion"),rs.getBytes("Imagen")
                                 ,rs.getInt("Oferta")); 
                 Productos.add(Producto);
             }
@@ -117,7 +117,7 @@ public class DaoProductos implements IProductos {
             ps.setString(4, a.getColor());
             ps.setDouble(5, a.getPrecio());          
             ps.setString(6, a.getDescripcion());
-            ps.setByte(7, a.getImagen());
+            ps.setBytes(7, a.getImagen());
             ps.setInt(8, a.getOferta());
              ps.setString(9, id);
             ps.executeUpdate();
@@ -159,7 +159,7 @@ public class DaoProductos implements IProductos {
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
                 a = new Productos( rs.getInt("Id"),rs.getString("Nombre"),rs.getString("Marca"),
-                            rs.getInt("Cantidad"),rs.getString("Color"),rs.getFloat("Precio"),rs.getString("Descrpciom"),rs.getByte("Imagen")
+                            rs.getInt("Cantidad"),rs.getString("Color"),rs.getFloat("Precio"),rs.getString("Descrpciom"),rs.getBytes("Imagen")
                                 ,rs.getInt("Oferta"));  
             } 
         } catch (SQLException ex) {
