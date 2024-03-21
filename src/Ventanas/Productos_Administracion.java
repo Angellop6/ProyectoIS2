@@ -25,7 +25,7 @@ public class Productos_Administracion extends javax.swing.JFrame {
         panelProductos1 = new Ventanas.PanelProductos();
         paneldetickets = new javax.swing.JPanel();
         Paneldeclientes = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        panelClientes1 = new Ventanas.PanelClientes();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,9 +43,7 @@ public class Productos_Administracion extends javax.swing.JFrame {
         Paneldeproductos.setLayout(PaneldeproductosLayout);
         PaneldeproductosLayout.setHorizontalGroup(
             PaneldeproductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PaneldeproductosLayout.createSequentialGroup()
-                .addComponent(panelProductos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 10, Short.MAX_VALUE))
+            .addComponent(panelProductos1, javax.swing.GroupLayout.DEFAULT_SIZE, 1121, Short.MAX_VALUE)
         );
         PaneldeproductosLayout.setVerticalGroup(
             PaneldeproductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -60,7 +58,7 @@ public class Productos_Administracion extends javax.swing.JFrame {
         paneldetickets.setLayout(paneldeticketsLayout);
         paneldeticketsLayout.setHorizontalGroup(
             paneldeticketsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1130, Short.MAX_VALUE)
+            .addGap(0, 1121, Short.MAX_VALUE)
         );
         paneldeticketsLayout.setVerticalGroup(
             paneldeticketsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -69,32 +67,19 @@ public class Productos_Administracion extends javax.swing.JFrame {
 
         Panelprincipal.addTab("Tickets", paneldetickets);
 
-        jPanel3.setBackground(new java.awt.Color(153, 153, 0));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout PaneldeclientesLayout = new javax.swing.GroupLayout(Paneldeclientes);
         Paneldeclientes.setLayout(PaneldeclientesLayout);
         PaneldeclientesLayout.setHorizontalGroup(
             PaneldeclientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PaneldeclientesLayout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1030, Short.MAX_VALUE))
+                .addComponent(panelClientes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
         );
         PaneldeclientesLayout.setVerticalGroup(
             PaneldeclientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PaneldeclientesLayout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 257, Short.MAX_VALUE))
+                .addComponent(panelClientes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 7, Short.MAX_VALUE))
         );
 
         Panelprincipal.addTab("Clientes", Paneldeclientes);
@@ -155,7 +140,7 @@ public class Productos_Administracion extends javax.swing.JFrame {
     private javax.swing.JPanel Paneldeclientes;
     private javax.swing.JPanel Paneldeproductos;
     public javax.swing.JTabbedPane Panelprincipal;
-    private javax.swing.JPanel jPanel3;
+    private Ventanas.PanelClientes panelClientes1;
     private Ventanas.PanelEmpleados panelEmpleados1;
     private Ventanas.PanelProductos panelProductos1;
     private Ventanas.Panel_Administradores panel_Administradores2;
