@@ -107,18 +107,17 @@ public class Tienda extends javax.swing.JFrame {
         PanelBotonesLayout.setVerticalGroup(
             PanelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelBotonesLayout.createSequentialGroup()
-                .addGroup(PanelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Botonmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(PanelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Botonmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PanelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel1.add(PanelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 110));
 
         PanelMuestra.setBackground(new java.awt.Color(255, 204, 204));
-
-        Producto1.setOpaque(true);
 
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -380,7 +379,7 @@ public class Tienda extends javax.swing.JFrame {
         }
         
         try {
-            Producto1.setIcon(crearIconoDesdeBits( Productos.get(0).getImagen(), 100, 100));
+        Producto1.setIcon(crearIconoDesdeBits( Productos.get(0).getImagen(), 100, 100));
         Producto2.setIcon(crearIconoDesdeBits( Productos.get(1).getImagen(), 100, 100));
         Producto3.setIcon(crearIconoDesdeBits( Productos.get(2).getImagen(), 100, 100));
         Producto4.setIcon(crearIconoDesdeBits( Productos.get(3).getImagen(), 100, 100));
