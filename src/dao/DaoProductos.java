@@ -159,7 +159,7 @@ public class DaoProductos implements IProductos {
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
                 a = new Productos( rs.getInt("Id"),rs.getString("Nombre"),rs.getString("Marca"),
-                            rs.getInt("Cantidad"),rs.getString("Color"),rs.getFloat("Precio"),rs.getString("Descrpciom"),rs.getBytes("Imagen")
+                            rs.getInt("Cantidad"),rs.getString("Color"),rs.getFloat("Precio"),rs.getString("Descripcion"),rs.getBytes("Imagen")
                                 ,rs.getInt("Oferta"));  
             } 
         } catch (SQLException ex) {
