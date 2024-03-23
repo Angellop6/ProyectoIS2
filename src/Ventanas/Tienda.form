@@ -135,9 +135,9 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jButton13" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="BotonAtras" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jButton6" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="BotonAdelante" min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
                   <Component id="NombreUsuario" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
@@ -198,8 +198,8 @@
                       </Group>
                       <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jButton6" min="-2" pref="50" max="-2" attributes="0"/>
-                          <Component id="jButton13" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="BotonAdelante" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="BotonAtras" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -212,21 +212,39 @@
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="Producto3">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Producto3ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="Producto4">
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton6">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Producto4ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="BotonAdelante">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonAdelanteActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="Producto6">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Producto6ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="Producto7">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Producto7ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="Producto8">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Producto8ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="Producto9">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Producto9ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="Producto2">
               <Events>
@@ -238,9 +256,9 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Producto5ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton13">
+            <Component class="javax.swing.JButton" name="BotonAtras">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton13ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonAtrasActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="NombreUsuario">

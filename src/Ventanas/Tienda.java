@@ -22,12 +22,14 @@ public class Tienda extends javax.swing.JFrame {
     public static Integer Id = null;
     DaoProductos daoP = new DaoProductos();
     ArrayList<Integer> Idproductos = new ArrayList<>();
+    ArrayList<Productos> productos = daoP.readProductos();
+    int cantidadProductos = 0;
+
     public Tienda() {
 
         //Productos P = daoP.readProducto("1");
         initComponents();
         Botonmenu.setIcon(SetIcono("/Imagenes/menu.png", Botonmenu));
-        
         MostrarProductos();
         //Producto1.setIcon(crearIconoDesdeBits( P.getImagen(), 100, 100));
     }
@@ -50,14 +52,14 @@ public class Tienda extends javax.swing.JFrame {
         Producto1 = new javax.swing.JButton();
         Producto3 = new javax.swing.JButton();
         Producto4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        BotonAdelante = new javax.swing.JButton();
         Producto6 = new javax.swing.JButton();
         Producto7 = new javax.swing.JButton();
         Producto8 = new javax.swing.JButton();
         Producto9 = new javax.swing.JButton();
         Producto2 = new javax.swing.JButton();
         Producto5 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
+        BotonAtras = new javax.swing.JButton();
         NombreUsuario = new javax.swing.JLabel();
         PanelCategorias = new javax.swing.JPanel();
         jButton14 = new javax.swing.JButton();
@@ -126,9 +128,45 @@ public class Tienda extends javax.swing.JFrame {
             }
         });
 
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        Producto3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                Producto3ActionPerformed(evt);
+            }
+        });
+
+        Producto4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Producto4ActionPerformed(evt);
+            }
+        });
+
+        BotonAdelante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonAdelanteActionPerformed(evt);
+            }
+        });
+
+        Producto6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Producto6ActionPerformed(evt);
+            }
+        });
+
+        Producto7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Producto7ActionPerformed(evt);
+            }
+        });
+
+        Producto8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Producto8ActionPerformed(evt);
+            }
+        });
+
+        Producto9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Producto9ActionPerformed(evt);
             }
         });
 
@@ -144,9 +182,9 @@ public class Tienda extends javax.swing.JFrame {
             }
         });
 
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
+        BotonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
+                BotonAtrasActionPerformed(evt);
             }
         });
 
@@ -155,9 +193,9 @@ public class Tienda extends javax.swing.JFrame {
         PanelMuestraLayout.setHorizontalGroup(
             PanelMuestraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelMuestraLayout.createSequentialGroup()
-                .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BotonAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(BotonAdelante, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(NombreUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMuestraLayout.createSequentialGroup()
                 .addGap(0, 27, Short.MAX_VALUE)
@@ -205,8 +243,8 @@ public class Tienda extends javax.swing.JFrame {
                     .addComponent(Producto9, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(101, 101, 101)
                 .addGroup(PanelMuestraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(BotonAdelante, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jPanel1.add(PanelMuestra, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 380, 590));
@@ -268,10 +306,9 @@ public class Tienda extends javax.swing.JFrame {
     private void PerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerfilActionPerformed
 
         if (Id == null) {
-            
-            Ventanas.InicioSecion is = new Ventanas.InicioSecion ();
-                    is.setVisible(true);
-             
+
+            Ventanas.InicioSecion is = new Ventanas.InicioSecion();
+            is.setVisible(true);
 
         }
     }//GEN-LAST:event_PerfilActionPerformed
@@ -289,28 +326,71 @@ public class Tienda extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void BotonAdelanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAdelanteActionPerformed
+        JButton[] botonesProductos = {Producto1, Producto2, Producto3, Producto4, Producto5, Producto6, Producto7, Producto8, Producto9};
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        
+
+        
+
+        try {
+            // Iterar sobre los botones y establecer sus iconos
+            for (int i = 0; i < botonesProductos.length; i++) {
+                Productos producto = productos.get(cantidadProductos);
+                if (producto != null) {
+                    botonesProductos[i].setIcon(crearIconoDesdeBits(producto.getImagen(), 90, 90));
+                    botonesProductos[i].setContentAreaFilled(true);
+                    botonesProductos[i].setEnabled(true);
+                    Idproductos.add(producto.getId());
+                } else {
+                    botonesProductos[i].setContentAreaFilled(false);
+                    botonesProductos[i].setEnabled(false);
+                    botonesProductos[i].setIcon(null);
+                }
+               cantidadProductos ++;
+            }
+        } catch (Exception e) {
+            System.out.println("Error al establecer el ícono: " + e.getMessage());
+        }
+        System.out.println(cantidadProductos);
+    }//GEN-LAST:event_BotonAdelanteActionPerformed
+
+    private void BotonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAtrasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton13ActionPerformed
+    }//GEN-LAST:event_BotonAtrasActionPerformed
 
     private void Producto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Producto2ActionPerformed
-        // TODO add your handling code here:
+        Productos producto = daoP.readProducto(String.valueOf(Idproductos.get(1)));
+        VisualisacionProducto p1 = new VisualisacionProducto();
+        p1.setVisible(true);
+
+        p1.ImagenProducto.setIcon(crearIconoDesdeBits(producto.getImagen(), 200, 200));
+        p1.Nombre.setText(producto.getNombre());
+        p1.Marca.setText(producto.getMarca());
+        p1.Precio.setText(String.valueOf(producto.getPrecio()));
+        p1.Color.setText(producto.getColor());
+        p1.Descripcion.setText(producto.getDescripcion());
     }//GEN-LAST:event_Producto2ActionPerformed
 
     private void Producto5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Producto5ActionPerformed
-        System.out.println("xddddd");
+        Productos producto = daoP.readProducto(String.valueOf(Idproductos.get(4)));
+        VisualisacionProducto p1 = new VisualisacionProducto();
+        p1.setVisible(true);
+
+        p1.ImagenProducto.setIcon(crearIconoDesdeBits(producto.getImagen(), 200, 200));
+        p1.Nombre.setText(producto.getNombre());
+        p1.Marca.setText(producto.getMarca());
+        p1.Precio.setText(String.valueOf(producto.getPrecio()));
+        p1.Color.setText(producto.getColor());
+        p1.Descripcion.setText(producto.getDescripcion());
     }//GEN-LAST:event_Producto5ActionPerformed
 
     private void Producto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Producto1ActionPerformed
-        
+
         Productos producto = daoP.readProducto(String.valueOf(Idproductos.get(0)));
         VisualisacionProducto p1 = new VisualisacionProducto();
         p1.setVisible(true);
-        
+
         p1.ImagenProducto.setIcon(crearIconoDesdeBits(producto.getImagen(), 200, 200));
         p1.Nombre.setText(producto.getNombre());
         p1.Marca.setText(producto.getMarca());
@@ -318,6 +398,84 @@ public class Tienda extends javax.swing.JFrame {
         p1.Color.setText(producto.getColor());
         p1.Descripcion.setText(producto.getDescripcion());
     }//GEN-LAST:event_Producto1ActionPerformed
+
+    private void Producto3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Producto3ActionPerformed
+        Productos producto = daoP.readProducto(String.valueOf(Idproductos.get(2)));
+        VisualisacionProducto p1 = new VisualisacionProducto();
+        p1.setVisible(true);
+
+        p1.ImagenProducto.setIcon(crearIconoDesdeBits(producto.getImagen(), 200, 200));
+        p1.Nombre.setText(producto.getNombre());
+        p1.Marca.setText(producto.getMarca());
+        p1.Precio.setText(String.valueOf(producto.getPrecio()));
+        p1.Color.setText(producto.getColor());
+        p1.Descripcion.setText(producto.getDescripcion());
+    }//GEN-LAST:event_Producto3ActionPerformed
+
+    private void Producto4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Producto4ActionPerformed
+        Productos producto = daoP.readProducto(String.valueOf(Idproductos.get(3)));
+        VisualisacionProducto p1 = new VisualisacionProducto();
+        p1.setVisible(true);
+
+        p1.ImagenProducto.setIcon(crearIconoDesdeBits(producto.getImagen(), 200, 200));
+        p1.Nombre.setText(producto.getNombre());
+        p1.Marca.setText(producto.getMarca());
+        p1.Precio.setText(String.valueOf(producto.getPrecio()));
+        p1.Color.setText(producto.getColor());
+        p1.Descripcion.setText(producto.getDescripcion());
+    }//GEN-LAST:event_Producto4ActionPerformed
+
+    private void Producto6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Producto6ActionPerformed
+        Productos producto = daoP.readProducto(String.valueOf(Idproductos.get(5)));
+        VisualisacionProducto p1 = new VisualisacionProducto();
+        p1.setVisible(true);
+
+        p1.ImagenProducto.setIcon(crearIconoDesdeBits(producto.getImagen(), 200, 200));
+        p1.Nombre.setText(producto.getNombre());
+        p1.Marca.setText(producto.getMarca());
+        p1.Precio.setText(String.valueOf(producto.getPrecio()));
+        p1.Color.setText(producto.getColor());
+        p1.Descripcion.setText(producto.getDescripcion());
+    }//GEN-LAST:event_Producto6ActionPerformed
+
+    private void Producto7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Producto7ActionPerformed
+        Productos producto = daoP.readProducto(String.valueOf(Idproductos.get(6)));
+        VisualisacionProducto p1 = new VisualisacionProducto();
+        p1.setVisible(true);
+
+        p1.ImagenProducto.setIcon(crearIconoDesdeBits(producto.getImagen(), 200, 200));
+        p1.Nombre.setText(producto.getNombre());
+        p1.Marca.setText(producto.getMarca());
+        p1.Precio.setText(String.valueOf(producto.getPrecio()));
+        p1.Color.setText(producto.getColor());
+        p1.Descripcion.setText(producto.getDescripcion());
+    }//GEN-LAST:event_Producto7ActionPerformed
+
+    private void Producto8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Producto8ActionPerformed
+        Productos producto = daoP.readProducto(String.valueOf(Idproductos.get(7)));
+        VisualisacionProducto p1 = new VisualisacionProducto();
+        p1.setVisible(true);
+
+        p1.ImagenProducto.setIcon(crearIconoDesdeBits(producto.getImagen(), 200, 200));
+        p1.Nombre.setText(producto.getNombre());
+        p1.Marca.setText(producto.getMarca());
+        p1.Precio.setText(String.valueOf(producto.getPrecio()));
+        p1.Color.setText(producto.getColor());
+        p1.Descripcion.setText(producto.getDescripcion());
+    }//GEN-LAST:event_Producto8ActionPerformed
+
+    private void Producto9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Producto9ActionPerformed
+        Productos producto = daoP.readProducto(String.valueOf(Idproductos.get(8)));
+        VisualisacionProducto p1 = new VisualisacionProducto();
+        p1.setVisible(true);
+
+        p1.ImagenProducto.setIcon(crearIconoDesdeBits(producto.getImagen(), 200, 200));
+        p1.Nombre.setText(producto.getNombre());
+        p1.Marca.setText(producto.getMarca());
+        p1.Precio.setText(String.valueOf(producto.getPrecio()));
+        p1.Color.setText(producto.getColor());
+        p1.Descripcion.setText(producto.getDescripcion());
+    }//GEN-LAST:event_Producto9ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -355,6 +513,8 @@ public class Tienda extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonAdelante;
+    private javax.swing.JButton BotonAtras;
     private javax.swing.JButton Botonmenu;
     public static javax.swing.JLabel NombreUsuario;
     private javax.swing.JPanel PanelBotones;
@@ -370,13 +530,11 @@ public class Tienda extends javax.swing.JFrame {
     private javax.swing.JButton Producto7;
     private javax.swing.JButton Producto8;
     private javax.swing.JButton Producto9;
-    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton6;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
@@ -403,33 +561,37 @@ public class Tienda extends javax.swing.JFrame {
     }
 
     private void MostrarProductos() {
-        ArrayList<Productos> productos = daoP.readProductos();
+        JButton[] botonesProductos = {Producto1, Producto2, Producto3, Producto4, Producto5, Producto6, Producto7, Producto8, Producto9};
 
-// Asegurarse de que el tamaño de la lista sea múltiplo de 9 agregando null si es necesario
+        BotonAtras.setEnabled(false);
+        if (productos.size() < 9) {
+            BotonAdelante.setEnabled(false);
+        }
+
         while (productos.size() % 9 != 0) {
             productos.add(null);
         }
 
-// Array de tus botones
-        JButton[] botonesProductos = {Producto1, Producto2, Producto3, Producto4, Producto5, Producto6, Producto7, Producto8, Producto9};
-
         try {
             // Iterar sobre los botones y establecer sus iconos
             for (int i = 0; i < botonesProductos.length; i++) {
-                Productos producto = productos.get(i);
+                Productos producto = productos.get(cantidadProductos);
                 if (producto != null) {
                     botonesProductos[i].setIcon(crearIconoDesdeBits(producto.getImagen(), 90, 90));
                     botonesProductos[i].setContentAreaFilled(true);
                     botonesProductos[i].setEnabled(true);
                     Idproductos.add(producto.getId());
-                }else{
+                } else {
                     botonesProductos[i].setContentAreaFilled(false);
                     botonesProductos[i].setEnabled(false);
                 }
+                 cantidadProductos++;
             }
         } catch (Exception e) {
             System.out.println("Error al establecer el ícono: " + e.getMessage());
         }
-
+        System.out.println(cantidadProductos);
+        
     }
+    
 }
