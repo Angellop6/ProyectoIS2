@@ -311,7 +311,12 @@ public class Tienda extends javax.swing.JFrame {
         VisualisacionProducto p1 = new VisualisacionProducto();
         p1.setVisible(true);
         
+        p1.ImagenProducto.setIcon(crearIconoDesdeBits(producto.getImagen(), 200, 200));
         p1.Nombre.setText(producto.getNombre());
+        p1.Marca.setText(producto.getMarca());
+        p1.Precio.setText(String.valueOf(producto.getPrecio()));
+        p1.Color.setText(producto.getColor());
+        p1.Descripcion.setText(producto.getDescripcion());
     }//GEN-LAST:event_Producto1ActionPerformed
 
     /**
@@ -389,7 +394,7 @@ public class Tienda extends javax.swing.JFrame {
             BufferedImage bufferedImage = null;
             InputStream inputStream = new ByteArrayInputStream(imagen);
             bufferedImage = ImageIO.read(inputStream);
-            ImageIcon mIcono = new ImageIcon(bufferedImage.getScaledInstance(90, 90, 0));
+            ImageIcon mIcono = new ImageIcon(bufferedImage.getScaledInstance(ancho, alto, 0));
             return mIcono;
         } catch (Exception e) {
             System.out.println("no se encontro imagen");
@@ -413,7 +418,7 @@ public class Tienda extends javax.swing.JFrame {
             for (int i = 0; i < botonesProductos.length; i++) {
                 Productos producto = productos.get(i);
                 if (producto != null) {
-                    botonesProductos[i].setIcon(crearIconoDesdeBits(producto.getImagen(), 100, 100));
+                    botonesProductos[i].setIcon(crearIconoDesdeBits(producto.getImagen(), 90, 90));
                     botonesProductos[i].setContentAreaFilled(true);
                     botonesProductos[i].setEnabled(true);
                     Idproductos.add(producto.getId());
