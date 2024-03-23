@@ -6,6 +6,7 @@ package Ventanas;
 
 import Clases.Clientes;
 import dao.DaoCliente;
+import java.awt.Dialog;
 
 /**
  *
@@ -188,4 +189,8 @@ public class InicioSecion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
+    void setModalityType(Dialog.ModalityType modalityType) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

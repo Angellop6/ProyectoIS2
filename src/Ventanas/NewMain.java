@@ -14,10 +14,17 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Productos_Administracion p =  new Productos_Administracion();
-        //p.Panelprincipal.remove(0);
-        p.setVisible(true);
         
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Tienda().setVisible(true);
+            }
+        });
+        
+//        Tienda p =  new Tienda();
+//        //p.Panelprincipal.remove(0);
+//        p.setVisible(true);
+//        
         
     }
     

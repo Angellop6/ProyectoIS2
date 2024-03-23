@@ -15,19 +15,19 @@ import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 
 public class Tienda extends javax.swing.JFrame {
 
     public static String Nombre = "";
     public static Integer Id = null;
     DaoProductos daoP = new DaoProductos();
-
+    ArrayList<Integer> Idproductos = new ArrayList<>();
     public Tienda() {
 
         //Productos P = daoP.readProducto("1");
         initComponents();
         Botonmenu.setIcon(SetIcono("/Imagenes/menu.png", Botonmenu));
+        
         MostrarProductos();
         //Producto1.setIcon(crearIconoDesdeBits( P.getImagen(), 100, 100));
     }
@@ -66,6 +66,7 @@ public class Tienda extends javax.swing.JFrame {
         jButton17 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -119,6 +120,12 @@ public class Tienda extends javax.swing.JFrame {
 
         PanelMuestra.setBackground(new java.awt.Color(255, 204, 204));
 
+        Producto1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Producto1ActionPerformed(evt);
+            }
+        });
+
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -128,6 +135,12 @@ public class Tienda extends javax.swing.JFrame {
         Producto2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Producto2ActionPerformed(evt);
+            }
+        });
+
+        Producto5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Producto5ActionPerformed(evt);
             }
         });
 
@@ -143,56 +156,57 @@ public class Tienda extends javax.swing.JFrame {
             PanelMuestraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelMuestraLayout.createSequentialGroup()
                 .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 274, Short.MAX_VALUE)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMuestraLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(PanelMuestraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelMuestraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(Producto7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Producto4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Producto1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PanelMuestraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Producto8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(PanelMuestraLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(PanelMuestraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Producto5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Producto2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addGroup(PanelMuestraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Producto9, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Producto6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Producto3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(NombreUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMuestraLayout.createSequentialGroup()
+                .addGap(0, 27, Short.MAX_VALUE)
+                .addGroup(PanelMuestraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelMuestraLayout.createSequentialGroup()
+                        .addComponent(Producto1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Producto2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Producto3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelMuestraLayout.createSequentialGroup()
+                        .addGroup(PanelMuestraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Producto7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Producto4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(PanelMuestraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Producto8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(PanelMuestraLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(Producto5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(PanelMuestraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Producto9, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Producto6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(17, 17, 17))
         );
         PanelMuestraLayout.setVerticalGroup(
             PanelMuestraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMuestraLayout.createSequentialGroup()
                 .addComponent(NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(PanelMuestraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Producto1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Producto3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Producto2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(PanelMuestraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Producto4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Producto6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Producto5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(47, 47, 47)
                 .addGroup(PanelMuestraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Producto7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Producto8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Producto9, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
+                .addGap(101, 101, 101)
                 .addGroup(PanelMuestraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51))
+                    .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jPanel1.add(PanelMuestra, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 380, 590));
@@ -201,7 +215,7 @@ public class Tienda extends javax.swing.JFrame {
 
         jButton14.setText("Categoria3");
 
-        jButton15.setText("Categiria 1");
+        jButton15.setText("Categoria1");
 
         jButton16.setText("Categoria2");
 
@@ -254,11 +268,10 @@ public class Tienda extends javax.swing.JFrame {
     private void PerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerfilActionPerformed
 
         if (Id == null) {
-            java.awt.EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    new InicioSecion().setVisible(true);
-                }
-            });
+            
+            Ventanas.InicioSecion is = new Ventanas.InicioSecion ();
+                    is.setVisible(true);
+             
 
         }
     }//GEN-LAST:event_PerfilActionPerformed
@@ -287,6 +300,19 @@ public class Tienda extends javax.swing.JFrame {
     private void Producto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Producto2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Producto2ActionPerformed
+
+    private void Producto5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Producto5ActionPerformed
+        System.out.println("xddddd");
+    }//GEN-LAST:event_Producto5ActionPerformed
+
+    private void Producto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Producto1ActionPerformed
+        
+        Productos producto = daoP.readProducto(String.valueOf(Idproductos.get(0)));
+        VisualisacionProducto p1 = new VisualisacionProducto();
+        p1.setVisible(true);
+        
+        p1.Nombre.setText(producto.getNombre());
+    }//GEN-LAST:event_Producto1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -372,27 +398,33 @@ public class Tienda extends javax.swing.JFrame {
     }
 
     private void MostrarProductos() {
-        ArrayList<Productos> Productos = daoP.readProductos();
+        ArrayList<Productos> productos = daoP.readProductos();
 
-        while (Productos.size() % 9 != 0) {
-            Productos.add(null);
+// Asegurarse de que el tamaño de la lista sea múltiplo de 9 agregando null si es necesario
+        while (productos.size() % 9 != 0) {
+            productos.add(null);
         }
-        
+
+// Array de tus botones
+        JButton[] botonesProductos = {Producto1, Producto2, Producto3, Producto4, Producto5, Producto6, Producto7, Producto8, Producto9};
+
         try {
-        Producto1.setIcon(crearIconoDesdeBits( Productos.get(0).getImagen(), 100, 100));
-        Producto2.setIcon(crearIconoDesdeBits( Productos.get(1).getImagen(), 100, 100));
-        Producto3.setIcon(crearIconoDesdeBits( Productos.get(2).getImagen(), 100, 100));
-        Producto4.setIcon(crearIconoDesdeBits( Productos.get(3).getImagen(), 100, 100));
-        Producto5.setIcon(crearIconoDesdeBits( Productos.get(4).getImagen(), 100, 100));
-        Producto6.setIcon(crearIconoDesdeBits( Productos.get(5).getImagen(), 100, 100));
-        Producto7.setIcon(crearIconoDesdeBits( Productos.get(6).getImagen(), 100, 100));
-        Producto8.setIcon(crearIconoDesdeBits( Productos.get(7).getImagen(), 100, 100));
-        Producto9.setIcon(crearIconoDesdeBits( Productos.get(8).getImagen(), 100, 100));
+            // Iterar sobre los botones y establecer sus iconos
+            for (int i = 0; i < botonesProductos.length; i++) {
+                Productos producto = productos.get(i);
+                if (producto != null) {
+                    botonesProductos[i].setIcon(crearIconoDesdeBits(producto.getImagen(), 100, 100));
+                    botonesProductos[i].setContentAreaFilled(true);
+                    botonesProductos[i].setEnabled(true);
+                    Idproductos.add(producto.getId());
+                }else{
+                    botonesProductos[i].setContentAreaFilled(false);
+                    botonesProductos[i].setEnabled(false);
+                }
+            }
         } catch (Exception e) {
-            System.out.println("XD");
+            System.out.println("Error al establecer el ícono: " + e.getMessage());
         }
-      
 
     }
-
 }
