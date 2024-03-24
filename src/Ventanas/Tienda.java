@@ -328,11 +328,9 @@ public class Tienda extends javax.swing.JFrame {
 
     private void BotonAdelanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAdelanteActionPerformed
         JButton[] botonesProductos = {Producto1, Producto2, Producto3, Producto4, Producto5, Producto6, Producto7, Producto8, Producto9};
+        BotonAtras.setEnabled(true);
 
-        
-
-        
-
+        Idproductos.clear();
         try {
             // Iterar sobre los botones y establecer sus iconos
             for (int i = 0; i < botonesProductos.length; i++) {
@@ -347,16 +345,48 @@ public class Tienda extends javax.swing.JFrame {
                     botonesProductos[i].setEnabled(false);
                     botonesProductos[i].setIcon(null);
                 }
-               cantidadProductos ++;
+                cantidadProductos++;
             }
         } catch (Exception e) {
             System.out.println("Error al establecer el ícono: " + e.getMessage());
         }
+        System.out.println(productos.size());
         System.out.println(cantidadProductos);
+        if (cantidadProductos == productos.size()) {
+            BotonAdelante.setEnabled(false);
+        }
     }//GEN-LAST:event_BotonAdelanteActionPerformed
 
     private void BotonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAtrasActionPerformed
-        // TODO add your handling code here:
+        JButton[] botonesProductos = {Producto1, Producto2, Producto3, Producto4, Producto5, Producto6, Producto7, Producto8, Producto9};
+        BotonAdelante.setEnabled(true);
+
+        Idproductos.clear();
+        cantidadProductos -=18;
+        try {
+            // Iterar sobre los botones y establecer sus iconos
+            for (int i = 0; i < botonesProductos.length; i++) {
+                Productos producto = productos.get(cantidadProductos);
+                if (producto != null) {
+                    botonesProductos[i].setIcon(crearIconoDesdeBits(producto.getImagen(), 90, 90));
+                    botonesProductos[i].setContentAreaFilled(true);
+                    botonesProductos[i].setEnabled(true);
+                    Idproductos.add(producto.getId());
+                } else {
+                    botonesProductos[i].setContentAreaFilled(false);
+                    botonesProductos[i].setEnabled(false);
+                    botonesProductos[i].setIcon(null);
+                }
+                cantidadProductos++;
+            }
+        } catch (Exception e) {
+            System.out.println("Error al establecer el ícono: " + e.getMessage());
+        }
+        System.out.println(productos.size());
+        System.out.println(cantidadProductos);
+        if (cantidadProductos <= 9) {
+            BotonAtras.setEnabled(false);
+        }
     }//GEN-LAST:event_BotonAtrasActionPerformed
 
     private void Producto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Producto2ActionPerformed
@@ -585,13 +615,12 @@ public class Tienda extends javax.swing.JFrame {
                     botonesProductos[i].setContentAreaFilled(false);
                     botonesProductos[i].setEnabled(false);
                 }
-                 cantidadProductos++;
+                cantidadProductos++;
             }
         } catch (Exception e) {
             System.out.println("Error al establecer el ícono: " + e.getMessage());
         }
-        System.out.println(cantidadProductos);
-        
+
     }
-    
+
 }
