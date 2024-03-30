@@ -4,17 +4,33 @@
  */
 package Ventanas;
 
+import Clases.Carrito;
+import Clases.Productos;
+import dao.DaoCarrito;
+import dao.DaoProductos;
+import dao.RenderImagen;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.ArrayList;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author angel
  */
 public class PanelCarrito extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PanelCarrito
-     */
+    DaoProductos DaoP = new DaoProductos();
+    DaoCarrito DaoC = new DaoCarrito();
+    
+    
     public PanelCarrito() {
         initComponents();
+        llenarTabla();
     }
 
     /**
@@ -27,27 +43,124 @@ public class PanelCarrito extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TablaCarrito = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
+        TablaCarrito.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "producto", "Cantidad", "Precio", "Total", "color", "Descrpcion", "Imagen"
+            }
+        ));
+        jScrollPane1.setViewportView(TablaCarrito);
+
+        jLabel1.setText("Mi Carrito");
+
+        jButton1.setText("Comprar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(187, 187, 187)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(45, 45, 45))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(27, 27, 27))
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 500));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        llenarTabla();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TablaCarrito;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    
+    private void llenarTabla() {
+    TablaCarrito.setDefaultRenderer(Object.class, new RenderImagen());
+    
+    ArrayList<Carrito> Carrito = DaoC.readCarritos(String.valueOf(Tienda.Id));
+    ArrayList<Productos> productos = new ArrayList<Productos>();
+    for (int i = 0; i < Carrito.size(); i++) {
+        productos.add(DaoP.readProducto(String.valueOf(Carrito.get(i).getIdProducto())));
+    }
+
+    DefaultTableModel m = (DefaultTableModel) TablaCarrito.getModel();
+    while (m.getRowCount() > 0) {
+        m.removeRow(0);
+    }
+
+    for (int i = 0; i < Carrito.size(); i++) {
+        Object[] rowData = new Object[7]; // Mueve la declaración de rowData aquí para que se reinicie en cada iteración
+
+        rowData[0] = productos.get(i).getNombre();
+        rowData[1] = Carrito.get(i).getCantidad();
+        rowData[2] = productos.get(i).getPrecio();
+        rowData[3] = Carrito.get(i).getTotal();
+        rowData[4] = productos.get(i).getColor();
+        rowData[5] = productos.get(i).getDescripcion();
+        
+        try {
+            byte[] imagen = productos.get(i).getImagen();
+            BufferedImage bufferedImage = null;
+            InputStream inputStream = new ByteArrayInputStream(imagen);
+            bufferedImage = ImageIO.read(inputStream);
+            ImageIcon mIcono = new ImageIcon(bufferedImage.getScaledInstance(150, 110, 0));
+            rowData[6] = new JLabel(mIcono);
+        } catch (Exception e) {
+            rowData[6] = new JLabel("no imagen");
+        }
+        
+        m.addRow(rowData); // Agrega la fila al modelo de la tabla en cada iteración
+    }
+
+    TablaCarrito.setRowHeight(110);
+    TablaCarrito.getColumnModel().getColumn(6).setPreferredWidth(150);
+}
+    
+    
 }

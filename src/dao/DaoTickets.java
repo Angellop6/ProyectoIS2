@@ -16,10 +16,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 
 
-/**
- *
- * @author luisf
- */
+
 public class DaoTickets implements ITickets {
     private Connection cnx;
 

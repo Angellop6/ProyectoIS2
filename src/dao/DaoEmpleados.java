@@ -15,10 +15,7 @@ import java.util.logging.Logger;
 import java.sql.Statement;
 import java.sql.ResultSet;
 
-/**
- *
- * @author luisf
- */
+
 public class DaoEmpleados implements IEmpleados {
 
     private Connection cnx;

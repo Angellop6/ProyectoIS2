@@ -16,10 +16,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 
 
-/**
- *
- * @author luisf
- */
+
 public class DaoProductos implements IProductos {
     private Connection cnx;
 
@@ -70,7 +67,7 @@ public class DaoProductos implements IProductos {
             ps.setString(2, a.getMarca());
             ps.setInt(3, a.getCantidad());
             ps.setString(4, a.getColor());
-            ps.setDouble(5, a.getPrecio());
+            ps.setFloat(5, a.getPrecio());
             ps.setString(6, a.getDescripcion());
             ps.setBytes(7, a.getImagen());
             ps.setInt(8, a.getOferta());
@@ -115,7 +112,7 @@ public class DaoProductos implements IProductos {
             ps.setString(2, a.getMarca());
             ps.setInt(3, a.getCantidad());
             ps.setString(4, a.getColor());
-            ps.setDouble(5, a.getPrecio());          
+            ps.setFloat(5, a.getPrecio());          
             ps.setString(6, a.getDescripcion());
             ps.setBytes(7, a.getImagen());
             ps.setInt(8, a.getOferta());

@@ -1,4 +1,4 @@
-
+//
 package Clases;
 
 
@@ -8,12 +8,12 @@ public class Productos {
     private String Marca;
     private int Cantidad;
     private String Color;
-    private double Precio;
+    private float Precio;
     private String Descripcion;
     private byte[] Imagen;
     private int Oferta;
 
-    public Productos(int Id, String Nombre, String Marca, int Cantidad, String Color, double Precio, String Descripcion, byte[] Imagen, int Oferta) {
+    public Productos(int Id, String Nombre, String Marca, int Cantidad, String Color, float Precio, String Descripcion, byte[] Imagen, int Oferta) {
         this.Id = Id;
         this.Nombre = Nombre;
         this.Marca = Marca;
@@ -73,11 +73,11 @@ public class Productos {
         this.Color = Color;
     }
 
-    public double getPrecio() {
+    public float getPrecio() {
         return Precio;
     }
 
-    public void setPrecio(double Precio) {
+    public void setPrecio(float Precio) {
         this.Precio = Precio;
     }
 

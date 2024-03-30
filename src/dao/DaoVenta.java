@@ -16,10 +16,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 
 
-/**
- *
- * @author luisf
- */
+
 public class DaoVenta implements IVenta {
     private Connection cnx;
 
@@ -110,6 +107,7 @@ public class DaoVenta implements IVenta {
             ps.setFloat(3, a.getPrecio());
             ps.setFloat(4, a.getTotal());
             ps.setInt(5, a.getIdTicket());
+            
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("error"+ ex);

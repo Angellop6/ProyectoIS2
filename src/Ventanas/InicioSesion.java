@@ -6,13 +6,13 @@ package Ventanas;
 
 import Clases.Clientes;
 import dao.DaoCliente;
-import java.awt.Dialog;
+import javax.swing.JFrame;
 
 /**
  *
  * @author PC
  */
-public class InicioSecion extends javax.swing.JFrame {
+public class InicioSesion extends JFrame {
 
     DaoCliente dao = new DaoCliente();
 
@@ -21,8 +21,11 @@ public class InicioSecion extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    public InicioSecion() {
+    public InicioSesion() {
+      
         initComponents();
+      this.setVisible(true);
+       
     }
 
     /**
@@ -154,7 +157,9 @@ public class InicioSecion extends javax.swing.JFrame {
     }//GEN-LAST:event_ContraseñaTxTActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        Crearcuenta crear =  new Crearcuenta(new JFrame(), true);       
+        crear.setVisible(true);
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void IniciodeSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciodeSActionPerformed
@@ -166,7 +171,7 @@ public class InicioSecion extends javax.swing.JFrame {
                 
                 Tienda.Nombre = a.getNombre();
                 Tienda.Id = a.getId();
-                Tienda.NombreUsuario.setText(a.getNombre());
+                Tienda.NombreUsuario.setText(a.getNombre() + " id: " + Tienda.Id);
                 Error.setText("");
                 this.dispose();
             } else {
@@ -190,7 +195,5 @@ public class InicioSecion extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
-    void setModalityType(Dialog.ModalityType modalityType) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+
 }

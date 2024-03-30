@@ -16,10 +16,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 
 
-/**
- *
- * @author luisf
- */
+
 public class DaoCliente implements IClientes {
     private Connection cnx;
 
