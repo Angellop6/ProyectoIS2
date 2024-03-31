@@ -32,6 +32,8 @@ public class Tienda extends javax.swing.JFrame {
         //Productos P = daoP.readProducto("1");
         initComponents();
         Botonmenu.setIcon(SetIcono("/Imagenes/menu.png", Botonmenu));
+        BotonAtras.setIcon(SetIcono("/Imagenes/Flecha.png", BotonAtras));
+        BotonAdelante.setIcon(SetIcono("/Imagenes/Flecha2.png", BotonAdelante));
         MostrarProductos();
         //Producto1.setIcon(crearIconoDesdeBits( P.getImagen(), 100, 100));
     }
@@ -126,6 +128,7 @@ public class Tienda extends javax.swing.JFrame {
             }
         });
 
+        BotonAdelante.setBackground(new java.awt.Color(204, 255, 255));
         BotonAdelante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonAdelanteActionPerformed(evt);
@@ -168,6 +171,7 @@ public class Tienda extends javax.swing.JFrame {
             }
         });
 
+        BotonAtras.setBackground(new java.awt.Color(204, 255, 255));
         BotonAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonAtrasActionPerformed(evt);
