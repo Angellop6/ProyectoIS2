@@ -5,14 +5,21 @@
 package Ventanas;
 
 import Clases.Carrito;
+import Clases.Clientes;
 import Clases.Productos;
+import Clases.Tickets;
+import Clases.Venta;
 import dao.DaoCarrito;
+import dao.DaoCliente;
 import dao.DaoProductos;
+import dao.DaoTickets;
+import dao.DaoVenta;
 import dao.RenderImagen;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashSet;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -26,11 +33,16 @@ public class PanelCarrito extends javax.swing.JPanel {
 
     DaoProductos DaoP = new DaoProductos();
     DaoCarrito DaoC = new DaoCarrito();
-    
-    
+    DaoTickets DaoT = new DaoTickets();
+    DaoCliente Daoc = new DaoCliente();
+    DaoVenta Daov = new DaoVenta();
+    ArrayList<Carrito> Carrito = new ArrayList<>();
+    private float total = 0f;
+
     public PanelCarrito() {
         initComponents();
         llenarTabla();
+        Calculartotal();
     }
 
     /**
@@ -49,6 +61,7 @@ public class PanelCarrito extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         IdTxT = new javax.swing.JTextField();
         Borrar_producto = new javax.swing.JButton();
+        Totalleabel = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -56,15 +69,20 @@ public class PanelCarrito extends javax.swing.JPanel {
 
         TablaCarrito.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "producto", "Cantidad", "Precio", "Total", "color", "Descrpcion", "Imagen"
+                "Id", "producto", "Cantidad", "Precio", "Total", "color", "Descrpcion", "Imagen"
             }
         ));
+        TablaCarrito.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaCarritoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(TablaCarrito);
 
         jLabel1.setText("Mi Carrito");
@@ -90,6 +108,8 @@ public class PanelCarrito extends javax.swing.JPanel {
             }
         });
 
+        Totalleabel.setText("Totla XD ");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -101,14 +121,18 @@ public class PanelCarrito extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(IdTxT, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(IdTxT, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79)
+                        .addComponent(Totalleabel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Borrar_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(17, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,20 +141,58 @@ public class PanelCarrito extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(IdTxT, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Totalleabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(IdTxT, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
                 .addGap(29, 29, 29)
                 .addComponent(Borrar_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 500));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        llenarTabla();
+        Clientes c = Daoc.readCliente(String.valueOf(Tienda.Id));
+
+        if (Carrito.isEmpty()) {
+            System.out.println("error");
+        } else {
+            //Prod = RestarCantidad(Ventas,Prod);
+            //ArcP.guardar(Prod, "productos.dat");
+
+            //Errorvas.setText("");
+            
+            ArrayList<Productos> productos = new ArrayList<Productos>();
+            ArrayList<Tickets> tickets = DaoT.readTickets();
+            for (int i = 0; i < Carrito.size(); i++) {
+                productos.add(DaoP.readProducto(String.valueOf(Carrito.get(i).getIdProducto())));
+            }
+            int noTiket = 0;
+            if (tickets.isEmpty()) {
+                noTiket = 1;
+
+            } else {
+
+                noTiket = tickets.get(tickets.size() - 1).getId() + 1;
+            }
+            
+            DaoT.createTicket(new Tickets(1, c.getNombre(), c.getCorreo(), total));
+            for (int i = 0; i < Carrito.size(); i++) {
+                Daov.createVenta(new Venta(1,productos.get(i).getNombre(),Carrito.get(i).getCantidad(),productos.get(i).getPrecio(),
+                                        Carrito.get(i).getTotal(),noTiket));
+            }
+            
+            for (int i = 0; i < Carrito.size(); i++) {
+                DaoC.deleteCarrito(String.valueOf(Carrito.get(i).getId()));
+                
+            }
+            
+            llenarTabla();
+
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void IdTxTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdTxTActionPerformed
@@ -138,62 +200,85 @@ public class PanelCarrito extends javax.swing.JPanel {
     }//GEN-LAST:event_IdTxTActionPerformed
 
     private void Borrar_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Borrar_productoActionPerformed
-        // TODO add your handling code here:
+
+        try {
+            DaoC.deleteCarrito(IdTxT.getText());
+            IdTxT.setText("");
+            llenarTabla();
+        } catch (Exception e) {
+            System.out.println("no se selecciono la id o no se encontro");
+        }
+
+
     }//GEN-LAST:event_Borrar_productoActionPerformed
+
+    private void TablaCarritoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaCarritoMouseClicked
+        int filaSeleccionada = TablaCarrito.rowAtPoint(evt.getPoint());
+        IdTxT.setText(TablaCarrito.getValueAt(filaSeleccionada, 0).toString());
+    }//GEN-LAST:event_TablaCarritoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Borrar_producto;
     private javax.swing.JTextField IdTxT;
     private javax.swing.JTable TablaCarrito;
+    private javax.swing.JLabel Totalleabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-    
     private void llenarTabla() {
-    TablaCarrito.setDefaultRenderer(Object.class, new RenderImagen());
-    
-    ArrayList<Carrito> Carrito = DaoC.readCarritos(String.valueOf(Tienda.Id));
-    ArrayList<Productos> productos = new ArrayList<Productos>();
-    for (int i = 0; i < Carrito.size(); i++) {
-        productos.add(DaoP.readProducto(String.valueOf(Carrito.get(i).getIdProducto())));
-    }
+        TablaCarrito.setDefaultRenderer(Object.class, new RenderImagen());
 
-    DefaultTableModel m = (DefaultTableModel) TablaCarrito.getModel();
-    while (m.getRowCount() > 0) {
-        m.removeRow(0);
-    }
-
-    for (int i = 0; i < Carrito.size(); i++) {
-        Object[] rowData = new Object[7]; // Mueve la declaración de rowData aquí para que se reinicie en cada iteración
-
-        rowData[0] = productos.get(i).getNombre();
-        rowData[1] = Carrito.get(i).getCantidad();
-        rowData[2] = productos.get(i).getPrecio();
-        rowData[3] = Carrito.get(i).getTotal();
-        rowData[4] = productos.get(i).getColor();
-        rowData[5] = productos.get(i).getDescripcion();
-        
-        try {
-            byte[] imagen = productos.get(i).getImagen();
-            BufferedImage bufferedImage = null;
-            InputStream inputStream = new ByteArrayInputStream(imagen);
-            bufferedImage = ImageIO.read(inputStream);
-            ImageIcon mIcono = new ImageIcon(bufferedImage.getScaledInstance(150, 110, 0));
-            rowData[6] = new JLabel(mIcono);
-        } catch (Exception e) {
-            rowData[6] = new JLabel("no imagen");
+        Carrito = DaoC.readCarritos(String.valueOf(Tienda.Id));
+        ArrayList<Productos> productos = new ArrayList<Productos>();
+        for (int i = 0; i < Carrito.size(); i++) {
+            productos.add(DaoP.readProducto(String.valueOf(Carrito.get(i).getIdProducto())));
         }
-        
-        m.addRow(rowData); // Agrega la fila al modelo de la tabla en cada iteración
+
+        DefaultTableModel m = (DefaultTableModel) TablaCarrito.getModel();
+        while (m.getRowCount() > 0) {
+            m.removeRow(0);
+        }
+
+        for (int i = 0; i < Carrito.size(); i++) {
+            Object[] rowData = new Object[8]; // Mueve la declaración de rowData aquí para que se reinicie en cada iteración
+
+            rowData[0] = Carrito.get(i).getId();
+            rowData[1] = productos.get(i).getNombre();
+            rowData[2] = Carrito.get(i).getCantidad();
+            rowData[3] = productos.get(i).getPrecio();
+            rowData[4] = Carrito.get(i).getTotal();
+            rowData[5] = productos.get(i).getColor();
+            rowData[6] = productos.get(i).getDescripcion();
+
+            try {
+                byte[] imagen = productos.get(i).getImagen();
+                BufferedImage bufferedImage = null;
+                InputStream inputStream = new ByteArrayInputStream(imagen);
+                bufferedImage = ImageIO.read(inputStream);
+                ImageIcon mIcono = new ImageIcon(bufferedImage.getScaledInstance(150, 110, 0));
+                rowData[7] = new JLabel(mIcono);
+            } catch (Exception e) {
+                rowData[7] = new JLabel("no imagen");
+            }
+
+            m.addRow(rowData); // Agrega la fila al modelo de la tabla en cada iteración
+        }
+
+        TablaCarrito.setRowHeight(110);
+        TablaCarrito.getColumnModel().getColumn(7).setPreferredWidth(150);
     }
 
-    TablaCarrito.setRowHeight(110);
-    TablaCarrito.getColumnModel().getColumn(6).setPreferredWidth(150);
-}
-    
-    
+    private void Calculartotal() {
+
+        for (int i = 0; i < Carrito.size(); i++) {
+            total = total + Carrito.get(i).getTotal();
+        }
+
+        Totalleabel.setText("Total: " + String.valueOf(total) + "  mxn");
+    }
+
 }
