@@ -67,7 +67,6 @@ public class Tienda extends javax.swing.JFrame {
         jButton17 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -296,9 +295,8 @@ public class Tienda extends javax.swing.JFrame {
     private void PerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerfilActionPerformed
 
         if (Id == null) {
-            
-            InicioSesion is = new InicioSesion();
-            is.setVisible(true);
+            InicioSesion IS = new InicioSesion(new JFrame(), true);
+            IS.setVisible(true);
         } else {
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
@@ -321,7 +319,6 @@ public class Tienda extends javax.swing.JFrame {
     private void BotonAdelanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAdelanteActionPerformed
         JButton[] botonesProductos = {Producto1, Producto2, Producto3, Producto4, Producto5, Producto6, Producto7, Producto8, Producto9};
         BotonAtras.setEnabled(true);
-
         Idproductos.clear();
         try {
             // Iterar sobre los botones y establecer sus iconos
@@ -342,8 +339,6 @@ public class Tienda extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Error al establecer el ícono: " + e.getMessage());
         }
-        System.out.println(productos.size());
-        System.out.println(cantidadProductos);
         if (cantidadProductos == productos.size()) {
             BotonAdelante.setEnabled(false);
         }
@@ -374,143 +369,45 @@ public class Tienda extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Error al establecer el ícono: " + e.getMessage());
         }
-        System.out.println(productos.size());
-        System.out.println(cantidadProductos);
         if (cantidadProductos <= 9) {
             BotonAtras.setEnabled(false);
         }
     }//GEN-LAST:event_BotonAtrasActionPerformed
 
     private void Producto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Producto2ActionPerformed
-        Productos producto = daoP.readProducto(String.valueOf(Idproductos.get(1)));
-        VisualProduc p1 = new VisualProduc(new JFrame (),true);
-
-        p1.ImagenProducto.setIcon(crearIconoDesdeBits(producto.getImagen(), 200, 200));
-        p1.Nombre.setText(producto.getNombre());
-        p1.Marca.setText(producto.getMarca());
-        p1.Precio.setText(String.valueOf(producto.getPrecio()));
-        p1.Color.setText(producto.getColor());
-        p1.Descripcion.setText(producto.getDescripcion());   
-        IdProducto =  producto.getId();
-        p1.setVisible(true);
-     
-
+        MostarVentanaProductos(1);
     }//GEN-LAST:event_Producto2ActionPerformed
 
     private void Producto5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Producto5ActionPerformed
-        Productos producto = daoP.readProducto(String.valueOf(Idproductos.get(4)));
-
-        VisualProduc p1 = new VisualProduc(this, true);
-        
-        p1.ImagenProducto.setIcon(crearIconoDesdeBits(producto.getImagen(), 200, 200));
-        p1.Nombre.setText(producto.getNombre());
-        p1.Marca.setText(producto.getMarca());
-        p1.Precio.setText(String.valueOf(producto.getPrecio()));
-        p1.Color.setText(producto.getColor());
-        p1.Descripcion.setText(producto.getDescripcion());
-        IdProducto =  producto.getId();
-        p1.setVisible(true);
-
-
+        MostarVentanaProductos(4);
     }//GEN-LAST:event_Producto5ActionPerformed
 
     private void Producto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Producto1ActionPerformed
-
-        Productos producto = daoP.readProducto(String.valueOf(Idproductos.get(0)));
-        VisualProduc p1 = new VisualProduc(new JFrame(), true);
-
-        p1.ImagenProducto.setIcon(crearIconoDesdeBits(producto.getImagen(), 200, 200));
-        p1.Nombre.setText(producto.getNombre());
-        p1.Marca.setText(producto.getMarca());
-        p1.Precio.setText(String.valueOf(producto.getPrecio()));
-        p1.Color.setText(producto.getColor());
-        p1.Descripcion.setText(producto.getDescripcion());
-        IdProducto =  producto.getId();
-        p1.setVisible(true);
+        MostarVentanaProductos(0);
     }//GEN-LAST:event_Producto1ActionPerformed
 
     private void Producto3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Producto3ActionPerformed
-        Productos producto = daoP.readProducto(String.valueOf(Idproductos.get(2)));
-        VisualProduc p1 = new VisualProduc(new JFrame(), true);
-
-        p1.ImagenProducto.setIcon(crearIconoDesdeBits(producto.getImagen(), 200, 200));
-        p1.Nombre.setText(producto.getNombre());
-        p1.Marca.setText(producto.getMarca());
-        p1.Precio.setText(String.valueOf(producto.getPrecio()));
-        p1.Color.setText(producto.getColor());
-        p1.Descripcion.setText(producto.getDescripcion());
-        IdProducto =  producto.getId();
-        p1.setVisible(true);
+        MostarVentanaProductos(2);
     }//GEN-LAST:event_Producto3ActionPerformed
 
     private void Producto4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Producto4ActionPerformed
-        Productos producto = daoP.readProducto(String.valueOf(Idproductos.get(3)));
-        VisualProduc p1 = new VisualProduc(new JFrame(), true);
-
-        p1.ImagenProducto.setIcon(crearIconoDesdeBits(producto.getImagen(), 200, 200));
-        p1.Nombre.setText(producto.getNombre());
-        p1.Marca.setText(producto.getMarca());
-        p1.Precio.setText(String.valueOf(producto.getPrecio()));
-        p1.Color.setText(producto.getColor());
-        p1.Descripcion.setText(producto.getDescripcion());
-        IdProducto =  producto.getId();
-        p1.setVisible(true);
+        MostarVentanaProductos(3);
     }//GEN-LAST:event_Producto4ActionPerformed
 
     private void Producto6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Producto6ActionPerformed
-        Productos producto = daoP.readProducto(String.valueOf(Idproductos.get(5)));
-        VisualProduc p1 = new VisualProduc(new JFrame(), true);
-
-        p1.ImagenProducto.setIcon(crearIconoDesdeBits(producto.getImagen(), 200, 200));
-        p1.Nombre.setText(producto.getNombre());
-        p1.Marca.setText(producto.getMarca());
-        p1.Precio.setText(String.valueOf(producto.getPrecio()));
-        p1.Color.setText(producto.getColor());
-        p1.Descripcion.setText(producto.getDescripcion());
-        IdProducto =  producto.getId();
-        p1.setVisible(true);
+        MostarVentanaProductos(5);
     }//GEN-LAST:event_Producto6ActionPerformed
 
     private void Producto7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Producto7ActionPerformed
-        Productos producto = daoP.readProducto(String.valueOf(Idproductos.get(6)));
-        VisualProduc p1 = new VisualProduc(new JFrame(), true);
-
-        p1.ImagenProducto.setIcon(crearIconoDesdeBits(producto.getImagen(), 200, 200));
-        p1.Nombre.setText(producto.getNombre());
-        p1.Marca.setText(producto.getMarca());
-        p1.Precio.setText(String.valueOf(producto.getPrecio()));
-        p1.Color.setText(producto.getColor());
-        p1.Descripcion.setText(producto.getDescripcion());
-        IdProducto =  producto.getId();
-        p1.setVisible(true);
+        MostarVentanaProductos(6);
     }//GEN-LAST:event_Producto7ActionPerformed
 
     private void Producto8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Producto8ActionPerformed
-        Productos producto = daoP.readProducto(String.valueOf(Idproductos.get(7)));
-        VisualProduc p1 = new VisualProduc(new JFrame(), true);
-
-        p1.ImagenProducto.setIcon(crearIconoDesdeBits(producto.getImagen(), 200, 200));
-        p1.Nombre.setText(producto.getNombre());
-        p1.Marca.setText(producto.getMarca());
-        p1.Precio.setText(String.valueOf(producto.getPrecio()));
-        p1.Color.setText(producto.getColor());
-        p1.Descripcion.setText(producto.getDescripcion());
-        IdProducto =  producto.getId();
-        p1.setVisible(true);
+        MostarVentanaProductos(7);
     }//GEN-LAST:event_Producto8ActionPerformed
 
     private void Producto9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Producto9ActionPerformed
-        Productos producto = daoP.readProducto(String.valueOf(Idproductos.get(8)));
-        VisualProduc p1 = new VisualProduc(new JFrame(), true);
-
-        p1.ImagenProducto.setIcon(crearIconoDesdeBits(producto.getImagen(), 200, 200));
-        p1.Nombre.setText(producto.getNombre());
-        p1.Marca.setText(producto.getMarca());
-        p1.Precio.setText(String.valueOf(producto.getPrecio()));
-        p1.Color.setText(producto.getColor());
-        p1.Descripcion.setText(producto.getDescripcion());
-        IdProducto =  producto.getId();
-        p1.setVisible(true);
+        MostarVentanaProductos(8);
     }//GEN-LAST:event_Producto9ActionPerformed
 
  
@@ -626,6 +523,23 @@ public class Tienda extends javax.swing.JFrame {
 
     }
 
+    private void MostarVentanaProductos( int index){
+        Productos producto = daoP.readProducto(String.valueOf(Idproductos.get(index)));
+        VisualProduc p1 = new VisualProduc(new JFrame (),true);
+
+        p1.ImagenProducto.setIcon(crearIconoDesdeBits(producto.getImagen(), 200, 200));
+        p1.Nombre.setText(producto.getNombre());
+        p1.Marca.setText(producto.getMarca());
+        p1.Precio.setText(String.valueOf(producto.getPrecio()));
+        p1.Color.setText(producto.getColor());
+        p1.Descripcion.setText(producto.getDescripcion());   
+        IdProducto =  producto.getId();
+        p1.setVisible(true);
+    
+    
+    
+    }
+    
     
     
 }

@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package Ventanas;
 
@@ -12,20 +12,14 @@ import javax.swing.JFrame;
  *
  * @author PC
  */
-public class InicioSesion extends JFrame {
+public class InicioSesion extends javax.swing.JDialog {
 
     DaoCliente dao = new DaoCliente();
-
     
-
-    /**
-     * Creates new form NewJFrame
-     */
-    public InicioSesion() {
-      
+    
+    public InicioSesion(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
-      this.setVisible(true);
-       
     }
 
     /**
@@ -37,163 +31,162 @@ public class InicioSesion extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        CorreoTXT = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        ContraseñaTxT = new javax.swing.JTextField();
-        IniciodeS = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        Error = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        CorreoTXT1 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        ContraseñaTxT1 = new javax.swing.JTextField();
+        IniciodeS1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        Error1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(237, 237, 237));
+        jPanel2.setBackground(new java.awt.Color(237, 237, 237));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Correo");
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Correo");
 
-        CorreoTXT.setBackground(new java.awt.Color(204, 204, 204));
-        CorreoTXT.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        CorreoTXT.setForeground(new java.awt.Color(0, 0, 0));
-        CorreoTXT.addActionListener(new java.awt.event.ActionListener() {
+        CorreoTXT1.setBackground(new java.awt.Color(204, 204, 204));
+        CorreoTXT1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        CorreoTXT1.setForeground(new java.awt.Color(0, 0, 0));
+        CorreoTXT1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CorreoTXTActionPerformed(evt);
+                CorreoTXT1ActionPerformed(evt);
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Contraseña");
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Contraseña");
 
-        ContraseñaTxT.setBackground(new java.awt.Color(204, 204, 204));
-        ContraseñaTxT.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        ContraseñaTxT.setForeground(new java.awt.Color(0, 0, 0));
-        ContraseñaTxT.addActionListener(new java.awt.event.ActionListener() {
+        ContraseñaTxT1.setBackground(new java.awt.Color(204, 204, 204));
+        ContraseñaTxT1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        ContraseñaTxT1.setForeground(new java.awt.Color(0, 0, 0));
+        ContraseñaTxT1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ContraseñaTxTActionPerformed(evt);
+                ContraseñaTxT1ActionPerformed(evt);
             }
         });
 
-        IniciodeS.setText("Iniciar sesion");
-        IniciodeS.addActionListener(new java.awt.event.ActionListener() {
+        IniciodeS1.setText("Iniciar sesion");
+        IniciodeS1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IniciodeSActionPerformed(evt);
+                IniciodeS1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Crear Usuario");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.setText("Crear Usuario");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(259, 259, 259)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(CorreoTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(64, 64, 64)
-                            .addComponent(jLabel2))
-                        .addComponent(ContraseñaTxT, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(12, 12, 12)
-                            .addComponent(IniciodeS, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addGap(92, 92, 92)))
-                    .addComponent(Error, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(259, 259, 259)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CorreoTXT1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(64, 64, 64)
+                                .addComponent(jLabel4))
+                            .addComponent(ContraseñaTxT1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(IniciodeS1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Error1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(349, 349, 349)
+                        .addComponent(jLabel3)))
                 .addContainerGap(299, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(CorreoTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jLabel2)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(ContraseñaTxT, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Error, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(IniciodeS, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(CorreoTXT1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(jLabel4)
+                .addGap(12, 12, 12)
+                .addComponent(ContraseñaTxT1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Error1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(IniciodeS1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(84, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CorreoTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CorreoTXTActionPerformed
+    private void CorreoTXT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CorreoTXT1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CorreoTXTActionPerformed
+    }//GEN-LAST:event_CorreoTXT1ActionPerformed
 
-    private void ContraseñaTxTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContraseñaTxTActionPerformed
+    private void ContraseñaTxT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContraseñaTxT1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ContraseñaTxTActionPerformed
+    }//GEN-LAST:event_ContraseñaTxT1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Crearcuenta crear =  new Crearcuenta(new JFrame(), true);       
-        crear.setVisible(true);
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void IniciodeSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciodeSActionPerformed
-        Clientes a = dao.readClienteCorreo(CorreoTXT.getText());
+    private void IniciodeS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciodeS1ActionPerformed
+        Clientes a = dao.readClienteCorreo(CorreoTXT1.getText());
         if (a == null) {
             Error.setText("No se encontro la cuenta");
         } else {
-            if (a.getContraseña().equals(ContraseñaTxT.getText())) {
-                
+            if (a.getContraseña().equals(ContraseñaTxT1.getText())) {
+
                 Tienda.Nombre = a.getNombre();
                 Tienda.Id = a.getId();
                 Tienda.NombreUsuario.setText(a.getNombre() + " id: " + Tienda.Id);
-                Error.setText("");
+                Error1.setText("");
                 this.dispose();
             } else {
-                Error.setText("La Contraseña es incorrecta");
+                Error1.setText("La Contraseña es incorrecta");
             }
 
         }
 
+    }//GEN-LAST:event_IniciodeS1ActionPerformed
 
-    }//GEN-LAST:event_IniciodeSActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Crearcuenta crear =  new Crearcuenta(new JFrame(), true);
+        crear.setVisible(true);
 
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ContraseñaTxT;
+    private javax.swing.JTextField ContraseñaTxT1;
     private javax.swing.JTextField CorreoTXT;
+    private javax.swing.JTextField CorreoTXT1;
     private javax.swing.JLabel Error;
+    private javax.swing.JLabel Error1;
     private javax.swing.JButton IniciodeS;
+    private javax.swing.JButton IniciodeS1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
-
-
 }
