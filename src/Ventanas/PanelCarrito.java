@@ -155,44 +155,7 @@ public class PanelCarrito extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Clientes c = Daoc.readCliente(String.valueOf(Tienda.Id));
-
-        if (Carrito.isEmpty()) {
-            System.out.println("error");
-        } else {
-            //Prod = RestarCantidad(Ventas,Prod);
-            //ArcP.guardar(Prod, "productos.dat");
-
-            //Errorvas.setText("");
-            
-            ArrayList<Productos> productos = new ArrayList<Productos>();
-            ArrayList<Tickets> tickets = DaoT.readTickets();
-            for (int i = 0; i < Carrito.size(); i++) {
-                productos.add(DaoP.readProducto(String.valueOf(Carrito.get(i).getIdProducto())));
-            }
-            int noTiket = 0;
-            if (tickets.isEmpty()) {
-                noTiket = 1;
-
-            } else {
-
-                noTiket = tickets.get(tickets.size() - 1).getId() + 1;
-            }
-            
-            DaoT.createTicket(new Tickets(1, c.getNombre(), c.getCorreo(), total));
-            for (int i = 0; i < Carrito.size(); i++) {
-                Daov.createVenta(new Venta(1,productos.get(i).getNombre(),Carrito.get(i).getCantidad(),productos.get(i).getPrecio(),
-                                        Carrito.get(i).getTotal(),noTiket));
-            }
-            
-            for (int i = 0; i < Carrito.size(); i++) {
-                DaoC.deleteCarrito(String.valueOf(Carrito.get(i).getId()));
-                
-            }
-            
-            llenarTabla();
-
-        }
+        comprar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void IdTxTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdTxTActionPerformed
@@ -280,5 +243,48 @@ public class PanelCarrito extends javax.swing.JPanel {
 
         Totalleabel.setText("Total: " + String.valueOf(total) + "  mxn");
     }
+    
+    private void comprar(){
+        Clientes c = Daoc.readCliente(String.valueOf(Tienda.Id));
+
+        if (Carrito.isEmpty()) {
+            System.out.println("error");
+        } else {
+            //Prod = RestarCantidad(Ventas,Prod);
+            //ArcP.guardar(Prod, "productos.dat");
+
+            //Errorvas.setText("");
+            
+            ArrayList<Productos> productos = new ArrayList<Productos>();
+            ArrayList<Tickets> tickets = DaoT.readTickets();
+            for (int i = 0; i < Carrito.size(); i++) {
+                productos.add(DaoP.readProducto(String.valueOf(Carrito.get(i).getIdProducto())));
+            }
+            int noTiket = 0;
+            if (tickets.isEmpty()) {
+                noTiket = 1;
+
+            } else {
+
+                noTiket = tickets.get(tickets.size() - 1).getId() + 1;
+            }
+            
+            DaoT.createTicket(new Tickets(1, c.getNombre(), c.getCorreo(), total));
+            for (int i = 0; i < Carrito.size(); i++) {
+                Daov.createVenta(new Venta(1,productos.get(i).getNombre(),Carrito.get(i).getCantidad(),productos.get(i).getPrecio(),
+                                        Carrito.get(i).getTotal(),noTiket));
+            }
+            
+            for (int i = 0; i < Carrito.size(); i++) {
+                DaoC.deleteCarrito(String.valueOf(Carrito.get(i).getId()));
+                
+            }
+            
+            llenarTabla();
+
+        }
+    }
+    
+    
 
 }
