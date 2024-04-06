@@ -38,7 +38,7 @@ public class InicioSesion extends javax.swing.JDialog {
         ContraseñaTxT1 = new javax.swing.JTextField();
         IniciodeS1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        Error1 = new javax.swing.JLabel();
+        Error = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -50,7 +50,7 @@ public class InicioSesion extends javax.swing.JDialog {
         jLabel3.setText("Correo");
 
         CorreoTXT1.setBackground(new java.awt.Color(204, 204, 204));
-        CorreoTXT1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        CorreoTXT1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         CorreoTXT1.setForeground(new java.awt.Color(0, 0, 0));
         CorreoTXT1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,7 +103,7 @@ public class InicioSesion extends javax.swing.JDialog {
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(12, 12, 12)
                                 .addComponent(IniciodeS1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Error1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(Error, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(349, 349, 349)
                         .addComponent(jLabel3)))
@@ -121,7 +121,7 @@ public class InicioSesion extends javax.swing.JDialog {
                 .addGap(12, 12, 12)
                 .addComponent(ContraseñaTxT1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Error1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Error, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -153,10 +153,10 @@ public class InicioSesion extends javax.swing.JDialog {
                 Tienda.Nombre = a.getNombre();
                 Tienda.Id = a.getId();
                 Tienda.NombreUsuario.setText(a.getNombre() + " id: " + Tienda.Id);
-                Error1.setText("");
+                Error.setText("");
                 this.dispose();
             } else {
-                Error1.setText("La Contraseña es incorrecta");
+                Error.setText("La Contraseña es incorrecta");
             }
 
         }
@@ -172,21 +172,13 @@ public class InicioSesion extends javax.swing.JDialog {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField ContraseñaTxT;
     private javax.swing.JTextField ContraseñaTxT1;
-    private javax.swing.JTextField CorreoTXT;
     private javax.swing.JTextField CorreoTXT1;
     private javax.swing.JLabel Error;
-    private javax.swing.JLabel Error1;
-    private javax.swing.JButton IniciodeS;
     private javax.swing.JButton IniciodeS1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }

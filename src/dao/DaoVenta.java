@@ -52,15 +52,14 @@ public class DaoVenta implements IVenta {
     private void createVentaSQl(Venta a)  {
         Conexion con = new Conexion();
         cnx = con.getConexion();
-        String sql = "INSERT INTO Venta(Producto,Cantidad,Precio,Total,IdTicket) VALUES(?,?,?,?,?);";
+        String sql = "INSERT INTO Venta(Cantidad,Total,IdUsuario,IdProducto) VALUES(?,?,?,?);";
         PreparedStatement ps ;
         try {
             ps = cnx.prepareStatement(sql);
-            ps.setString(1, a.getProducto());
-            ps.setInt(2, a.getCantidad());
-            ps.setFloat(3, a.getPrecio());
-            ps.setFloat(4, a.getTotal());
-            ps.setInt(5, a.getIdTicket());
+            ps.setInt(1, a.getCantidad());
+            ps.setFloat(2, a.getTotal());
+            ps.setInt(3, a.getCantidad());
+            ps.setInt(4, a.getCantidad());
              ps.executeUpdate();   
         } catch (SQLException ex) {
             Logger.getLogger(DaoVenta.class.getName()).log(Level.SEVERE, null, ex);
@@ -77,13 +76,13 @@ public class DaoVenta implements IVenta {
  
         Conexion con = new Conexion();
         cnx = con.getConexion();
-        String sql = "SELECT * FROM venta WHERE IdTicket =" + id ;
+        String sql = "SELECT * FROM venta WHERE IdUsuario =" + id ;
         try {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
-                Venta Venta = new Venta( rs.getInt("Id"),rs.getString("Producto"),rs.getInt("Cantidad"),
-                            rs.getFloat("Precio"),rs.getFloat("Total"),rs.getInt("IdTicket")); 
+                Venta Venta = new Venta( rs.getInt("Id"),rs.getInt("Cantidad"),
+                            rs.getFloat("Total"),rs.getInt("IdTicket"),rs.getInt("IdUsuario")); 
                 Ventas.add(Venta);
             }
             
@@ -98,16 +97,15 @@ public class DaoVenta implements IVenta {
         
         Conexion con = new Conexion();
         cnx = con.getConexion();
-        String sql = "update Venta set Nombre=?,Correo=?,Total=? where Id = ? ;";
-        PreparedStatement ps ;
+        String sql = "update Venta set Cantidad=?,Total=?,IdUsuario=?,IdProducto=? where Id = ? ;";
+        PreparedStatement ps;
         try {
             ps = cnx.prepareStatement(sql);
-            ps.setString(1, a.getProducto());
-            ps.setInt(2, a.getCantidad());
-            ps.setFloat(3, a.getPrecio());
-            ps.setFloat(4, a.getTotal());
-            ps.setInt(5, a.getIdTicket());
-            
+            ps.setInt(1, a.getCantidad());
+            ps.setFloat(2, a.getTotal());
+            ps.setInt(3, a.getCantidad());
+            ps.setInt(4, a.getCantidad());
+            ps.setString(5, id);
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("error"+ ex);
@@ -145,8 +143,8 @@ public class DaoVenta implements IVenta {
             st = cnx.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
-                a = new Venta( rs.getInt("Id"),rs.getString("Producto"),rs.getInt("Cantidad"),
-                            rs.getFloat("Precio"),rs.getFloat("Total"),rs.getInt("IdTicket"));   
+                a = new Venta(rs.getInt("Id"),rs.getInt("Cantidad"),
+                            rs.getFloat("Precio"),rs.getInt("IdUsuario"),rs.getInt("IdProducto"));   
             } 
             
             
@@ -156,16 +154,6 @@ public class DaoVenta implements IVenta {
             
         return a;
     }
-    
-
-    
-    
-
-    
-
-    
-    
-    
-    
+      
     
 }

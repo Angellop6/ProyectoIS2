@@ -4,6 +4,9 @@
  */
 package Ventanas;
 
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author PC
@@ -14,6 +17,10 @@ public class Verificacion_Compra extends javax.swing.JDialog {
     public Verificacion_Compra(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        PanelTarjeta p1 = new PanelTarjeta();
+        pintarPanel(p1); 
+        
+        
     }
 
     
@@ -23,7 +30,7 @@ public class Verificacion_Compra extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        Contenido = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -39,7 +46,7 @@ public class Verificacion_Compra extends javax.swing.JDialog {
             }
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 170, 40));
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 430, 400));
+        jPanel1.add(Contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 430, 400));
 
         jButton3.setText("Compra Tarjeta");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -59,44 +66,28 @@ public class Verificacion_Compra extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        PanelTarjeta p1 = new PanelTarjeta();
+        pintarPanel(p1);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Verificacion_Compra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Verificacion_Compra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Verificacion_Compra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Verificacion_Compra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        
-        
-        
-        
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Contenido;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
+
+    private void pintarPanel(JPanel p){
+    
+        p.setLocation(0,0);
+        p.setSize(600, 500);
+        Contenido.removeAll();
+        Contenido.add(p,BorderLayout.CENTER);
+        Contenido.revalidate();
+        Contenido.repaint();
+}
+    
+
 }
