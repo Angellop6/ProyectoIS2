@@ -283,7 +283,7 @@
                   <Component id="jButton15" pref="120" max="32767" attributes="0"/>
                   <Component id="jButton16" alignment="0" max="32767" attributes="0"/>
                   <Component id="jButton14" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jButton17" alignment="0" max="32767" attributes="0"/>
+                  <Component id="Camisa" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -295,7 +295,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton14" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton17" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="Camisa" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace pref="417" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -304,22 +304,22 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="jButton14">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Categoria3"/>
+                <Property name="text" type="java.lang.String" value="Vestido"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jButton15">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Categoria1"/>
+                <Property name="text" type="java.lang.String" value="Mujer"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jButton16">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Categoria2"/>
+                <Property name="text" type="java.lang.String" value="Hombre"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton17">
+            <Component class="javax.swing.JButton" name="Camisa">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Categoria4"/>
+                <Property name="text" type="java.lang.String" value="Camisa"/>
               </Properties>
             </Component>
           </SubComponents>

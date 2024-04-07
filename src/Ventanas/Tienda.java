@@ -64,7 +64,7 @@ public class Tienda extends javax.swing.JFrame {
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
+        Camisa = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -240,13 +240,13 @@ public class Tienda extends javax.swing.JFrame {
 
         PanelCategorias.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton14.setText("Categoria3");
+        jButton14.setText("Vestido");
 
-        jButton15.setText("Categoria1");
+        jButton15.setText("Mujer");
 
-        jButton16.setText("Categoria2");
+        jButton16.setText("Hombre");
 
-        jButton17.setText("Categoria4");
+        Camisa.setText("Camisa");
 
         javax.swing.GroupLayout PanelCategoriasLayout = new javax.swing.GroupLayout(PanelCategorias);
         PanelCategorias.setLayout(PanelCategoriasLayout);
@@ -255,7 +255,7 @@ public class Tienda extends javax.swing.JFrame {
             .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
             .addComponent(jButton16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Camisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         PanelCategoriasLayout.setVerticalGroup(
             PanelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,7 +266,7 @@ public class Tienda extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Camisa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(417, Short.MAX_VALUE))
         );
 
@@ -447,6 +447,7 @@ public class Tienda extends javax.swing.JFrame {
     private javax.swing.JButton BotonAdelante;
     private javax.swing.JButton BotonAtras;
     private javax.swing.JButton Botonmenu;
+    private javax.swing.JButton Camisa;
     public static javax.swing.JLabel NombreUsuario;
     private javax.swing.JPanel PanelBotones;
     private javax.swing.JPanel PanelCategorias;
@@ -464,7 +465,6 @@ public class Tienda extends javax.swing.JFrame {
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 

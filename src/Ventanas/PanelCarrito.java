@@ -5,39 +5,24 @@
 package Ventanas;
 
 import Clases.Carrito;
-import Clases.Clientes;
 import Clases.Productos;
-import Clases.Tickets;
-import Clases.Venta;
 import dao.DaoCarrito;
-import dao.DaoCliente;
 import dao.DaoProductos;
-import dao.DaoTickets;
-import dao.DaoVenta;
 import dao.RenderImagen;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashSet;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author angel
- */
 public class PanelCarrito extends javax.swing.JPanel {
 
     DaoProductos DaoP = new DaoProductos();
     DaoCarrito DaoC = new DaoCarrito();
-    DaoTickets DaoT = new DaoTickets();
-    DaoCliente Daoc = new DaoCliente();
-    DaoVenta Daov = new DaoVenta();
     ArrayList<Carrito> Carrito = new ArrayList<>();
     private float total = 0f;
 
