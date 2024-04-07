@@ -136,7 +136,7 @@ public class DaoCarrito implements ICarrito{
         Carrito a = null ;
         Conexion con = new Conexion();
         cnx = con.getConexion();
-        String sql = "select * from Venta where Id=" + id;
+        String sql = "select * from Carrito where Id=" + id;
         
             Statement st;
         try {

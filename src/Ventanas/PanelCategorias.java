@@ -4,12 +4,24 @@
  */
 package Ventanas;
 
+import Clases.Productos;
+import dao.DaoProductos;
+import dao.RenderImagen;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.ArrayList;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author angel
  */
 public class PanelCategorias extends javax.swing.JPanel {
-
+    DaoProductos dao = new DaoProductos();
     /**
      * Creates new form PanelCategorias
      */
@@ -28,42 +40,172 @@ public class PanelCategorias extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Tabla_Categorias = new javax.swing.JTable();
+        Tablareportes = new javax.swing.JTable();
+        IdLeavel = new javax.swing.JLabel();
+        IdCajaTexto = new javax.swing.JTextField();
+        Boton_Buscar = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        Nompre_P = new javax.swing.JLabel();
 
-        jPanel1.setBackground(new java.awt.Color(255, 51, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Tabla_Categorias.setModel(new javax.swing.table.DefaultTableModel(
+        Tablareportes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Id", "Categorias"
+                "ID", "Categorias", "Nombre", "Precio", "Descripccion", "Imangen"
             }
         ));
-        jScrollPane1.setViewportView(Tabla_Categorias);
+        Tablareportes.setEnabled(false);
+        Tablareportes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablareportesMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(Tablareportes);
+        ActualisarTabla();
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 210, 70));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 750, 290));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1130, Short.MAX_VALUE)
+        IdLeavel.setText("Id");
+        jPanel1.add(IdLeavel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+
+        IdCajaTexto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IdCajaTextoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(IdCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 110, -1));
+
+        Boton_Buscar.setText("Buscar");
+        Boton_Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_BuscarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Boton_Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, -1, -1));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 770, 350));
+
+        jPanel2.setBackground(new java.awt.Color(51, 255, 204));
+
+        jButton1.setText("jButton1");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        Nompre_P.setText("Nombre Producto");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45)
+                        .addComponent(Nompre_P, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(125, 125, 125)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                    .addComponent(Nompre_P, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(68, Short.MAX_VALUE))
         );
+
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 350));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void TablareportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablareportesMouseClicked
+        int filaSeleccionada = Tablareportes.rowAtPoint(evt.getPoint());
+        IdCajaTexto.setText(Tablareportes.getValueAt(filaSeleccionada, 0).toString());
+        Nompre_P.setText(Tablareportes.getValueAt(filaSeleccionada, 2).toString());
+        //Imagenleavel.setIcon(Tablareportes.getValueAt(filaSeleccionada, 7));
+    }//GEN-LAST:event_TablareportesMouseClicked
+
+    private void IdCajaTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdCajaTextoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IdCajaTextoActionPerformed
+
+    private void Boton_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_BuscarActionPerformed
+        Productos Producto = dao.readProducto(IdCajaTexto.getText());
+        if (Producto == null) {
+            System.out.println("la id no existe");
+
+        } else {
+
+//            NombreCajaTexto.setText(Producto.getNombre());
+//            MarcaCajaTexto.setText(Producto.getMarca());
+//            CantidadCajaTexto.setText(String.valueOf(Producto.getCantidad()));
+//            ColorCajaTexto.setText(Producto.getColor());
+//            DescripcionCajaTexto.setText(String.valueOf(Producto.getDescripcion()));
+//            PrecioCajaTexto.setText(String.valueOf(Producto.getPrecio()));
+//            OfertaCajaTexto.setText(String.valueOf(Producto.getOferta()));
+
+        }
+    }//GEN-LAST:event_Boton_BuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable Tabla_Categorias;
+    private javax.swing.JButton Boton_Buscar;
+    private javax.swing.JTextField IdCajaTexto;
+    private javax.swing.JLabel IdLeavel;
+    private javax.swing.JLabel Nompre_P;
+    private javax.swing.JTable Tablareportes;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+private void ActualisarTabla() {
+        Tablareportes.setDefaultRenderer(Object.class, new RenderImagen());
+        ArrayList<Productos> Productos = dao.readProductos();
+
+        DefaultTableModel m;
+        m = (DefaultTableModel) Tablareportes.getModel();
+        while (m.getRowCount() > 0) {
+            m.removeRow(0);
+
+        }
+        Object[] rowData = new Object[6];
+        for (int i = 0; i < Productos.size(); i++) {
+            rowData[0] = Productos.get(i).getId();
+            rowData[2] = Productos.get(i).getNombre();;
+            rowData[3] = Productos.get(i).getPrecio();
+            rowData[4] = Productos.get(i).getDescripcion();
+            try {
+                byte[] imagen = Productos.get(i).getImagen();
+                BufferedImage bufferedImage = null;
+                InputStream inputStream = new ByteArrayInputStream(imagen);
+                bufferedImage = ImageIO.read(inputStream);
+                ImageIcon mIcono = new ImageIcon(bufferedImage.getScaledInstance(150, 110, 0));
+                rowData[5] = new JLabel(mIcono);
+            } catch (Exception e) {
+                rowData[5] = new JLabel("no imagen");
+            }
+            m.addRow(rowData);
+        }
+        Tablareportes.setModel(m);
+        Tablareportes.setRowHeight(110);
+        Tablareportes.getColumnModel().getColumn(5).setPreferredWidth(150);
+    }
+
 }
