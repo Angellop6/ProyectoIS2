@@ -4,7 +4,11 @@
  */
 package Ventanas;
 
+import Clases.Categoria;
+import Clases.Categoria_Producto;
 import Clases.Productos;
+import dao.DaoCategoria;
+import dao.DaoCategoria_Productos;
 import dao.DaoProductos;
 import dao.RenderImagen;
 import java.awt.image.BufferedImage;
@@ -12,21 +16,30 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author angel
- */
+
+
+
+
 public class PanelCategorias extends javax.swing.JPanel {
     DaoProductos dao = new DaoProductos();
-    /**
-     * Creates new form PanelCategorias
-     */
+    DaoCategoria daoC = new DaoCategoria();
+    DaoCategoria_Productos daoc_p = new DaoCategoria_Productos();
+    ArrayList<Categoria> categorias = new ArrayList<>();
+    int idCat;
+    int idProd;
+    
+    
     public PanelCategorias() {
+        categorias = daoC.readCategorias();
         initComponents();
+        llenarCategorias();
+        
     }
 
     /**
@@ -46,7 +59,7 @@ public class PanelCategorias extends javax.swing.JPanel {
         Boton_Buscar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        CategoriasBox = new javax.swing.JComboBox<>();
         Nompre_P = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -95,9 +108,12 @@ public class PanelCategorias extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(51, 255, 204));
 
-        jButton1.setText("jButton1");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jButton1.setText(" Añadir Categoria");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         Nompre_P.setText("Nombre Producto");
 
@@ -109,7 +125,7 @@ public class PanelCategorias extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CategoriasBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(45, 45, 45)
                         .addComponent(Nompre_P, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -122,7 +138,7 @@ public class PanelCategorias extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(125, 125, 125)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                    .addComponent(CategoriasBox, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
                     .addComponent(Nompre_P, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(50, 50, 50)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -136,7 +152,8 @@ public class PanelCategorias extends javax.swing.JPanel {
         int filaSeleccionada = Tablareportes.rowAtPoint(evt.getPoint());
         IdCajaTexto.setText(Tablareportes.getValueAt(filaSeleccionada, 0).toString());
         Nompre_P.setText(Tablareportes.getValueAt(filaSeleccionada, 2).toString());
-        //Imagenleavel.setIcon(Tablareportes.getValueAt(filaSeleccionada, 7));
+        idProd = (Integer) Tablareportes.getValueAt(filaSeleccionada, 0);
+       
     }//GEN-LAST:event_TablareportesMouseClicked
 
     private void IdCajaTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdCajaTextoActionPerformed
@@ -161,15 +178,24 @@ public class PanelCategorias extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_Boton_BuscarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Categoria C = daoC.readCategoria_nombre(CategoriasBox.getSelectedItem().toString());
+        idCat = C.getId();
+        
+        daoc_p.createClase_P(new Categoria_Producto(idCat,idProd) );
+        
+    
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Boton_Buscar;
+    private javax.swing.JComboBox<String> CategoriasBox;
     private javax.swing.JTextField IdCajaTexto;
     private javax.swing.JLabel IdLeavel;
     private javax.swing.JLabel Nompre_P;
     private javax.swing.JTable Tablareportes;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -207,5 +233,22 @@ private void ActualisarTabla() {
         Tablareportes.setRowHeight(110);
         Tablareportes.getColumnModel().getColumn(5).setPreferredWidth(150);
     }
+
+private void llenarCategorias() {
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+        for (Categoria categoria : categorias) {
+            model.addElement(categoria.getCategoria());
+        }
+        CategoriasBox.setModel(model);
+    }
+
+private void ActualisarTablaCategorias() {
+
+
+
+
+}
+
+
 
 }

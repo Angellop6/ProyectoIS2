@@ -14,9 +14,12 @@ import java.util.ArrayList;
 public interface ICategoria {
     void createCategoria(Categoria a);
     Categoria readCategoria(String id);
-    ArrayList<Categoria> readCategorias(String idUsuario);
+    
+    ArrayList<Categoria> readCategorias();
     void updateCategoria(Categoria a, String id);
     void deleteCategoria(String id);
+    
+    Categoria readCategoria_nombre(String Nombre);
     
     
 }
