@@ -4,11 +4,13 @@
  */
 package dao;
 
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import Clases.Categoria_Producto;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import idao.ICategoria_Productos;
 import java.sql.Connection;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -30,8 +32,9 @@ public class DaoCategoria_Productos implements ICategoria_Productos {
     }
 
     @Override
-    public ArrayList<Categoria_Producto> readClase_Ps(String idUsuario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public ArrayList<Categoria_Producto> readClase_Ps(int idProducto) {
+        ArrayList<Categoria_Producto> Cat_p = leerDatosSQl(idProducto);
+        return Cat_p;
     }
 
     @Override
@@ -59,6 +62,27 @@ public class DaoCategoria_Productos implements ICategoria_Productos {
             System.out.println("error" + ex );
         }
 
+    }
+    
+    
+    private ArrayList<Categoria_Producto> leerDatosSQl(int id_Producto) {
+        ArrayList<Categoria_Producto> C_p = new ArrayList();
+        Conexion con = new Conexion();
+        cnx = con.getConexion();
+        String sql = "SELECT * FROM categoria_producto WHERE IdProductos = " + id_Producto ;
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                Categoria_Producto carro = new Categoria_Producto( rs.getInt("IdCategoria"),rs.getInt("IdProductos")); 
+                C_p.add(carro);
+            }
+            
+        }catch(Exception e){
+            System.out.println("error"+ e);
+        }
+        
+        return C_p;
     }
     
     

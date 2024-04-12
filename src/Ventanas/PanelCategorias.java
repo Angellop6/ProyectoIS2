@@ -13,6 +13,7 @@ import dao.DaoProductos;
 import dao.RenderImagen;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
@@ -22,24 +23,23 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
 
-
-
-
-
 public class PanelCategorias extends javax.swing.JPanel {
+
     DaoProductos dao = new DaoProductos();
     DaoCategoria daoC = new DaoCategoria();
     DaoCategoria_Productos daoc_p = new DaoCategoria_Productos();
     ArrayList<Categoria> categorias = new ArrayList<>();
+    ArrayList<Categoria_Producto> Cat_P = new ArrayList<>();
+    ArrayList<String> categoriastab = new ArrayList<>();
     int idCat;
     int idProd;
-    
-    
+
     public PanelCategorias() {
         categorias = daoC.readCategorias();
         initComponents();
         llenarCategorias();
-        
+        ActualisarTabla();
+
     }
 
     /**
@@ -82,7 +82,6 @@ public class PanelCategorias extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(Tablareportes);
-        ActualisarTabla();
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 750, 290));
 
@@ -153,7 +152,7 @@ public class PanelCategorias extends javax.swing.JPanel {
         IdCajaTexto.setText(Tablareportes.getValueAt(filaSeleccionada, 0).toString());
         Nompre_P.setText(Tablareportes.getValueAt(filaSeleccionada, 2).toString());
         idProd = (Integer) Tablareportes.getValueAt(filaSeleccionada, 0);
-       
+
     }//GEN-LAST:event_TablareportesMouseClicked
 
     private void IdCajaTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdCajaTextoActionPerformed
@@ -174,17 +173,16 @@ public class PanelCategorias extends javax.swing.JPanel {
 //            DescripcionCajaTexto.setText(String.valueOf(Producto.getDescripcion()));
 //            PrecioCajaTexto.setText(String.valueOf(Producto.getPrecio()));
 //            OfertaCajaTexto.setText(String.valueOf(Producto.getOferta()));
-
         }
     }//GEN-LAST:event_Boton_BuscarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Categoria C = daoC.readCategoria_nombre(CategoriasBox.getSelectedItem().toString());
         idCat = C.getId();
-        
-        daoc_p.createClase_P(new Categoria_Producto(idCat,idProd) );
-        
-    
+        daoc_p.createClase_P(new Categoria_Producto(idProd, idCat));
+        ActualisarTabla();
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -201,10 +199,10 @@ public class PanelCategorias extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-private void ActualisarTabla() {
+    private void ActualisarTabla() {
         Tablareportes.setDefaultRenderer(Object.class, new RenderImagen());
         ArrayList<Productos> Productos = dao.readProductos();
-
+        createlistadeCategorias();
         DefaultTableModel m;
         m = (DefaultTableModel) Tablareportes.getModel();
         while (m.getRowCount() > 0) {
@@ -214,7 +212,8 @@ private void ActualisarTabla() {
         Object[] rowData = new Object[6];
         for (int i = 0; i < Productos.size(); i++) {
             rowData[0] = Productos.get(i).getId();
-            rowData[2] = Productos.get(i).getNombre();;
+            rowData[1] = categoriastab.get(i);
+            rowData[2] = Productos.get(i).getNombre();
             rowData[3] = Productos.get(i).getPrecio();
             rowData[4] = Productos.get(i).getDescripcion();
             try {
@@ -234,7 +233,7 @@ private void ActualisarTabla() {
         Tablareportes.getColumnModel().getColumn(5).setPreferredWidth(150);
     }
 
-private void llenarCategorias() {
+    private void llenarCategorias() {
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
         for (Categoria categoria : categorias) {
             model.addElement(categoria.getCategoria());
@@ -242,13 +241,25 @@ private void llenarCategorias() {
         CategoriasBox.setModel(model);
     }
 
-private void ActualisarTablaCategorias() {
-
-
-
-
-}
-
-
+    private void createlistadeCategorias() {
+        categoriastab.clear();
+        ArrayList<Productos> productosList = dao.readProductos();
+        for (int i = 0; i < productosList.size(); i++) {
+            Cat_P = daoc_p.readClase_Ps(productosList.get(i).getId());
+            if (Cat_P == null) {
+                categoriastab.add("Sin categorias");
+            } else {
+                String cadena = "";
+                for (int j = 0; j < Cat_P.size(); j++) {
+                    Categoria cat = daoC.readCategoria(String.valueOf(Cat_P.get(j).getId_Catrgoria()));
+                    if (cat != null) {
+                        cadena = cadena + "," + cat.getCategoria();
+                    }
+                }
+                categoriastab.add(cadena);
+            }
+            Cat_P.clear();
+        }
+    }
 
 }

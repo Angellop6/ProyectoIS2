@@ -31,7 +31,8 @@ public class DaoCategoria implements ICategoria {
 
     @Override
     public Categoria readCategoria(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Categoria a = ConsultarSQL(id);
+        return a;
     }
 
     @Override
@@ -130,7 +131,7 @@ public class DaoCategoria implements ICategoria {
         Categoria a = null;
         Conexion con = new Conexion();
         cnx = con.getConexion();
-        String sql = "select * from Categoria where Id=" + id;
+        String sql = "select * from Categorias where Id=" + id;
 
         Statement st;
         try {
