@@ -74,7 +74,7 @@ public class DaoCategoria_Productos implements ICategoria_Productos {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
-                Categoria_Producto carro = new Categoria_Producto( rs.getInt("IdCategoria"),rs.getInt("IdProductos")); 
+                Categoria_Producto carro = new Categoria_Producto( rs.getInt("IdProductos"),rs.getInt("IdCategoria")); 
                 C_p.add(carro);
             }
             

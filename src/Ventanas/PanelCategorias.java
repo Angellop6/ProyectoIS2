@@ -246,7 +246,7 @@ public class PanelCategorias extends javax.swing.JPanel {
         ArrayList<Productos> productosList = dao.readProductos();
         for (int i = 0; i < productosList.size(); i++) {
             Cat_P = daoc_p.readClase_Ps(productosList.get(i).getId());
-            if (Cat_P == null) {
+            if (Cat_P.isEmpty()) {
                 categoriastab.add("Sin categorias");
             } else {
                 String cadena = "";
