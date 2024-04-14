@@ -36,6 +36,13 @@ public class DaoCategoria_Productos implements ICategoria_Productos {
         ArrayList<Categoria_Producto> Cat_p = leerDatosSQl(idProducto);
         return Cat_p;
     }
+    
+    @Override
+    public ArrayList<Categoria_Producto> readClase_Producto(int idCategoria) {
+       ArrayList<Categoria_Producto> Cat_p = leerDatosSQl2(idCategoria);
+        return Cat_p;
+    }
+    
 
     @Override
     public void updateClase_P(Categoria_Producto a, String id) {
@@ -84,6 +91,28 @@ public class DaoCategoria_Productos implements ICategoria_Productos {
         
         return C_p;
     }
+    
+    
+    private ArrayList<Categoria_Producto> leerDatosSQl2(int id_Producto) {
+        ArrayList<Categoria_Producto> C_p = new ArrayList();
+        Conexion con = new Conexion();
+        cnx = con.getConexion();
+        String sql = "SELECT * FROM categoria_producto WHERE IdCategoria = " + id_Producto ;
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                Categoria_Producto carro = new Categoria_Producto( rs.getInt("IdProductos"),rs.getInt("IdCategoria")); 
+                C_p.add(carro);
+            }
+            
+        }catch(Exception e){
+            System.out.println("error"+ e);
+        }
+        
+        return C_p;
+    }
+
     
     
     

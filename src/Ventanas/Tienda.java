@@ -4,7 +4,9 @@
  */
 package Ventanas;
 
+import Clases.Categoria_Producto;
 import Clases.Productos;
+import dao.DaoCategoria_Productos;
 import dao.DaoProductos;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -26,9 +28,11 @@ public class Tienda extends javax.swing.JFrame {
     ArrayList<Integer> Idproductos = new ArrayList<>();
     ArrayList<Productos> productos = daoP.readProductos();
     int cantidadProductos = 0;
+    //nuevos implementos
+    ArrayList<Categoria_Producto> Cat_P = new ArrayList<>();
+    DaoCategoria_Productos daoc_p = new DaoCategoria_Productos();
 
     public Tienda() {
-
         //Productos P = daoP.readProducto("1");
         initComponents();
         Botonmenu.setIcon(SetIcono("/Imagenes/menu.png", Botonmenu));
@@ -38,7 +42,6 @@ public class Tienda extends javax.swing.JFrame {
         //Producto1.setIcon(crearIconoDesdeBits( P.getImagen(), 100, 100));
     }
 
- 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -243,6 +246,11 @@ public class Tienda extends javax.swing.JFrame {
         jButton14.setText("Vestido");
 
         jButton15.setText("Mujer");
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
 
         jButton16.setText("Hombre");
 
@@ -410,7 +418,27 @@ public class Tienda extends javax.swing.JFrame {
         MostarVentanaProductos(8);
     }//GEN-LAST:event_Producto9ActionPerformed
 
- 
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+
+        Cat_P = daoc_p.readClase_Producto(1);
+        if (Cat_P.isEmpty()) {
+            System.out.println("lol que mal");
+
+        } else {
+            productos.clear();
+            Idproductos.clear();
+            cantidadProductos = 0;
+            for (int i = 0; i < Cat_P.size(); i++) {
+                productos.add(daoP.readProducto(String.valueOf(Cat_P.get(i).getId_Producto())));
+                Idproductos.add(Cat_P.get(i).getId_Producto());
+            }
+            MostrarProductos();
+
+        }
+
+
+    }//GEN-LAST:event_jButton15ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -491,6 +519,7 @@ public class Tienda extends javax.swing.JFrame {
     }
 
     private void MostrarProductos() {
+        cantidadProductos = 0;
         JButton[] botonesProductos = {Producto1, Producto2, Producto3, Producto4, Producto5, Producto6, Producto7, Producto8, Producto9};
 
         BotonAtras.setEnabled(false);
@@ -514,6 +543,7 @@ public class Tienda extends javax.swing.JFrame {
                 } else {
                     botonesProductos[i].setContentAreaFilled(false);
                     botonesProductos[i].setEnabled(false);
+                    botonesProductos[i].setIcon(null);
                 }
                 cantidadProductos++;
             }
@@ -523,23 +553,17 @@ public class Tienda extends javax.swing.JFrame {
 
     }
 
-    private void MostarVentanaProductos( int index){
+    private void MostarVentanaProductos(int index) {
         Productos producto = daoP.readProducto(String.valueOf(Idproductos.get(index)));
-        VisualProduc p1 = new VisualProduc(new JFrame (),true);
-
+        VisualProduc p1 = new VisualProduc(new JFrame(), true);
         p1.ImagenProducto.setIcon(crearIconoDesdeBits(producto.getImagen(), 200, 200));
         p1.Nombre.setText(producto.getNombre());
         p1.Marca.setText(producto.getMarca());
         p1.Precio.setText(String.valueOf(producto.getPrecio()));
         p1.Color.setText(producto.getColor());
-        p1.Descripcion.setText(producto.getDescripcion());   
-        IdProducto =  producto.getId();
+        p1.Descripcion.setText(producto.getDescripcion());
+        IdProducto = producto.getId();
         p1.setVisible(true);
-    
-    
-    
     }
-    
-    
-    
+
 }
