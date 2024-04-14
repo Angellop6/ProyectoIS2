@@ -67,7 +67,8 @@ public class Tienda extends javax.swing.JFrame {
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
-        Camisa = new javax.swing.JButton();
+        Recomendado = new javax.swing.JButton();
+        Camisa1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -244,6 +245,11 @@ public class Tienda extends javax.swing.JFrame {
         PanelCategorias.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton14.setText("Vestido");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
 
         jButton15.setText("Mujer");
         jButton15.addActionListener(new java.awt.event.ActionListener() {
@@ -253,8 +259,25 @@ public class Tienda extends javax.swing.JFrame {
         });
 
         jButton16.setText("Hombre");
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
 
-        Camisa.setText("Camisa");
+        Recomendado.setText("Recomendado");
+        Recomendado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RecomendadoActionPerformed(evt);
+            }
+        });
+
+        Camisa1.setText("Camisa");
+        Camisa1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Camisa1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelCategoriasLayout = new javax.swing.GroupLayout(PanelCategorias);
         PanelCategorias.setLayout(PanelCategoriasLayout);
@@ -263,7 +286,8 @@ public class Tienda extends javax.swing.JFrame {
             .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
             .addComponent(jButton16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(Camisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Recomendado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Camisa1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         PanelCategoriasLayout.setVerticalGroup(
             PanelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,9 +297,11 @@ public class Tienda extends javax.swing.JFrame {
                 .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addComponent(Camisa1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Camisa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(417, Short.MAX_VALUE))
+                .addComponent(Recomendado, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(368, Short.MAX_VALUE))
         );
 
         jPanel1.add(PanelCategorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, -1));
@@ -419,25 +445,28 @@ public class Tienda extends javax.swing.JFrame {
     }//GEN-LAST:event_Producto9ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-
-        Cat_P = daoc_p.readClase_Producto(1);
-        if (Cat_P.isEmpty()) {
-            System.out.println("lol que mal");
-
-        } else {
-            productos.clear();
-            Idproductos.clear();
-            cantidadProductos = 0;
-            for (int i = 0; i < Cat_P.size(); i++) {
-                productos.add(daoP.readProducto(String.valueOf(Cat_P.get(i).getId_Producto())));
-                Idproductos.add(Cat_P.get(i).getId_Producto());
-            }
-            MostrarProductos();
-
-        }
-
-
+        establecercategoria(2);//mujer
     }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        establecercategoria(1);//hombre
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        establecercategoria(4);//vestido
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void Camisa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Camisa1ActionPerformed
+        establecercategoria(3);//camisa
+    }//GEN-LAST:event_Camisa1ActionPerformed
+
+    private void RecomendadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecomendadoActionPerformed
+
+        productos.clear();
+        Idproductos.clear();
+        productos = daoP.readProductos();        
+        MostrarProductos();
+    }//GEN-LAST:event_RecomendadoActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -475,7 +504,7 @@ public class Tienda extends javax.swing.JFrame {
     private javax.swing.JButton BotonAdelante;
     private javax.swing.JButton BotonAtras;
     private javax.swing.JButton Botonmenu;
-    private javax.swing.JButton Camisa;
+    private javax.swing.JButton Camisa1;
     public static javax.swing.JLabel NombreUsuario;
     private javax.swing.JPanel PanelBotones;
     private javax.swing.JPanel PanelCategorias;
@@ -490,6 +519,7 @@ public class Tienda extends javax.swing.JFrame {
     private javax.swing.JButton Producto7;
     private javax.swing.JButton Producto8;
     private javax.swing.JButton Producto9;
+    private javax.swing.JButton Recomendado;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
@@ -525,6 +555,8 @@ public class Tienda extends javax.swing.JFrame {
         BotonAtras.setEnabled(false);
         if (productos.size() < 9) {
             BotonAdelante.setEnabled(false);
+        }else{
+            BotonAdelante.setEnabled(true);
         }
 
         while (productos.size() % 9 != 0) {
@@ -564,6 +596,25 @@ public class Tienda extends javax.swing.JFrame {
         p1.Descripcion.setText(producto.getDescripcion());
         IdProducto = producto.getId();
         p1.setVisible(true);
+    }
+
+    private void establecercategoria(int idCategoria) {
+        Cat_P = daoc_p.readClase_Producto(idCategoria);
+        if (Cat_P.isEmpty()) {
+            System.out.println("lol que mal, no hay productos en esta categoria");
+
+        } else {
+            productos.clear();
+            Idproductos.clear();
+            cantidadProductos = 0;
+            for (int i = 0; i < Cat_P.size(); i++) {
+                productos.add(daoP.readProducto(String.valueOf(Cat_P.get(i).getId_Producto())));
+                Idproductos.add(Cat_P.get(i).getId_Producto());
+            }
+            MostrarProductos();
+
+        }
+
     }
 
 }
