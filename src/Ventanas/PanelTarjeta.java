@@ -4,6 +4,15 @@
  */
 package Ventanas;
 
+import Clases.Carrito;
+import Clases.Clientes;
+import Clases.Productos;
+import Clases.Venta;
+import dao.DaoCarrito;
+import dao.DaoCliente;
+import dao.DaoProductos;
+import dao.DaoVenta;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,9 +21,13 @@ import javax.swing.JOptionPane;
  */
 public class PanelTarjeta extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PanelTarjeta
-     */
+    DaoProductos DaoP = new DaoProductos();
+    DaoCliente Daoc =  new DaoCliente();
+    DaoCarrito DaoCAR = new DaoCarrito();
+    DaoVenta Daov = new DaoVenta();
+    ArrayList<Carrito> Carrito = new ArrayList<>();
+    private float total = 0f;
+
     public PanelTarjeta() {
         initComponents();
     }
@@ -139,6 +152,7 @@ public class PanelTarjeta extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        comprar();
         JOptionPane.showMessageDialog(null, "Se a Realizado la compra");
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -154,4 +168,23 @@ public class PanelTarjeta extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
+
+    private void comprar() {
+        Carrito = DaoCAR.readCarritos(String.valueOf(Tienda.Id));
+        if (Carrito.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No tiene productos en el carrito");
+        } else {
+            
+            
+            for (int i = 0; i < Carrito.size(); i++) {
+                Daov.createVenta(new Venta(1, Carrito.get(i).getCantidad(), Carrito.get(i).getTotal(), Carrito.get(i).getIdUsuario(),
+                        Carrito.get(i).getIdProducto()));
+            }
+
+            for (int i = 0; i < Carrito.size(); i++) {
+                DaoCAR.deleteCarrito(String.valueOf(Carrito.get(i).getId()));
+            }
+        }
+    }
+
 }

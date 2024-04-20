@@ -145,6 +145,7 @@ public class PanelCarrito extends javax.swing.JPanel {
          //JOptionPane.showMessageDialog(null, "Jajajaajaj XD");
          Verificacion_Compra VC =  new Verificacion_Compra(new JFrame(), true);
          VC.setVisible(true);
+         llenarTabla();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void IdTxTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdTxTActionPerformed
@@ -233,7 +234,7 @@ public class PanelCarrito extends javax.swing.JPanel {
         Totalleabel.setText("Total: " + String.valueOf(total) + "  mxn");
     }
     
-    private void comprar(){
+//    private void comprar(){
 //        Clientes c = Daoc.readCliente(String.valueOf(Tienda.Id));
 //
 //        if (Carrito.isEmpty()) {
@@ -272,8 +273,8 @@ public class PanelCarrito extends javax.swing.JPanel {
 //            llenarTabla();
 //
 //        }
-    }
-    
+//    }
+//    
     
 
 }

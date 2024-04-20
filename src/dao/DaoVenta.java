@@ -58,8 +58,8 @@ public class DaoVenta implements IVenta {
             ps = cnx.prepareStatement(sql);
             ps.setInt(1, a.getCantidad());
             ps.setFloat(2, a.getTotal());
-            ps.setInt(3, a.getCantidad());
-            ps.setInt(4, a.getCantidad());
+            ps.setInt(3, a.getIdUsuario());
+            ps.setInt(4, a.getIdProducto());
              ps.executeUpdate();   
         } catch (SQLException ex) {
             Logger.getLogger(DaoVenta.class.getName()).log(Level.SEVERE, null, ex);
@@ -82,7 +82,7 @@ public class DaoVenta implements IVenta {
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
                 Venta Venta = new Venta( rs.getInt("Id"),rs.getInt("Cantidad"),
-                            rs.getFloat("Total"),rs.getInt("IdTicket"),rs.getInt("IdUsuario")); 
+                            rs.getFloat("Total"),rs.getInt("IdUsuario"),rs.getInt("IdProducto")); 
                 Ventas.add(Venta);
             }
             

@@ -29,6 +29,7 @@ public class PanelCompras extends javax.swing.JPanel {
     ArrayList<Venta> ventas = new ArrayList<>();
     public PanelCompras() {
         initComponents();
+        llenarTabla();
     }
 
     @SuppressWarnings("unchecked")
@@ -128,6 +129,9 @@ private void llenarTabla() {
         TablaVentas.setRowHeight(110);
         TablaVentas.getColumnModel().getColumn(7).setPreferredWidth(150);
     }
+
+
+
 
 
 
