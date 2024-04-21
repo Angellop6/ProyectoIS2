@@ -5,7 +5,9 @@
 package Ventanas;
 
 import Clases.Clientes;
+import Errores.Lectura;
 import dao.DaoCliente;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,7 +16,7 @@ import dao.DaoCliente;
 public class Crearcuenta extends javax.swing.JDialog {
 
     DaoCliente dao = new DaoCliente();
-    
+
     public Crearcuenta(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -37,7 +39,6 @@ public class Crearcuenta extends javax.swing.JDialog {
         TelefonoCajaTexto = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         EdadeCajaTexto = new javax.swing.JTextField();
-        GeneroCajaTexto = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -45,6 +46,8 @@ public class Crearcuenta extends javax.swing.JDialog {
         ContraseñaCajaTexto = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         Boton_guardar = new javax.swing.JButton();
+        BoxGenero = new javax.swing.JComboBox<>();
+        Error = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -77,10 +80,10 @@ public class Crearcuenta extends javax.swing.JDialog {
                 TelefonoCajaTextoActionPerformed(evt);
             }
         });
-        jPanel8.add(TelefonoCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 165, -1));
+        jPanel8.add(TelefonoCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 165, -1));
 
         jLabel3.setText("Telefono");
-        jPanel8.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 54, -1));
+        jPanel8.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 54, -1));
 
         EdadeCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,38 +92,31 @@ public class Crearcuenta extends javax.swing.JDialog {
         });
         jPanel8.add(EdadeCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 165, -1));
 
-        GeneroCajaTexto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GeneroCajaTextoActionPerformed(evt);
-            }
-        });
-        jPanel8.add(GeneroCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 165, -1));
-
         jLabel5.setText("Genero");
-        jPanel8.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 54, -1));
+        jPanel8.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 54, -1));
 
         jLabel6.setText("Edad");
-        jPanel8.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 54, -1));
+        jPanel8.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 54, -1));
 
         jLabel7.setText("Contraseña");
-        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 70, -1));
+        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 70, -1));
 
         CorreoCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CorreoCajaTextoActionPerformed(evt);
             }
         });
-        jPanel8.add(CorreoCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 165, -1));
+        jPanel8.add(CorreoCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 165, -1));
 
         ContraseñaCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ContraseñaCajaTextoActionPerformed(evt);
             }
         });
-        jPanel8.add(ContraseñaCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, 165, -1));
+        jPanel8.add(ContraseñaCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 165, -1));
 
         jLabel8.setText("Correo");
-        jPanel8.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 54, -1));
+        jPanel8.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 54, -1));
 
         Boton_guardar.setText("Crear cuenta");
         Boton_guardar.addActionListener(new java.awt.event.ActionListener() {
@@ -128,7 +124,11 @@ public class Crearcuenta extends javax.swing.JDialog {
                 Boton_guardarActionPerformed(evt);
             }
         });
-        jPanel8.add(Boton_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, -1, -1));
+        jPanel8.add(Boton_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 470, -1, -1));
+
+        BoxGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hombre", "Mujer" }));
+        jPanel8.add(BoxGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 170, -1));
+        jPanel8.add(Error, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 160, 20));
 
         getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 600));
 
@@ -147,14 +147,6 @@ public class Crearcuenta extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_TelefonoCajaTextoActionPerformed
 
-    private void EdadeCajaTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EdadeCajaTextoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EdadeCajaTextoActionPerformed
-
-    private void GeneroCajaTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GeneroCajaTextoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_GeneroCajaTextoActionPerformed
-
     private void CorreoCajaTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CorreoCajaTextoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CorreoCajaTextoActionPerformed
@@ -164,29 +156,47 @@ public class Crearcuenta extends javax.swing.JDialog {
     }//GEN-LAST:event_ContraseñaCajaTextoActionPerformed
 
     private void Boton_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_guardarActionPerformed
-        dao.createCliente(new Clientes(1,
-            NombreCajaTexto.getText(),
-            Integer.valueOf(EdadeCajaTexto.getText()),
-            DireccionCajaTexto.getText(),
-            GeneroCajaTexto.getText(),
-            TelefonoCajaTexto.getText(),
-            CorreoCajaTexto.getText(),
-            ContraseñaCajaTexto.getText()));
+        int a = Lectura.Ltext(NombreCajaTexto.getText())
+                + Lectura.Lint(EdadeCajaTexto.getText())
+                + Lectura.Ltext(DireccionCajaTexto.getText())
+                + Lectura.Ltelefono(TelefonoCajaTexto.getText())
+                + Lectura.Lcorreo(CorreoCajaTexto.getText(), "+(gmail)+")
+                + Lectura.LContraseña(ContraseñaCajaTexto.getText());
 
-        LimpiarCajas();
-        this.dispose();
+        if (a == 6) {
+            dao.createCliente(new Clientes(1,
+                    NombreCajaTexto.getText(),
+                    Integer.valueOf(EdadeCajaTexto.getText()),
+                    DireccionCajaTexto.getText(),
+                    String.valueOf(BoxGenero.getSelectedItem()),
+                    TelefonoCajaTexto.getText(),
+                    CorreoCajaTexto.getText(),
+                    ContraseñaCajaTexto.getText()));
+            LimpiarCajas();
+            Error.setText("");
+            JOptionPane.showMessageDialog(null, "Se a creado el cliente correctamente");
+            this.dispose();
+        } else {
+            Error.setText("hay un error en la sintaxis");
+            
+        }
+
+
     }//GEN-LAST:event_Boton_guardarActionPerformed
 
-    
-    
+    private void EdadeCajaTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EdadeCajaTextoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EdadeCajaTextoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Boton_guardar;
+    private javax.swing.JComboBox<String> BoxGenero;
     private javax.swing.JTextField ContraseñaCajaTexto;
     private javax.swing.JTextField CorreoCajaTexto;
     private javax.swing.JTextField DireccionCajaTexto;
     private javax.swing.JTextField EdadeCajaTexto;
-    private javax.swing.JTextField GeneroCajaTexto;
+    private javax.swing.JLabel Error;
     private javax.swing.JTextField NombreCajaTexto;
     private javax.swing.JTextField TelefonoCajaTexto;
     private javax.swing.JLabel jLabel1;
@@ -198,11 +208,10 @@ public class Crearcuenta extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel8;
     // End of variables declaration//GEN-END:variables
-private void LimpiarCajas(){
+private void LimpiarCajas() {
         NombreCajaTexto.setText("");
         EdadeCajaTexto.setText("");
         DireccionCajaTexto.setText("");
-        GeneroCajaTexto.setText("");
         TelefonoCajaTexto.setText("");
         CorreoCajaTexto.setText("");
         ContraseñaCajaTexto.setText("");
