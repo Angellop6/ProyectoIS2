@@ -66,6 +66,21 @@ public class Lectura {
         return res ;
     }
 
+    public static int LeerTarjeta(String txt){
+        int res = 0;
+        if(txt.matches("\\d{16}")){
+            res = 1;
+        }        
+        return res ;
+    }
+    
+      public static int Leercvv(String txt){
+        int res = 0;
+        if(txt.matches("\\d{3}")){
+            res = 1;
+        }        
+        return res ;
+    }
     
     
 }

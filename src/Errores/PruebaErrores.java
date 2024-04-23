@@ -16,8 +16,8 @@ public class PruebaErrores {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-        String cadena= "mayra dessire asdfasfdas afdsafas";
-        int a = Lectura.Ltext(cadena);
+        String cadena= "803ertrt2";
+        int a = Lectura.Leercvv(cadena);
         if (a == 1){
             
             System.out.println(cadena);        

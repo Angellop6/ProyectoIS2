@@ -8,6 +8,7 @@ import Clases.Clientes;
 import Errores.Lectura;
 import dao.DaoCliente;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -48,6 +49,12 @@ public class Crearcuenta extends javax.swing.JDialog {
         Boton_guardar = new javax.swing.JButton();
         BoxGenero = new javax.swing.JComboBox<>();
         Error = new javax.swing.JLabel();
+        Error6 = new javax.swing.JLabel();
+        Error1 = new javax.swing.JLabel();
+        Error2 = new javax.swing.JLabel();
+        Error3 = new javax.swing.JLabel();
+        Error4 = new javax.swing.JLabel();
+        Error5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -130,6 +137,24 @@ public class Crearcuenta extends javax.swing.JDialog {
         jPanel8.add(BoxGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 170, -1));
         jPanel8.add(Error, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 160, 20));
 
+        Error6.setText("jLabel4");
+        jPanel8.add(Error6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, -1, -1));
+
+        Error1.setText("jLabel4");
+        jPanel8.add(Error1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, -1, -1));
+
+        Error2.setText("jLabel4");
+        jPanel8.add(Error2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, -1, -1));
+
+        Error3.setText("jLabel4");
+        jPanel8.add(Error3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, -1, -1));
+
+        Error4.setText("jLabel4");
+        jPanel8.add(Error4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, -1, -1));
+
+        Error5.setText("jLabel4");
+        jPanel8.add(Error5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, -1, -1));
+
         getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 600));
 
         pack();
@@ -197,6 +222,12 @@ public class Crearcuenta extends javax.swing.JDialog {
     private javax.swing.JTextField DireccionCajaTexto;
     private javax.swing.JTextField EdadeCajaTexto;
     private javax.swing.JLabel Error;
+    private javax.swing.JLabel Error1;
+    private javax.swing.JLabel Error2;
+    private javax.swing.JLabel Error3;
+    private javax.swing.JLabel Error4;
+    private javax.swing.JLabel Error5;
+    private javax.swing.JLabel Error6;
     private javax.swing.JTextField NombreCajaTexto;
     private javax.swing.JTextField TelefonoCajaTexto;
     private javax.swing.JLabel jLabel1;
@@ -216,5 +247,13 @@ private void LimpiarCajas() {
         CorreoCajaTexto.setText("");
         ContraseñaCajaTexto.setText("");
     }
+
+private void VerificarCompra(){
+    JTextField[] CajasTexto = {NombreCajaTexto, EdadeCajaTexto, DireccionCajaTexto, TelefonoCajaTexto, CorreoCajaTexto, ContraseñaCajaTexto};
+
+
+
+
+}
 
 }
