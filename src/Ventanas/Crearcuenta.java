@@ -21,6 +21,7 @@ public class Crearcuenta extends javax.swing.JDialog {
     public Crearcuenta(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        LimpiarError();
     }
 
     /**
@@ -141,10 +142,10 @@ public class Crearcuenta extends javax.swing.JDialog {
         jPanel8.add(Error6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, -1, -1));
 
         Error1.setText("jLabel4");
-        jPanel8.add(Error1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, -1, -1));
+        jPanel8.add(Error1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, -1, -1));
 
         Error2.setText("jLabel4");
-        jPanel8.add(Error2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, -1, -1));
+        jPanel8.add(Error2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
 
         Error3.setText("jLabel4");
         jPanel8.add(Error3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, -1, -1));
@@ -189,21 +190,44 @@ public class Crearcuenta extends javax.swing.JDialog {
                 + Lectura.LContraseña(ContraseñaCajaTexto.getText());
 
         if (a == 6) {
-            dao.createCliente(new Clientes(1,
-                    NombreCajaTexto.getText(),
-                    Integer.valueOf(EdadeCajaTexto.getText()),
-                    DireccionCajaTexto.getText(),
-                    String.valueOf(BoxGenero.getSelectedItem()),
-                    TelefonoCajaTexto.getText(),
-                    CorreoCajaTexto.getText(),
-                    ContraseñaCajaTexto.getText()));
+            LimpiarError();
+            crearcliente();
             LimpiarCajas();
             Error.setText("");
             JOptionPane.showMessageDialog(null, "Se a creado el cliente correctamente");
             this.dispose();
         } else {
-            Error.setText("hay un error en la sintaxis");
-            
+            if (Lectura.Ltext(NombreCajaTexto.getText()) != 1) {
+                Error1.setText("!");
+            } else {
+                Error1.setText("");
+            }
+            if (Lectura.Ltext(DireccionCajaTexto.getText()) != 1) {
+                Error2.setText("!");
+            } else {
+                Error2.setText("");
+            }
+            if (Lectura.Lint(EdadeCajaTexto.getText()) != 1) {
+                Error3.setText("!");
+            } else {
+                Error3.setText("");
+            }
+            if (Lectura.Ltelefono(TelefonoCajaTexto.getText()) != 1) {
+                Error4.setText("!");
+            } else {
+                Error4.setText("");
+            }
+            if (Lectura.Lcorreo(CorreoCajaTexto.getText(), "+(gmail)+") != 1) {
+                Error5.setText("!");
+            } else {
+                Error5.setText("");
+            }
+            if (Lectura.LContraseña(ContraseñaCajaTexto.getText()) != 1) {
+                Error6.setText("!");
+            } else {
+                Error6.setText("");
+            }
+
         }
 
 
@@ -248,12 +272,26 @@ private void LimpiarCajas() {
         ContraseñaCajaTexto.setText("");
     }
 
-private void VerificarCompra(){
-    JTextField[] CajasTexto = {NombreCajaTexto, EdadeCajaTexto, DireccionCajaTexto, TelefonoCajaTexto, CorreoCajaTexto, ContraseñaCajaTexto};
+    private void crearcliente() {
+        dao.createCliente(new Clientes(1,
+                NombreCajaTexto.getText(),
+                Integer.valueOf(EdadeCajaTexto.getText()),
+                DireccionCajaTexto.getText(),
+                String.valueOf(BoxGenero.getSelectedItem()),
+                TelefonoCajaTexto.getText(),
+                CorreoCajaTexto.getText(),
+                ContraseñaCajaTexto.getText()));
 
+    }
 
+    private void LimpiarError() {
+        Error1.setText("");
+        Error2.setText("");
+        Error3.setText("");
+        Error4.setText("");
+        Error5.setText("");
+        Error6.setText("");
 
-
-}
+    }
 
 }

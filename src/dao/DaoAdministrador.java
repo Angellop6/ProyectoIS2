@@ -147,7 +147,6 @@ public class DaoAdministrador implements IAdministrador {
             st = cnx.createStatement();
             int n = st.executeUpdate(sql); 
             if(n>=0){
-                System.out.println("se elimino el registro");
             }
         } catch (SQLException ex) {
             Logger.getLogger(DaoAdministrador.class.getName()).log(Level.SEVERE, null, ex);

@@ -8,6 +8,7 @@ import Clases.Carrito;
 import Clases.Clientes;
 import Clases.Productos;
 import Clases.Venta;
+import Errores.Lectura;
 import dao.DaoCarrito;
 import dao.DaoCliente;
 import dao.DaoProductos;
@@ -22,7 +23,7 @@ import javax.swing.JOptionPane;
 public class PanelTarjeta extends javax.swing.JPanel {
 
     DaoProductos DaoP = new DaoProductos();
-    DaoCliente Daoc =  new DaoCliente();
+    DaoCliente Daoc = new DaoCliente();
     DaoCarrito DaoCAR = new DaoCarrito();
     DaoVenta Daov = new DaoVenta();
     ArrayList<Carrito> Carrito = new ArrayList<>();
@@ -30,6 +31,7 @@ public class PanelTarjeta extends javax.swing.JPanel {
 
     public PanelTarjeta() {
         initComponents();
+        limpiarError();
     }
 
     /**
@@ -45,37 +47,41 @@ public class PanelTarjeta extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        CVVText = new javax.swing.JTextField();
+        NombreText = new javax.swing.JTextField();
+        FechaText = new javax.swing.JTextField();
+        TarjetaText = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        Error3 = new javax.swing.JLabel();
+        Error1 = new javax.swing.JLabel();
+        Error4 = new javax.swing.JLabel();
+        Error2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(153, 153, 153));
 
         jLabel1.setText("Nombre del titular");
 
-        jLabel2.setText("Codigo de seguridad");
+        jLabel2.setText("CVV");
 
         jLabel3.setText("Numero de tarjeta");
 
         jLabel4.setText("Fecha de expiracion");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        NombreText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                NombreTextActionPerformed(evt);
             }
         });
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        FechaText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                FechaTextActionPerformed(evt);
             }
         });
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        TarjetaText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                TarjetaTextActionPerformed(evt);
             }
         });
 
@@ -86,87 +92,151 @@ public class PanelTarjeta extends javax.swing.JPanel {
             }
         });
 
+        Error3.setText("jLabel5");
+
+        Error1.setText("jLabel5");
+
+        Error4.setText("jLabel5");
+
+        Error2.setText("jLabel5");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(94, 94, 94)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addGap(44, 44, 44))
+                        .addGap(4, 4, 4)
+                        .addComponent(NombreText, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(Error1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CVVText))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(162, 162, 162)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(TarjetaText, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(Error3))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(FechaText, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(Error4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addComponent(jButton1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Error2)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(68, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(NombreText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Error1)
+                            .addComponent(CVVText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Error2))))
+                .addGap(27, 27, 27)
                 .addComponent(jLabel3)
-                .addGap(16, 16, 16)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TarjetaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(Error3)))
+                .addGap(24, 24, 24)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(FechaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(Error4)))
+                .addGap(51, 51, 51)
                 .addComponent(jButton1)
-                .addGap(59, 59, 59))
+                .addGap(56, 56, 56))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void NombreTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_NombreTextActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void FechaTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FechaTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_FechaTextActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void TarjetaTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TarjetaTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_TarjetaTextActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        comprar();
-        JOptionPane.showMessageDialog(null, "Se a Realizado la compra");
+        int res = Lectura.Ltext(NombreText.getText())
+                + Lectura.Leercvv(CVVText.getText())
+                + Lectura.LeerTarjeta(TarjetaText.getText())
+                + Lectura.validarFecha(FechaText.getText());
+
+        if (res == 4) {
+            comprar();
+            limpiarError();
+            JOptionPane.showMessageDialog(null, "Se a Realizado la compra");
+        } else {
+            if (Lectura.Ltext(NombreText.getText()) != 1) {
+                Error1.setText("!");
+            } else {
+                Error1.setText("");
+            }
+            if (Lectura.Leercvv(CVVText.getText()) != 1) {
+                Error2.setText("!");
+            } else {
+                Error2.setText("");
+            }
+            if (Lectura.LeerTarjeta(TarjetaText.getText()) != 1) {
+                Error3.setText("!");
+            } else {
+                Error3.setText("");
+            }
+            if (Lectura.validarFecha(FechaText.getText()) != 1) {
+                Error4.setText("!");
+            } else {
+                Error4.setText("");
+            }
+        }
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CVVText;
+    private javax.swing.JLabel Error1;
+    private javax.swing.JLabel Error2;
+    private javax.swing.JLabel Error3;
+    private javax.swing.JLabel Error4;
+    private javax.swing.JTextField FechaText;
+    private javax.swing.JTextField NombreText;
+    private javax.swing.JTextField TarjetaText;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 
     private void comprar() {
@@ -174,17 +244,21 @@ public class PanelTarjeta extends javax.swing.JPanel {
         if (Carrito.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No tiene productos en el carrito");
         } else {
-            
-            
             for (int i = 0; i < Carrito.size(); i++) {
                 Daov.createVenta(new Venta(1, Carrito.get(i).getCantidad(), Carrito.get(i).getTotal(), Carrito.get(i).getIdUsuario(),
                         Carrito.get(i).getIdProducto()));
             }
-
             for (int i = 0; i < Carrito.size(); i++) {
                 DaoCAR.deleteCarrito(String.valueOf(Carrito.get(i).getId()));
             }
         }
+    }
+
+    private void limpiarError() {
+        Error1.setText("");
+        Error2.setText("");
+        Error3.setText("");
+        Error4.setText("");
     }
 
 }
