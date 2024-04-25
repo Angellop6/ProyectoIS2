@@ -9,6 +9,7 @@ import Errores.Lectura;
 import dao.DaoAdministrador;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Panel_Administradores extends javax.swing.JPanel {
@@ -50,8 +51,6 @@ public class Panel_Administradores extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         Boton_guardar = new javax.swing.JButton();
         Nuevo = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         Error7 = new javax.swing.JLabel();
         Error1 = new javax.swing.JLabel();
         Error2 = new javax.swing.JLabel();
@@ -66,6 +65,9 @@ public class Panel_Administradores extends javax.swing.JPanel {
         IdLeavel = new javax.swing.JLabel();
         IdCajaTexto = new javax.swing.JTextField();
         Boton_Buscar = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        Error = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -151,7 +153,7 @@ public class Panel_Administradores extends javax.swing.JPanel {
                 Boton_guardarActionPerformed(evt);
             }
         });
-        jPanel8.add(Boton_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, -1, -1));
+        jPanel8.add(Boton_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, -1, -1));
 
         Nuevo.setText("Nuevo");
         Nuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -159,23 +161,7 @@ public class Panel_Administradores extends javax.swing.JPanel {
                 NuevoActionPerformed(evt);
             }
         });
-        jPanel8.add(Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
-
-        jButton3.setText("Eliminar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel8.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, -1, -1));
-
-        jButton5.setText("Editar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        jPanel8.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, -1));
+        jPanel8.add(Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
 
         Error7.setText("jLabel9");
         jPanel8.add(Error7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, -1));
@@ -246,6 +232,25 @@ public class Panel_Administradores extends javax.swing.JPanel {
         });
         jPanel1.add(Boton_Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, -1, -1));
 
+        jButton3.setText("Eliminar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+
+        jButton5.setText("Editar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, -1, -1));
+
+        Error.setText("jLabel9");
+        jPanel1.add(Error, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 160, -1));
+
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 770, 350));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -299,7 +304,7 @@ public class Panel_Administradores extends javax.swing.JPanel {
             LimpiarError();
             LimpiarCajas();
             ActualisarTabla();
-        }else{
+        } else {
             if (Lectura.Ltext(NombreCajaTexto.getText()) != 1) {
                 Error1.setText("!");
             } else {
@@ -334,7 +339,7 @@ public class Panel_Administradores extends javax.swing.JPanel {
                 Error7.setText("!");
             } else {
                 Error7.setText("");
-            }     
+            }
         }
 
 
@@ -346,9 +351,17 @@ public class Panel_Administradores extends javax.swing.JPanel {
     }//GEN-LAST:event_NuevoActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        dao.deleteAdministrador(IdCajaTexto.getText());
-        ActualisarTabla();
-        LimpiarError();
+        if (Lectura.Lint(IdCajaTexto.getText()) == 1 && IdCajaTexto.getText() != null) {
+            dao.deleteAdministrador(IdCajaTexto.getText());
+            ActualisarTabla();
+            LimpiarError();
+            JOptionPane.showMessageDialog(null, "Se a eliminado el Administrador correctamente");
+            Error.setText("");
+        }else{
+            Error.setText("Ingrese una id valida");        
+        }
+
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -411,6 +424,7 @@ public class Panel_Administradores extends javax.swing.JPanel {
     private javax.swing.JTextField CorreoCajaTexto;
     private javax.swing.JTextField DireccionCajaTexto;
     private javax.swing.JTextField EdadeCajaTexto;
+    private javax.swing.JLabel Error;
     private javax.swing.JLabel Error1;
     private javax.swing.JLabel Error2;
     private javax.swing.JLabel Error3;
@@ -476,8 +490,7 @@ public class Panel_Administradores extends javax.swing.JPanel {
         ContraseñaCajaTexto.setText("");
         IdCajaTexto.setText("");
     }
-    
-    
+
     private void LimpiarError() {
         Error1.setText("");
         Error2.setText("");
