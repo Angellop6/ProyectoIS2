@@ -341,8 +341,6 @@ public class Panel_Administradores extends javax.swing.JPanel {
                 Error7.setText("");
             }
         }
-
-
     }//GEN-LAST:event_Boton_guardarActionPerformed
 
     private void NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoActionPerformed
@@ -357,26 +355,78 @@ public class Panel_Administradores extends javax.swing.JPanel {
             LimpiarError();
             JOptionPane.showMessageDialog(null, "Se a eliminado el Administrador correctamente");
             Error.setText("");
-        }else{
-            Error.setText("Ingrese una id valida");        
+        } else {
+            Error.setText("Ingrese una id valida");
         }
 
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        Administrador b = new Administrador(1,
-                NombreCajaTexto.getText(),
-                Integer.valueOf(EdadeCajaTexto.getText()),
-                DireccionCajaTexto.getText(),
-                String.valueOf(BoxGenero.getSelectedItem()),
-                TelefonoCajaTexto.getText(),
-                Float.valueOf(SalarioCajaTexto.getText()),
-                CorreoCajaTexto.getText(),
-                ContraseñaCajaTexto.getText());
-        dao.updateAdministrador(b, IdCajaTexto.getText());
-        LimpiarCajas();
-        ActualisarTabla();
+        if (Lectura.Lint(IdCajaTexto.getText()) == 1 && IdCajaTexto.getText() != null) {
+
+            int a = Lectura.Ltext(NombreCajaTexto.getText())
+                    + Lectura.Lint(EdadeCajaTexto.getText())
+                    + Lectura.Ltext(DireccionCajaTexto.getText())
+                    + Lectura.Ltelefono(TelefonoCajaTexto.getText())
+                    + Lectura.Lcorreo(CorreoCajaTexto.getText(), "+(admin)+")
+                    + Lectura.LContraseña(ContraseñaCajaTexto.getText())
+                    + Lectura.LFloat(SalarioCajaTexto.getText());
+
+            if (a == 7) {
+                Administrador b = new Administrador(1,
+                        NombreCajaTexto.getText(),
+                        Integer.valueOf(EdadeCajaTexto.getText()),
+                        DireccionCajaTexto.getText(),
+                        String.valueOf(BoxGenero.getSelectedItem()),
+                        TelefonoCajaTexto.getText(),
+                        Float.valueOf(SalarioCajaTexto.getText()),
+                        CorreoCajaTexto.getText(),
+                        ContraseñaCajaTexto.getText());
+                dao.updateAdministrador(b, IdCajaTexto.getText());
+                LimpiarCajas();
+                ActualisarTabla();
+                Error.setText("");
+            } else {
+                if (Lectura.Ltext(NombreCajaTexto.getText()) != 1) {
+                    Error1.setText("!");
+                } else {
+                    Error1.setText("");
+                }
+                if (Lectura.Ltext(DireccionCajaTexto.getText()) != 1) {
+                    Error2.setText("!");
+                } else {
+                    Error2.setText("");
+                }
+                if (Lectura.Ltelefono(TelefonoCajaTexto.getText()) != 1) {
+                    Error3.setText("!");
+                } else {
+                    Error3.setText("");
+                }
+                if (Lectura.Lcorreo(CorreoCajaTexto.getText(), "+(admin)+") != 1) {
+                    Error4.setText("!");
+                } else {
+                    Error4.setText("");
+                }
+                if (Lectura.Lint(EdadeCajaTexto.getText()) != 1) {
+                    Error5.setText("!");
+                } else {
+                    Error5.setText("");
+                }
+                if (Lectura.LFloat(SalarioCajaTexto.getText()) != 1) {
+                    Error6.setText("!");
+                } else {
+                    Error6.setText("");
+                }
+                if (Lectura.LContraseña(ContraseñaCajaTexto.getText()) != 1) {
+                    Error7.setText("!");
+                } else {
+                    Error7.setText("");
+                }
+            }
+        } else {
+            Error.setText("Ingrese una id valida");
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void TablareportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablareportesMouseClicked
@@ -397,20 +447,23 @@ public class Panel_Administradores extends javax.swing.JPanel {
     }//GEN-LAST:event_IdCajaTextoActionPerformed
 
     private void Boton_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_BuscarActionPerformed
-        Administrador gerente = dao.readAdministrador(IdCajaTexto.getText());
-        if (gerente == null) {
-            System.out.println("la id no existe");
+        if (IdCajaTexto.getText().isEmpty() || Lectura.Lint(IdCajaTexto.getText()) == 0) {
+            Error.setText("Ingrese un valor valido");
 
         } else {
-            JComboBox<String> comboBox = new JComboBox<>(new String[]{"Hombre", "Mujer"});
-            NombreCajaTexto.setText(gerente.getNombre());
-            EdadeCajaTexto.setText(String.valueOf(gerente.getEdad()));
-            DireccionCajaTexto.setText(gerente.getDireccion());
-            BoxGenero.setSelectedItem(gerente.getGenero());
-            SalarioCajaTexto.setText(String.valueOf(gerente.getSalario()));
-            TelefonoCajaTexto.setText(gerente.getTelefono());
-            CorreoCajaTexto.setText(gerente.getCorreo());
-            ContraseñaCajaTexto.setText(gerente.getContraseña());
+            Administrador gerente = dao.readAdministrador(IdCajaTexto.getText());
+            if (gerente == null) {
+                Error.setText("La id no existe");
+            } else {
+                NombreCajaTexto.setText(gerente.getNombre());
+                EdadeCajaTexto.setText(String.valueOf(gerente.getEdad()));
+                DireccionCajaTexto.setText(gerente.getDireccion());
+                BoxGenero.setSelectedItem(gerente.getGenero());
+                SalarioCajaTexto.setText(String.valueOf(gerente.getSalario()));
+                TelefonoCajaTexto.setText(gerente.getTelefono());
+                CorreoCajaTexto.setText(gerente.getCorreo());
+                ContraseñaCajaTexto.setText(gerente.getContraseña());
+            }
 
         }
     }//GEN-LAST:event_Boton_BuscarActionPerformed
