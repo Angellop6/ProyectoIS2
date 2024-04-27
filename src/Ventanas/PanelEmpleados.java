@@ -321,7 +321,7 @@ public class PanelEmpleados extends javax.swing.JPanel {
             dao.deleteEmpleado(IdCajaTexto.getText());
             ActualisarTabla();
             LimpiarError();
-            JOptionPane.showMessageDialog(null, "Se a eliminado el Administrador correctamente");
+            JOptionPane.showMessageDialog(null, "Se a eliminado el Empleado correctamente");
             Error.setText("");
         } else {
             Error.setText("Ingrese una id valida");

@@ -153,7 +153,7 @@ public class Panel_Administradores extends javax.swing.JPanel {
                 Boton_guardarActionPerformed(evt);
             }
         });
-        jPanel8.add(Boton_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, -1, -1));
+        jPanel8.add(Boton_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, -1, -1));
 
         Nuevo.setText("Nuevo");
         Nuevo.addActionListener(new java.awt.event.ActionListener() {
