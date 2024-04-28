@@ -5,6 +5,7 @@
 package Ventanas;
 
 import Clases.Productos;
+import Errores.Lectura;
 import dao.DaoProductos;
 import dao.RenderImagen;
 import java.awt.Image;
@@ -19,6 +20,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
@@ -33,6 +35,7 @@ public class PanelProductos extends javax.swing.JPanel {
 
     public PanelProductos() {
         initComponents();
+        LimpiarError();
     }
 
     /**
@@ -62,16 +65,25 @@ public class PanelProductos extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         Boton_guardar = new javax.swing.JButton();
         Nuevo = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         Examinarboton = new javax.swing.JButton();
         Imagenleavel = new javax.swing.JLabel();
+        Error5 = new javax.swing.JLabel();
+        Error1 = new javax.swing.JLabel();
+        Error2 = new javax.swing.JLabel();
+        Error3 = new javax.swing.JLabel();
+        Error4 = new javax.swing.JLabel();
+        Error8 = new javax.swing.JLabel();
+        Error7 = new javax.swing.JLabel();
+        Error6 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tablareportes = new javax.swing.JTable();
         IdLeavel = new javax.swing.JLabel();
         IdCajaTexto = new javax.swing.JTextField();
         Boton_Buscar = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        Error = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -79,7 +91,7 @@ public class PanelProductos extends javax.swing.JPanel {
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Nombre");
-        jPanel8.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 54, -1));
+        jPanel8.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 54, -1));
 
         NombreCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,7 +108,7 @@ public class PanelProductos extends javax.swing.JPanel {
         jPanel8.add(CantidadCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 165, -1));
 
         jLabel2.setText("Cantidad");
-        jPanel8.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 70, -1));
+        jPanel8.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 70, -1));
 
         PrecioCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,7 +118,7 @@ public class PanelProductos extends javax.swing.JPanel {
         jPanel8.add(PrecioCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 165, -1));
 
         jLabel3.setText("Preccio");
-        jPanel8.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 54, -1));
+        jPanel8.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 54, -1));
 
         MarcaCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,7 +135,7 @@ public class PanelProductos extends javax.swing.JPanel {
         jPanel8.add(ColorCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 165, -1));
 
         jLabel4.setText("Descrpcion");
-        jPanel8.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 80, -1));
+        jPanel8.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 80, -1));
 
         DescripcionCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,13 +145,13 @@ public class PanelProductos extends javax.swing.JPanel {
         jPanel8.add(DescripcionCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 165, -1));
 
         jLabel5.setText("Color");
-        jPanel8.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 54, -1));
+        jPanel8.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 54, -1));
 
         jLabel6.setText("Marca");
-        jPanel8.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 54, -1));
+        jPanel8.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 54, -1));
 
         jLabel7.setText("Oferta");
-        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 70, -1));
+        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 70, -1));
 
         OfertaCajaTexto.setText("00");
         OfertaCajaTexto.addActionListener(new java.awt.event.ActionListener() {
@@ -150,7 +162,7 @@ public class PanelProductos extends javax.swing.JPanel {
         jPanel8.add(OfertaCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 165, -1));
 
         jLabel8.setText("Imagen");
-        jPanel8.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 54, -1));
+        jPanel8.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 54, -1));
 
         Boton_guardar.setText("Guardar");
         Boton_guardar.addActionListener(new java.awt.event.ActionListener() {
@@ -158,7 +170,7 @@ public class PanelProductos extends javax.swing.JPanel {
                 Boton_guardarActionPerformed(evt);
             }
         });
-        jPanel8.add(Boton_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, -1, -1));
+        jPanel8.add(Boton_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, -1, -1));
 
         Nuevo.setText("Nuevo");
         Nuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -166,23 +178,7 @@ public class PanelProductos extends javax.swing.JPanel {
                 NuevoActionPerformed(evt);
             }
         });
-        jPanel8.add(Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, -1, -1));
-
-        jButton3.setText("Eliminar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel8.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, -1, -1));
-
-        jButton5.setText("Editar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        jPanel8.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, -1, -1));
+        jPanel8.add(Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, -1, -1));
 
         Examinarboton.setText("Examinar");
         Examinarboton.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +187,34 @@ public class PanelProductos extends javax.swing.JPanel {
             }
         });
         jPanel8.add(Examinarboton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 160, -1));
+
+        Imagenleavel.setBackground(new java.awt.Color(255, 102, 102));
+        Imagenleavel.setForeground(new java.awt.Color(255, 102, 102));
         jPanel8.add(Imagenleavel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 150, 110));
+
+        Error5.setText("jLabel9");
+        jPanel8.add(Error5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
+
+        Error1.setText("jLabel9");
+        jPanel8.add(Error1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
+
+        Error2.setText("jLabel9");
+        jPanel8.add(Error2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, -1, -1));
+
+        Error3.setText("jLabel9");
+        jPanel8.add(Error3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, -1));
+
+        Error4.setText("jLabel9");
+        jPanel8.add(Error4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
+
+        Error8.setText("jLabel9");
+        jPanel8.add(Error8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, -1, -1));
+
+        Error7.setText("jLabel9");
+        jPanel8.add(Error7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, -1, -1));
+
+        Error6.setText("jLabel9");
+        jPanel8.add(Error6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, -1, -1));
 
         add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 350));
 
@@ -235,6 +258,25 @@ public class PanelProductos extends javax.swing.JPanel {
         });
         jPanel1.add(Boton_Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, -1, -1));
 
+        jButton3.setText("Eliminar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, -1, -1));
+
+        jButton5.setText("Editar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, -1, -1));
+
+        Error.setText("jLabel9");
+        jPanel1.add(Error, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, 230, -1));
+
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 770, 350));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -267,18 +309,75 @@ public class PanelProductos extends javax.swing.JPanel {
     }//GEN-LAST:event_OfertaCajaTextoActionPerformed
 
     private void Boton_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_guardarActionPerformed
-        dao.createProducto(new Productos(1,
-                NombreCajaTexto.getText(),
-                MarcaCajaTexto.getText(),
-                Integer.valueOf(CantidadCajaTexto.getText()),
-                ColorCajaTexto.getText(),
-                Float.valueOf(PrecioCajaTexto.getText()),
-                DescripcionCajaTexto.getText(),
-                getImagen(Ruta),
-                Integer.valueOf(OfertaCajaTexto.getText())));
 
-        LimpiarCajas();
-        ActualisarTabla();
+        int a = Lectura.Ltext(NombreCajaTexto.getText())
+                + Lectura.Lint(CantidadCajaTexto.getText())
+                + Lectura.LFloat(PrecioCajaTexto.getText())
+                + Lectura.ReadImage(Ruta)
+                + Lectura.Ltext(MarcaCajaTexto.getText())
+                + Lectura.Ltext(ColorCajaTexto.getText())
+                + Lectura.Ltext(DescripcionCajaTexto.getText())
+                + Lectura.Lint(OfertaCajaTexto.getText());
+
+        if (a == 8) {
+            dao.createProducto(new Productos(1,
+                    NombreCajaTexto.getText(),
+                    MarcaCajaTexto.getText(),
+                    Integer.valueOf(CantidadCajaTexto.getText()),
+                    ColorCajaTexto.getText(),
+                    Float.valueOf(PrecioCajaTexto.getText()),
+                    DescripcionCajaTexto.getText(),
+                    getImagen(Ruta),
+                    Integer.valueOf(OfertaCajaTexto.getText())));
+
+            LimpiarCajas();
+            ActualisarTabla();
+            LimpiarError();
+        } else {
+            if (Lectura.Ltext(NombreCajaTexto.getText()) != 1) {
+                Error1.setText("!");
+            } else {
+                Error1.setText("");
+            }
+            if (Lectura.Lint(CantidadCajaTexto.getText()) != 1) {
+                Error2.setText("!");
+            } else {
+                Error2.setText("");
+            }
+            if (Lectura.LFloat(PrecioCajaTexto.getText()) != 1) {
+                Error3.setText("!");
+            } else {
+                Error3.setText("");
+            }
+            if (Lectura.ReadImage(Ruta) != 1) {
+                Error4.setText("!");
+            } else {
+                Error4.setText("");
+            }
+            if (Lectura.Ltext(MarcaCajaTexto.getText()) != 1) {
+                Error5.setText("!");
+            } else {
+                Error5.setText("");
+            }
+            if (Lectura.Ltext(ColorCajaTexto.getText()) != 1) {
+                Error6.setText("!");
+            } else {
+                Error6.setText("");
+            }
+            if (Lectura.Ltext(DescripcionCajaTexto.getText()) != 1) {
+                Error7.setText("!");
+            } else {
+                Error7.setText("");
+            }
+            if (Lectura.Lint(OfertaCajaTexto.getText()) != 1) {
+                Error8.setText("!");
+            } else {
+                Error8.setText("");
+            }
+
+        }
+
+
     }//GEN-LAST:event_Boton_guardarActionPerformed
 
     private void NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoActionPerformed
@@ -286,22 +385,93 @@ public class PanelProductos extends javax.swing.JPanel {
     }//GEN-LAST:event_NuevoActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        dao.deleteProducto(IdCajaTexto.getText());
-        ActualisarTabla();
+        if (Lectura.Lint(IdCajaTexto.getText()) == 1 && IdCajaTexto.getText() != null) {
+            dao.deleteProducto(IdCajaTexto.getText());
+            ActualisarTabla();
+            LimpiarCajas();
+            LimpiarError();
+            JOptionPane.showMessageDialog(null, "Se a eliminado el Administrador correctamente");
+            Error.setText("");
+        } else {
+            Error.setText("Ingrese una id valida");
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        Productos b = (new Productos(1,
-                NombreCajaTexto.getText(),
-                MarcaCajaTexto.getText(),
-                Integer.valueOf(CantidadCajaTexto.getText()),
-                ColorCajaTexto.getText(),
-                Float.valueOf(PrecioCajaTexto.getText()),
-                DescripcionCajaTexto.getText(),
-                getImagen(Ruta),
-                Integer.valueOf(OfertaCajaTexto.getText())));
-        LimpiarCajas();
-        ActualisarTabla();
+        int a = Lectura.Ltext(NombreCajaTexto.getText())
+                + Lectura.Lint(CantidadCajaTexto.getText())
+                + Lectura.LFloat(PrecioCajaTexto.getText())
+                + Lectura.ReadImage(Ruta)
+                + Lectura.Ltext(MarcaCajaTexto.getText())
+                + Lectura.Ltext(ColorCajaTexto.getText())
+                + Lectura.Ltext(DescripcionCajaTexto.getText())
+                + Lectura.Lint(OfertaCajaTexto.getText())
+                + Lectura.Lint(IdCajaTexto.getText());
+        if (a == 9) {
+            Productos b = (new Productos(1,
+                    NombreCajaTexto.getText(),
+                    MarcaCajaTexto.getText(),
+                    Integer.valueOf(CantidadCajaTexto.getText()),
+                    ColorCajaTexto.getText(),
+                    Float.valueOf(PrecioCajaTexto.getText()),
+                    DescripcionCajaTexto.getText(),
+                    getImagen(Ruta),
+                    Integer.valueOf(OfertaCajaTexto.getText())));
+            dao.updateProducto(b, IdCajaTexto.getText());
+
+            LimpiarCajas();
+            ActualisarTabla();
+            LimpiarError();
+        } else {
+            if (Lectura.Ltext(NombreCajaTexto.getText()) != 1) {
+                Error1.setText("!");
+            } else {
+                Error1.setText("");
+            }
+            if (Lectura.Lint(CantidadCajaTexto.getText()) != 1) {
+                Error2.setText("!");
+            } else {
+                Error2.setText("");
+            }
+            if (Lectura.LFloat(PrecioCajaTexto.getText()) != 1) {
+                Error3.setText("!");
+            } else {
+                Error3.setText("");
+            }
+            if (Lectura.ReadImage(Ruta) != 1) {
+                Error4.setText("!");
+            } else {
+                Error4.setText("");
+            }
+            if (Lectura.Ltext(MarcaCajaTexto.getText()) != 1) {
+                Error5.setText("!");
+            } else {
+                Error5.setText("");
+            }
+            if (Lectura.Ltext(ColorCajaTexto.getText()) != 1) {
+                Error6.setText("!");
+            } else {
+                Error6.setText("");
+            }
+            if (Lectura.Ltext(DescripcionCajaTexto.getText()) != 1) {
+                Error7.setText("!");
+            } else {
+                Error7.setText("");
+            }
+            if (Lectura.Lint(OfertaCajaTexto.getText()) != 1) {
+                Error8.setText("!");
+            } else {
+                Error8.setText("");
+            }
+            if (Lectura.Lint(IdCajaTexto.getText()) != 1) {
+                Error8.setText("!");
+            } else {
+                Error8.setText("");
+            }
+
+        }
+
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void TablareportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablareportesMouseClicked
@@ -325,21 +495,24 @@ public class PanelProductos extends javax.swing.JPanel {
     }//GEN-LAST:event_IdCajaTextoActionPerformed
 
     private void Boton_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_BuscarActionPerformed
-        Productos Producto = dao.readProducto(IdCajaTexto.getText());
-        if (Producto == null) {
-            System.out.println("la id no existe");
-
+        if (IdCajaTexto.getText().isEmpty() || Lectura.Lint(IdCajaTexto.getText()) == 0) {
+            Error.setText("Ingrese un valor valido");
         } else {
-
-            NombreCajaTexto.setText(Producto.getNombre());
-            MarcaCajaTexto.setText(Producto.getMarca());
-            CantidadCajaTexto.setText(String.valueOf(Producto.getCantidad()));
-            ColorCajaTexto.setText(Producto.getColor());
-            DescripcionCajaTexto.setText(String.valueOf(Producto.getDescripcion()));
-            PrecioCajaTexto.setText(String.valueOf(Producto.getPrecio()));
-            OfertaCajaTexto.setText(String.valueOf(Producto.getOferta()));
+            Productos Producto = dao.readProducto(IdCajaTexto.getText());
+            if (Producto == null) {
+                Error.setText("La id no existe");
+            } else {
+                NombreCajaTexto.setText(Producto.getNombre());
+                MarcaCajaTexto.setText(Producto.getMarca());
+                CantidadCajaTexto.setText(String.valueOf(Producto.getCantidad()));
+                ColorCajaTexto.setText(Producto.getColor());
+                DescripcionCajaTexto.setText(String.valueOf(Producto.getDescripcion()));
+                PrecioCajaTexto.setText(String.valueOf(Producto.getPrecio()));
+                OfertaCajaTexto.setText(String.valueOf(Producto.getOferta()));
+            }
 
         }
+
     }//GEN-LAST:event_Boton_BuscarActionPerformed
 
     private void ExaminarbotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExaminarbotonActionPerformed
@@ -361,6 +534,15 @@ public class PanelProductos extends javax.swing.JPanel {
     private javax.swing.JTextField CantidadCajaTexto;
     private javax.swing.JTextField ColorCajaTexto;
     private javax.swing.JTextField DescripcionCajaTexto;
+    private javax.swing.JLabel Error;
+    private javax.swing.JLabel Error1;
+    private javax.swing.JLabel Error2;
+    private javax.swing.JLabel Error3;
+    private javax.swing.JLabel Error4;
+    private javax.swing.JLabel Error5;
+    private javax.swing.JLabel Error6;
+    private javax.swing.JLabel Error7;
+    private javax.swing.JLabel Error8;
     private javax.swing.JButton Examinarboton;
     private javax.swing.JTextField IdCajaTexto;
     private javax.swing.JLabel IdLeavel;
@@ -432,7 +614,7 @@ private void ActualisarTabla() {
         DescripcionCajaTexto.setText("");
         OfertaCajaTexto.setText("");
         IdCajaTexto.setText("");
-        Imagenleavel.setText("");
+        Imagenleavel.setIcon(null);
         Ruta = null;
 
     }
@@ -448,6 +630,17 @@ private void ActualisarTabla() {
             return null;
         }
 
+    }
+
+    private void LimpiarError() {
+        Error1.setText("");
+        Error2.setText("");
+        Error3.setText("");
+        Error4.setText("");
+        Error5.setText("");
+        Error6.setText("");
+        Error7.setText("");
+        Error8.setText("");
     }
 
 }

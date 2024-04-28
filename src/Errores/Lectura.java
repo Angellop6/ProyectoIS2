@@ -1,5 +1,10 @@
 package Errores;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 public class Lectura {
 
     public static int Lint(String txt) {
@@ -95,6 +100,28 @@ public class Lectura {
         }
 
         return 0; // La fecha no cumple con el formato o los criterios de validez
+    }
+
+    public static int ReadImage(String Ruta) {
+        // Verifica si la ruta es una cadena vacía o null
+        if (Ruta == null || Ruta.isEmpty()) {
+            return 0; // Devuelve 0 si la ruta es nula o vacía
+        }
+
+        File imagen = new File(Ruta);
+        try {
+            byte[] icono = new byte[(int) imagen.length()];
+            InputStream input = new FileInputStream(imagen);
+            input.read(icono);
+            input.close();
+            return 1; // Indica que la conversión y lectura de la imagen tuvo éxito
+        } catch (IOException ex) {
+            // Captura excepciones específicas de E/S (Input/Output)
+            return 0; // Indica que hubo un error durante la lectura de la imagen
+        } catch (Exception ex) {
+            // Captura otras excepciones generales
+            return 0; // Indica que hubo un error durante la lectura de la imagen
+        }
     }
 
 }
