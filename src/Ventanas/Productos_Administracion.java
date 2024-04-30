@@ -6,7 +6,7 @@ package Ventanas;
 
 public class Productos_Administracion extends javax.swing.JFrame {
 
-    
+    //vamos a ver que onda lol que XD 
     public Productos_Administracion() {
         initComponents();
     }
