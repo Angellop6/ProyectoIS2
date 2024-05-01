@@ -249,7 +249,7 @@ public class Panel_Administradores extends javax.swing.JPanel {
         jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, -1, -1));
 
         Error.setText("jLabel9");
-        jPanel1.add(Error, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 160, -1));
+        jPanel1.add(Error, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 160, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 770, 350));
     }// </editor-fold>//GEN-END:initComponents

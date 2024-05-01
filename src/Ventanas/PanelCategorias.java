@@ -7,6 +7,7 @@ package Ventanas;
 import Clases.Categoria;
 import Clases.Categoria_Producto;
 import Clases.Productos;
+import Errores.Lectura;
 import dao.DaoCategoria;
 import dao.DaoCategoria_Productos;
 import dao.DaoProductos;
@@ -37,6 +38,7 @@ public class PanelCategorias extends javax.swing.JPanel {
         initComponents();
         llenarCategorias();
         ActualisarTabla();
+        Error.setText("");
 
     }
 
@@ -55,6 +57,7 @@ public class PanelCategorias extends javax.swing.JPanel {
         IdLeavel = new javax.swing.JLabel();
         IdCajaTexto = new javax.swing.JTextField();
         Boton_Buscar = new javax.swing.JButton();
+        Error = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         CategoriasBox = new javax.swing.JComboBox<>();
@@ -101,6 +104,9 @@ public class PanelCategorias extends javax.swing.JPanel {
         });
         jPanel1.add(Boton_Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, -1, -1));
 
+        Error.setText("jLabel1");
+        jPanel1.add(Error, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 306, 280, 30));
+
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 770, 350));
 
         jPanel2.setBackground(new java.awt.Color(51, 255, 204));
@@ -112,8 +118,6 @@ public class PanelCategorias extends javax.swing.JPanel {
             }
         });
 
-        Nompre_P.setText("Nombre Producto");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -121,25 +125,26 @@ public class PanelCategorias extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(CategoriasBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
-                        .addComponent(Nompre_P, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(52, Short.MAX_VALUE))
+                        .addGap(92, 92, 92)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 115, Short.MAX_VALUE))
+                    .addComponent(Nompre_P, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addComponent(CategoriasBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(CategoriasBox, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
-                    .addComponent(Nompre_P, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(50, 50, 50)
+                .addGap(55, 55, 55)
+                .addComponent(Nompre_P, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(CategoriasBox, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 350));
@@ -158,27 +163,39 @@ public class PanelCategorias extends javax.swing.JPanel {
     }//GEN-LAST:event_IdCajaTextoActionPerformed
 
     private void Boton_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_BuscarActionPerformed
-        Productos Producto = dao.readProducto(IdCajaTexto.getText());
-        if (Producto == null) {
-            System.out.println("la id no existe");
+        if (IdCajaTexto.getText().isEmpty() || Lectura.Lint(IdCajaTexto.getText()) == 0) {
+            Error.setText("Ingrese un valor valido");
 
         } else {
+            Productos Producto = dao.readProducto(IdCajaTexto.getText());
+            if (Producto == null) {
+                Error.setText("La Id no Existe");
 
-//            NombreCajaTexto.setText(Producto.getNombre());
-//            MarcaCajaTexto.setText(Producto.getMarca());
-//            CantidadCajaTexto.setText(String.valueOf(Producto.getCantidad()));
-//            ColorCajaTexto.setText(Producto.getColor());
-//            DescripcionCajaTexto.setText(String.valueOf(Producto.getDescripcion()));
-//            PrecioCajaTexto.setText(String.valueOf(Producto.getPrecio()));
-//            OfertaCajaTexto.setText(String.valueOf(Producto.getOferta()));
+            } else {                
+                IdCajaTexto.setText(String.valueOf(Producto.getId()));
+                Nompre_P.setText(Producto.getNombre());
+                idProd = Producto.getId();
+                Error.setText("");
+            }
         }
+
+
     }//GEN-LAST:event_Boton_BuscarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Categoria C = daoC.readCategoria_nombre(CategoriasBox.getSelectedItem().toString());
+       if(Nompre_P.getText().isEmpty()){
+           Error.setText("Seleccione un producto");
+       
+       }else{
+           Categoria C = daoC.readCategoria_nombre(CategoriasBox.getSelectedItem().toString());
         idCat = C.getId();
         daoc_p.createClase_P(new Categoria_Producto(idProd, idCat));
         ActualisarTabla();
+       Error.setText("");
+       
+       }
+        
+        
 
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -187,6 +204,7 @@ public class PanelCategorias extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Boton_Buscar;
     private javax.swing.JComboBox<String> CategoriasBox;
+    private javax.swing.JLabel Error;
     private javax.swing.JTextField IdCajaTexto;
     private javax.swing.JLabel IdLeavel;
     private javax.swing.JLabel Nompre_P;

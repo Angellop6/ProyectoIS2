@@ -17,6 +17,7 @@ public class PanelEmpleados extends javax.swing.JPanel {
 
     public PanelEmpleados() {
         initComponents();
+        LimpiarError();
     }
 
     /**

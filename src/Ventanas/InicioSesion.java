@@ -149,7 +149,6 @@ public class InicioSesion extends javax.swing.JDialog {
             Error.setText("No se encontro la cuenta");
         } else {
             if (a.getContraseña().equals(ContraseñaTxT1.getText())) {
-
                 Tienda.Nombre = a.getNombre();
                 Tienda.Id = a.getId();
                 Tienda.NombreUsuario.setText(a.getNombre() + " id: " + Tienda.Id);
@@ -160,7 +159,6 @@ public class InicioSesion extends javax.swing.JDialog {
             }
 
         }
-
     }//GEN-LAST:event_IniciodeS1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
