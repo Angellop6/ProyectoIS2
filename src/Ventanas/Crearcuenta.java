@@ -4,9 +4,14 @@
  */
 package Ventanas;
 
+import Clases.Administrador;
 import Clases.Clientes;
+import Clases.Empleados;
 import Errores.Lectura;
+import dao.DaoAdministrador;
 import dao.DaoCliente;
+import dao.DaoEmpleados;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -16,6 +21,8 @@ import javax.swing.JTextField;
  */
 public class Crearcuenta extends javax.swing.JDialog {
 
+    DaoAdministrador daoA = new DaoAdministrador();
+    DaoEmpleados daoE = new DaoEmpleados();
     DaoCliente dao = new DaoCliente();
 
     public Crearcuenta(java.awt.Frame parent, boolean modal) {
@@ -190,12 +197,17 @@ public class Crearcuenta extends javax.swing.JDialog {
                 + Lectura.LContraseña(ContraseñaCajaTexto.getText());
 
         if (a == 6) {
-            LimpiarError();
-            crearcliente();
-            LimpiarCajas();
-            Error.setText("");
-            JOptionPane.showMessageDialog(null, "Se a creado el cliente correctamente");
-            this.dispose();
+            if (ComprobarExistencia()) {
+                LimpiarError();
+                crearcliente();
+                LimpiarCajas();
+                Error.setText("");
+                JOptionPane.showMessageDialog(null, "Se a creado el Usuario correctamente");
+                this.dispose();
+            } else {
+                Error.setText("El Correo ya esta en uso");
+            }
+
         } else {
             if (Lectura.Ltext(NombreCajaTexto.getText()) != 1) {
                 Error1.setText("!");
@@ -292,6 +304,17 @@ private void LimpiarCajas() {
         Error5.setText("");
         Error6.setText("");
 
+    }
+
+    private boolean ComprobarExistencia() {
+        ArrayList<Clientes> Clientes = dao.readClientes();
+        
+        for (int i = 0; i < Clientes.size(); i++) {
+            if (Clientes.get(i).getCorreo().equals(CorreoCajaTexto.getText())) {
+                return false;
+            }        
+        }
+        return true;
     }
 
 }
