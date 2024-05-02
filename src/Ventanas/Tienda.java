@@ -50,6 +50,7 @@ public class Tienda extends javax.swing.JFrame {
         PanelBotones = new javax.swing.JPanel();
         Perfil = new javax.swing.JButton();
         Botonmenu = new javax.swing.JButton();
+        NombreUsuario = new javax.swing.JLabel();
         PanelMuestra = new javax.swing.JPanel();
         Producto1 = new javax.swing.JButton();
         Producto3 = new javax.swing.JButton();
@@ -62,7 +63,6 @@ public class Tienda extends javax.swing.JFrame {
         Producto2 = new javax.swing.JButton();
         Producto5 = new javax.swing.JButton();
         BotonAtras = new javax.swing.JButton();
-        NombreUsuario = new javax.swing.JLabel();
         PanelCategorias = new javax.swing.JPanel();
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
@@ -91,13 +91,17 @@ public class Tienda extends javax.swing.JFrame {
             }
         });
 
+        NombreUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
         javax.swing.GroupLayout PanelBotonesLayout = new javax.swing.GroupLayout(PanelBotones);
         PanelBotones.setLayout(PanelBotonesLayout);
         PanelBotonesLayout.setHorizontalGroup(
             PanelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelBotonesLayout.createSequentialGroup()
                 .addComponent(Botonmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 260, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(NombreUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         PanelBotonesLayout.setVerticalGroup(
@@ -107,6 +111,10 @@ public class Tienda extends javax.swing.JFrame {
                     .addComponent(Botonmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelBotonesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(NombreUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel1.add(PanelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 110));
@@ -189,7 +197,6 @@ public class Tienda extends javax.swing.JFrame {
                 .addComponent(BotonAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BotonAdelante, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(NombreUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMuestraLayout.createSequentialGroup()
                 .addGap(0, 27, Short.MAX_VALUE)
                 .addGroup(PanelMuestraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,8 +225,7 @@ public class Tienda extends javax.swing.JFrame {
         PanelMuestraLayout.setVerticalGroup(
             PanelMuestraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMuestraLayout.createSequentialGroup()
-                .addComponent(NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(38, 38, 38)
                 .addGroup(PanelMuestraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Producto1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Producto3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)

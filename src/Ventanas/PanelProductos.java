@@ -275,7 +275,7 @@ public class PanelProductos extends javax.swing.JPanel {
         jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, -1, -1));
 
         Error.setText("jLabel9");
-        jPanel1.add(Error, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 320, 230, -1));
+        jPanel1.add(Error, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 230, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 770, 350));
     }// </editor-fold>//GEN-END:initComponents
@@ -386,12 +386,18 @@ public class PanelProductos extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if (Lectura.Lint(IdCajaTexto.getText()) == 1 && IdCajaTexto.getText() != null) {
-            dao.deleteProducto(IdCajaTexto.getText());
-            ActualisarTabla();
-            LimpiarCajas();
-            LimpiarError();
-            JOptionPane.showMessageDialog(null, "Se a eliminado el Administrador correctamente");
-            Error.setText("");
+            if (JOptionPane.showConfirmDialog(null, "¿Desea eliminar el Administrador?", "Confirmar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                dao.deleteProducto(IdCajaTexto.getText());
+                ActualisarTabla();
+                LimpiarCajas();
+                LimpiarError();
+                JOptionPane.showMessageDialog(null, "Se a eliminado el Administrador correctamente");
+                Error.setText("");
+            } else {
+                LimpiarError();
+                Error.setText("");
+            }
+
         } else {
             Error.setText("Ingrese una id valida");
         }

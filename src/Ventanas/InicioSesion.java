@@ -5,6 +5,7 @@
 package Ventanas;
 
 import Clases.Clientes;
+import Errores.Lectura;
 import dao.DaoCliente;
 import javax.swing.JFrame;
 
@@ -15,8 +16,7 @@ import javax.swing.JFrame;
 public class InicioSesion extends javax.swing.JDialog {
 
     DaoCliente dao = new DaoCliente();
-    
-    
+
     public InicioSesion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -144,30 +144,39 @@ public class InicioSesion extends javax.swing.JDialog {
     }//GEN-LAST:event_ContraseñaTxT1ActionPerformed
 
     private void IniciodeS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciodeS1ActionPerformed
-        Clientes a = dao.readClienteCorreo(CorreoTXT1.getText());
-        if (a == null) {
-            Error.setText("No se encontro la cuenta");
-        } else {
-            if (a.getContraseña().equals(ContraseñaTxT1.getText())) {
-                Tienda.Nombre = a.getNombre();
-                Tienda.Id = a.getId();
-                Tienda.NombreUsuario.setText(a.getNombre() + " id: " + Tienda.Id);
-                Error.setText("");
-                this.dispose();
-            } else {
-                Error.setText("La Contraseña es incorrecta");
-            }
+        int e = +Lectura.Lcorreo(CorreoTXT1.getText(), "+(gmail)+")
+                + Lectura.LContraseña(ContraseñaTxT1.getText());
 
+        if (e == 2) {
+            Clientes a = dao.readClienteCorreo(CorreoTXT1.getText());
+
+            if (a == null) {
+                Error.setText("No se encontro la cuenta");
+            } else {
+                if (a.getContraseña().equals(ContraseñaTxT1.getText())) {
+                    Tienda.Nombre = a.getNombre();
+                    Tienda.Id = a.getId();
+                    Tienda.NombreUsuario.setText(a.getNombre() + " id: " + Tienda.Id);
+                    Error.setText("");
+                    this.dispose();
+                } else {
+                    Error.setText("La Contraseña es incorrecta");
+                }
+
+            }
+        } else {
+            Error.setText("Ingrese valores validos");
         }
+
+
     }//GEN-LAST:event_IniciodeS1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Crearcuenta crear =  new Crearcuenta(new JFrame(), true);
+        Crearcuenta crear = new Crearcuenta(new JFrame(), true);
         crear.setVisible(true);
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ContraseñaTxT1;

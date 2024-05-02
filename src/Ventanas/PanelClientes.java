@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Ventanas;
+
 import Clases.Clientes;
 import Errores.Lectura;
 import dao.DaoCliente;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 public class PanelClientes extends javax.swing.JPanel {
+
     DaoCliente dao = new DaoCliente();
+
     public PanelClientes() {
         initComponents();
         LimpiarError();
@@ -254,24 +256,23 @@ public class PanelClientes extends javax.swing.JPanel {
                 + Lectura.LContraseña(ContraseñaCajaTexto.getText());
 
         if (a == 6) {
-            
+
             if (ComprobarExistencia()) {
-                    dao.createCliente(new Clientes(1,
-                    NombreCajaTexto.getText(),
-                    Integer.valueOf(EdadeCajaTexto.getText()),
-                    DireccionCajaTexto.getText(),
-                    String.valueOf(BoxGenero.getSelectedItem()),
-                    TelefonoCajaTexto.getText(),
-                    CorreoCajaTexto.getText(),
-                    ContraseñaCajaTexto.getText()));
-            LimpiarError();
-            LimpiarCajas();
-            ActualisarTabla();
-                } else {
-                    Error.setText("El Correo ya esta en uso");
-                }
-            
-            
+                dao.createCliente(new Clientes(1,
+                        NombreCajaTexto.getText(),
+                        Integer.valueOf(EdadeCajaTexto.getText()),
+                        DireccionCajaTexto.getText(),
+                        String.valueOf(BoxGenero.getSelectedItem()),
+                        TelefonoCajaTexto.getText(),
+                        CorreoCajaTexto.getText(),
+                        ContraseñaCajaTexto.getText()));
+                LimpiarError();
+                LimpiarCajas();
+                ActualisarTabla();
+            } else {
+                Error.setText("El Correo ya esta en uso");
+            }
+
         } else {
             if (Lectura.Ltext(NombreCajaTexto.getText()) != 1) {
                 Error1.setText("!");
@@ -312,18 +313,24 @@ public class PanelClientes extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if (Lectura.Lint(IdCajaTexto.getText()) == 1 && IdCajaTexto.getText() != null) {
-            dao.deleteCliente(IdCajaTexto.getText());
-            ActualisarTabla();
-            LimpiarError();
-            JOptionPane.showMessageDialog(null, "Se a eliminado el Cliente correctamente");
-            Error.setText("");
+            if (JOptionPane.showConfirmDialog(null, "¿Desea eliminar el Administrador?", "Confirmar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                dao.deleteCliente(IdCajaTexto.getText());
+                ActualisarTabla();
+                LimpiarError();
+                JOptionPane.showMessageDialog(null, "Se a eliminado el Cliente correctamente");
+                Error.setText("");
+            } else {
+                LimpiarError();
+                Error.setText("");
+            }
+
         } else {
             Error.setText("Ingrese una id valida");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-         if (Lectura.Lint(IdCajaTexto.getText()) == 1 && IdCajaTexto.getText() != null) {
+        if (Lectura.Lint(IdCajaTexto.getText()) == 1 && IdCajaTexto.getText() != null) {
 
             int a = Lectura.Ltext(NombreCajaTexto.getText())
                     + Lectura.Lint(EdadeCajaTexto.getText())
@@ -399,7 +406,7 @@ public class PanelClientes extends javax.swing.JPanel {
     }//GEN-LAST:event_IdCajaTextoActionPerformed
 
     private void Boton_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_BuscarActionPerformed
-       if (IdCajaTexto.getText().isEmpty() || Lectura.Lint(IdCajaTexto.getText()) == 0) {
+        if (IdCajaTexto.getText().isEmpty() || Lectura.Lint(IdCajaTexto.getText()) == 0) {
             Error.setText("Ingrese un valor valido");
 
         } else {
@@ -480,44 +487,41 @@ public class PanelClientes extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-private void ActualisarTabla(){
-            
-        
-            ArrayList<Clientes> clientes = dao.readClientes();
-        
-        
+    private void ActualisarTabla() {
+
+        ArrayList<Clientes> clientes = dao.readClientes();
+
         DefaultTableModel m;
-        m =(DefaultTableModel)Tablareportes.getModel();
-        while(m.getRowCount()>0){
+        m = (DefaultTableModel) Tablareportes.getModel();
+        while (m.getRowCount() > 0) {
             m.removeRow(0);
-        
+
         }
         Object[] rowData = new Object[9];
-        for(int i = 0; i< clientes.size();i++){
-                rowData[0] = clientes.get(i).getId();
-                rowData[1] = clientes.get(i).getNombre();
-                rowData[2] = clientes.get(i).getEdad();
-                rowData[3] = clientes.get(i).getDireccion();
-                rowData[4] = clientes.get(i).getGenero();
-                rowData[5] = clientes.get(i).getTelefono(); 
-                rowData[6] = clientes.get(i).getCorreo();
-                rowData[7] = clientes.get(i).getContraseña();
-               m.addRow(rowData);    
+        for (int i = 0; i < clientes.size(); i++) {
+            rowData[0] = clientes.get(i).getId();
+            rowData[1] = clientes.get(i).getNombre();
+            rowData[2] = clientes.get(i).getEdad();
+            rowData[3] = clientes.get(i).getDireccion();
+            rowData[4] = clientes.get(i).getGenero();
+            rowData[5] = clientes.get(i).getTelefono();
+            rowData[6] = clientes.get(i).getCorreo();
+            rowData[7] = clientes.get(i).getContraseña();
+            m.addRow(rowData);
         }
         Tablareportes.setModel(m);
     }
-    
-    
-    private void LimpiarCajas(){
+
+    private void LimpiarCajas() {
         NombreCajaTexto.setText("");
         EdadeCajaTexto.setText("");
         DireccionCajaTexto.setText("");
         TelefonoCajaTexto.setText("");
         CorreoCajaTexto.setText("");
         ContraseñaCajaTexto.setText("");
-        IdCajaTexto.setText("");      
+        IdCajaTexto.setText("");
     }
-    
+
     private void LimpiarError() {
         Error1.setText("");
         Error2.setText("");
@@ -525,21 +529,19 @@ private void ActualisarTabla(){
         Error4.setText("");
         Error5.setText("");
         Error7.setText("");
-        
+
         Error.setText("");
     }
-    
-    
+
     private boolean ComprobarExistencia() {
         ArrayList<Clientes> Clientes = dao.readClientes();
-        
+
         for (int i = 0; i < Clientes.size(); i++) {
             if (Clientes.get(i).getCorreo().equals(CorreoCajaTexto.getText())) {
                 return false;
-            }        
+            }
         }
         return true;
     }
-    
 
 }

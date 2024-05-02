@@ -10,6 +10,7 @@ import java.awt.Image;
 import java.awt.MediaTracker;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 /**
@@ -97,7 +98,8 @@ public class PanelPerfil extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        EditarPerfil EP = new EditarPerfil(new JFrame(), true);
+            EP.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

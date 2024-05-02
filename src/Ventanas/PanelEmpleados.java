@@ -324,11 +324,17 @@ public class PanelEmpleados extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if (Lectura.Lint(IdCajaTexto.getText()) == 1 && IdCajaTexto.getText() != null) {
-            dao.deleteEmpleado(IdCajaTexto.getText());
-            ActualisarTabla();
-            LimpiarError();
-            JOptionPane.showMessageDialog(null, "Se a eliminado el Empleado correctamente");
-            Error.setText("");
+            if (JOptionPane.showConfirmDialog(null, "¿Desea eliminar el Administrador?", "Confirmar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                dao.deleteEmpleado(IdCajaTexto.getText());
+                ActualisarTabla();
+                LimpiarError();
+                JOptionPane.showMessageDialog(null, "Se a eliminado el Empleado correctamente");
+                Error.setText("");
+            } else {
+                LimpiarError();
+                Error.setText("");
+            }
+
         } else {
             Error.setText("Ingrese una id valida");
         }
@@ -347,24 +353,22 @@ public class PanelEmpleados extends javax.swing.JPanel {
 
             if (a == 7) {
 
-          
-                    Empleados b = new Empleados(1,
-                            NombreCajaTexto.getText(),
-                            Integer.valueOf(EdadeCajaTexto.getText()),
-                            DireccionCajaTexto.getText(),
-                            String.valueOf(BoxGenero.getSelectedItem()),
-                            TelefonoCajaTexto.getText(),
-                            Float.valueOf(SalarioCajaTexto.getText()),
-                            CorreoCajaTexto.getText(),
-                            ContraseñaCajaTexto.getText());
-                    dao.updateEmpleado(b, IdCajaTexto.getText());
-                    LimpiarCajas();
-                    ActualisarTabla();
-                    Error.setText("");
-                    LimpiarError();
-                    LimpiarCajas();
-                    ActualisarTabla();
-              
+                Empleados b = new Empleados(1,
+                        NombreCajaTexto.getText(),
+                        Integer.valueOf(EdadeCajaTexto.getText()),
+                        DireccionCajaTexto.getText(),
+                        String.valueOf(BoxGenero.getSelectedItem()),
+                        TelefonoCajaTexto.getText(),
+                        Float.valueOf(SalarioCajaTexto.getText()),
+                        CorreoCajaTexto.getText(),
+                        ContraseñaCajaTexto.getText());
+                dao.updateEmpleado(b, IdCajaTexto.getText());
+                LimpiarCajas();
+                ActualisarTabla();
+                Error.setText("");
+                LimpiarError();
+                LimpiarCajas();
+                ActualisarTabla();
 
             } else {
                 if (Lectura.Ltext(NombreCajaTexto.getText()) != 1) {
