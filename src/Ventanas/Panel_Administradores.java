@@ -292,18 +292,23 @@ public class Panel_Administradores extends javax.swing.JPanel {
                 + Lectura.LFloat(SalarioCajaTexto.getText());
 
         if (a == 7) {
-            dao.createAdministrador(new Administrador(1,
-                    NombreCajaTexto.getText(),
-                    Integer.valueOf(EdadeCajaTexto.getText()),
-                    DireccionCajaTexto.getText(),
-                    String.valueOf(BoxGenero.getSelectedItem()),
-                    TelefonoCajaTexto.getText(),
-                    Float.valueOf(SalarioCajaTexto.getText()),
-                    CorreoCajaTexto.getText(),
-                    ContraseñaCajaTexto.getText()));
-            LimpiarError();
-            LimpiarCajas();
-            ActualisarTabla();
+            if (ComprobarExistencia()) {
+                dao.createAdministrador(new Administrador(1,
+                        NombreCajaTexto.getText(),
+                        Integer.valueOf(EdadeCajaTexto.getText()),
+                        DireccionCajaTexto.getText(),
+                        String.valueOf(BoxGenero.getSelectedItem()),
+                        TelefonoCajaTexto.getText(),
+                        Float.valueOf(SalarioCajaTexto.getText()),
+                        CorreoCajaTexto.getText(),
+                        ContraseñaCajaTexto.getText()));
+                LimpiarError();
+                LimpiarCajas();
+                ActualisarTabla();
+            } else {
+                Error.setText("El Correo ya esta en uso");
+            }
+
         } else {
             if (Lectura.Ltext(NombreCajaTexto.getText()) != 1) {
                 Error1.setText("!");
@@ -350,11 +355,17 @@ public class Panel_Administradores extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if (Lectura.Lint(IdCajaTexto.getText()) == 1 && IdCajaTexto.getText() != null) {
-            dao.deleteAdministrador(IdCajaTexto.getText());
-            ActualisarTabla();
-            LimpiarError();
-            JOptionPane.showMessageDialog(null, "Se a eliminado el Administrador correctamente");
-            Error.setText("");
+            if (JOptionPane.showConfirmDialog(null, "¿Desea eliminar el Administrador?", "Confirmar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                dao.deleteAdministrador(IdCajaTexto.getText());
+                ActualisarTabla();
+                LimpiarError();
+                JOptionPane.showMessageDialog(null, "Se a eliminado el Administrador correctamente");
+                Error.setText("");
+            } else {
+                LimpiarError();
+                Error.setText("");
+            }
+
         } else {
             Error.setText("Ingrese una id valida");
         }
@@ -364,7 +375,6 @@ public class Panel_Administradores extends javax.swing.JPanel {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         if (Lectura.Lint(IdCajaTexto.getText()) == 1 && IdCajaTexto.getText() != null) {
-
             int a = Lectura.Ltext(NombreCajaTexto.getText())
                     + Lectura.Lint(EdadeCajaTexto.getText())
                     + Lectura.Ltext(DireccionCajaTexto.getText())
@@ -372,7 +382,6 @@ public class Panel_Administradores extends javax.swing.JPanel {
                     + Lectura.Lcorreo(CorreoCajaTexto.getText(), "+(admin)+")
                     + Lectura.LContraseña(ContraseñaCajaTexto.getText())
                     + Lectura.LFloat(SalarioCajaTexto.getText());
-
             if (a == 7) {
                 Administrador b = new Administrador(1,
                         NombreCajaTexto.getText(),
@@ -552,6 +561,17 @@ public class Panel_Administradores extends javax.swing.JPanel {
         Error5.setText("");
         Error6.setText("");
         Error7.setText("");
+    }
+
+    private boolean ComprobarExistencia() {
+        ArrayList<Administrador> Clientes = dao.readAdministrador();
+
+        for (int i = 0; i < Clientes.size(); i++) {
+            if (Clientes.get(i).getCorreo().equals(CorreoCajaTexto.getText())) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

@@ -254,7 +254,9 @@ public class PanelClientes extends javax.swing.JPanel {
                 + Lectura.LContraseña(ContraseñaCajaTexto.getText());
 
         if (a == 6) {
-            dao.createCliente(new Clientes(1,
+            
+            if (ComprobarExistencia()) {
+                    dao.createCliente(new Clientes(1,
                     NombreCajaTexto.getText(),
                     Integer.valueOf(EdadeCajaTexto.getText()),
                     DireccionCajaTexto.getText(),
@@ -265,6 +267,11 @@ public class PanelClientes extends javax.swing.JPanel {
             LimpiarError();
             LimpiarCajas();
             ActualisarTabla();
+                } else {
+                    Error.setText("El Correo ya esta en uso");
+                }
+            
+            
         } else {
             if (Lectura.Ltext(NombreCajaTexto.getText()) != 1) {
                 Error1.setText("!");
@@ -520,6 +527,18 @@ private void ActualisarTabla(){
         Error7.setText("");
         
         Error.setText("");
+    }
+    
+    
+    private boolean ComprobarExistencia() {
+        ArrayList<Clientes> Clientes = dao.readClientes();
+        
+        for (int i = 0; i < Clientes.size(); i++) {
+            if (Clientes.get(i).getCorreo().equals(CorreoCajaTexto.getText())) {
+                return false;
+            }        
+        }
+        return true;
     }
     
 

@@ -260,18 +260,23 @@ public class PanelEmpleados extends javax.swing.JPanel {
                 + Lectura.LFloat(SalarioCajaTexto.getText());
 
         if (a == 7) {
-            dao.createEmpleado(new Empleados(1,
-                    NombreCajaTexto.getText(),
-                    Integer.valueOf(EdadeCajaTexto.getText()),
-                    DireccionCajaTexto.getText(),
-                    String.valueOf(BoxGenero.getSelectedItem()),
-                    TelefonoCajaTexto.getText(),
-                    Float.valueOf(SalarioCajaTexto.getText()),
-                    CorreoCajaTexto.getText(),
-                    ContraseñaCajaTexto.getText()));
-            LimpiarError();
-            LimpiarCajas();
-            ActualisarTabla();
+            if (ComprobarExistencia()) {
+                dao.createEmpleado(new Empleados(1,
+                        NombreCajaTexto.getText(),
+                        Integer.valueOf(EdadeCajaTexto.getText()),
+                        DireccionCajaTexto.getText(),
+                        String.valueOf(BoxGenero.getSelectedItem()),
+                        TelefonoCajaTexto.getText(),
+                        Float.valueOf(SalarioCajaTexto.getText()),
+                        CorreoCajaTexto.getText(),
+                        ContraseñaCajaTexto.getText()));
+                LimpiarError();
+                LimpiarCajas();
+                ActualisarTabla();
+            } else {
+                Error.setText("El Correo ya esta en uso");
+            }
+
         } else {
             if (Lectura.Ltext(NombreCajaTexto.getText()) != 1) {
                 Error1.setText("!");
@@ -288,7 +293,7 @@ public class PanelEmpleados extends javax.swing.JPanel {
             } else {
                 Error3.setText("");
             }
-            if (Lectura.Lcorreo(CorreoCajaTexto.getText(), "+(admin)+") != 1) {
+            if (Lectura.Lcorreo(CorreoCajaTexto.getText(), "+(empleado)+") != 1) {
                 Error4.setText("!");
             } else {
                 Error4.setText("");
@@ -341,19 +346,26 @@ public class PanelEmpleados extends javax.swing.JPanel {
                     + Lectura.LFloat(SalarioCajaTexto.getText());
 
             if (a == 7) {
-                Empleados b = new Empleados(1,
-                        NombreCajaTexto.getText(),
-                        Integer.valueOf(EdadeCajaTexto.getText()),
-                        DireccionCajaTexto.getText(),
-                        String.valueOf(BoxGenero.getSelectedItem()),
-                        TelefonoCajaTexto.getText(),
-                        Float.valueOf(SalarioCajaTexto.getText()),
-                        CorreoCajaTexto.getText(),
-                        ContraseñaCajaTexto.getText());
-                dao.updateEmpleado(b, IdCajaTexto.getText());
-                LimpiarCajas();
-                ActualisarTabla();
-                Error.setText("");
+
+          
+                    Empleados b = new Empleados(1,
+                            NombreCajaTexto.getText(),
+                            Integer.valueOf(EdadeCajaTexto.getText()),
+                            DireccionCajaTexto.getText(),
+                            String.valueOf(BoxGenero.getSelectedItem()),
+                            TelefonoCajaTexto.getText(),
+                            Float.valueOf(SalarioCajaTexto.getText()),
+                            CorreoCajaTexto.getText(),
+                            ContraseñaCajaTexto.getText());
+                    dao.updateEmpleado(b, IdCajaTexto.getText());
+                    LimpiarCajas();
+                    ActualisarTabla();
+                    Error.setText("");
+                    LimpiarError();
+                    LimpiarCajas();
+                    ActualisarTabla();
+              
+
             } else {
                 if (Lectura.Ltext(NombreCajaTexto.getText()) != 1) {
                     Error1.setText("!");
@@ -541,6 +553,7 @@ public class PanelEmpleados extends javax.swing.JPanel {
     }
 
     private void LimpiarError() {
+        Error.setText("");
         Error1.setText("");
         Error2.setText("");
         Error3.setText("");
@@ -548,6 +561,17 @@ public class PanelEmpleados extends javax.swing.JPanel {
         Error5.setText("");
         Error6.setText("");
         Error7.setText("");
+    }
+
+    private boolean ComprobarExistencia() {
+        ArrayList<Empleados> Clientes = dao.readEmpleados();
+
+        for (int i = 0; i < Clientes.size(); i++) {
+            if (Clientes.get(i).getCorreo().equals(CorreoCajaTexto.getText())) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
