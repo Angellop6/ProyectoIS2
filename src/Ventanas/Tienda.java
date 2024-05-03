@@ -24,6 +24,7 @@ public class Tienda extends javax.swing.JFrame {
     public static String Nombre = "";
     public static Integer Id = null;
     public static Integer IdProducto = null;
+    public static String TipoUsuario = null;
     DaoProductos daoP = new DaoProductos();
     ArrayList<Integer> Idproductos = new ArrayList<>();
     ArrayList<Productos> productos = daoP.readProductos();
@@ -71,6 +72,7 @@ public class Tienda extends javax.swing.JFrame {
         Camisa1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ecomoda");
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -338,12 +340,28 @@ public class Tienda extends javax.swing.JFrame {
             InicioSesion IS = new InicioSesion(new JFrame(), true);
             IS.setVisible(true);
         } else {
-            java.awt.EventQueue.invokeLater(new Runnable() {
+            if(TipoUsuario.equals("cliente")) {
+                java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     new Perfil().setVisible(true);
                 }
             });
-
+            
+            }else if(TipoUsuario.equals("admin")){
+                Productos_Administracion pa = new Productos_Administracion();
+                pa.setVisible(true);
+            
+            }else if(TipoUsuario.equals("empleado")){
+                Productos_Administracion pa = new Productos_Administracion();
+                pa.Panelprincipal.remove(0);//admin
+                pa.Panelprincipal.remove(1);//clientes
+                pa.Panelprincipal.remove(2);//Empleados
+                pa.setVisible(true);
+            
+            }
+            
+            
+            
         }
     }//GEN-LAST:event_PerfilActionPerformed
 

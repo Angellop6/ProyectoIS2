@@ -151,25 +151,25 @@ public class InicioSesion extends javax.swing.JDialog {
 
     private void IniciodeS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciodeS1ActionPerformed
         int e = +Lectura.Lcorreo(CorreoTXT1.getText(), "+(gmail)+")
-                +Lectura.Lcorreo(CorreoTXT1.getText(), "+(admin)+")
-                +Lectura.Lcorreo(CorreoTXT1.getText(), "+(empleado)+")
+                + Lectura.Lcorreo(CorreoTXT1.getText(), "+(admin)+")
+                + Lectura.Lcorreo(CorreoTXT1.getText(), "+(empleado)+")
                 + Lectura.LContraseña(ContraseñaTxT1.getText());
 
         if (e == 2) {
-            int admin,empleado,usuario;
+            int admin, empleado, usuario;
             admin = Lectura.Lcorreo(CorreoTXT1.getText(), "+(admin)+");
             empleado = Lectura.Lcorreo(CorreoTXT1.getText(), "+(empleado)+");
-            usuario =  Lectura.Lcorreo(CorreoTXT1.getText(), "+(gmail)+");
-            if(admin == 1){
+            usuario = Lectura.Lcorreo(CorreoTXT1.getText(), "+(gmail)+");
+            if (admin == 1) {
                 SesionAdmin();
             }
-            if(empleado == 1){
+            if (empleado == 1) {
                 SesionEmpleado();
             }
-            if(usuario == 1 ){
+            if (usuario == 1) {
                 SesionUsuario();
-            }       
-            
+            }
+
         } else {
             Error.setText("Ingrese valores validos");
         }
@@ -194,58 +194,66 @@ public class InicioSesion extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
-private void SesionUsuario(){
-    Clientes a = dao.readClienteCorreo(CorreoTXT1.getText());
-            if (a == null) {
-                Error.setText("No se encontro la cuenta");
+private void SesionUsuario() {
+        Clientes a = dao.readClienteCorreo(CorreoTXT1.getText());
+        if (a == null) {
+            Error.setText("No se encontro la cuenta");
+        } else {
+            if (a.getContraseña().equals(ContraseñaTxT1.getText())) {
+                Tienda.Nombre = a.getNombre();
+                Tienda.Id = a.getId();
+                Tienda.NombreUsuario.setText(a.getNombre() + " id: " + Tienda.Id);
+                Tienda.TipoUsuario = "cliente";
+                Error.setText("");
+                this.dispose();
             } else {
-                if (a.getContraseña().equals(ContraseñaTxT1.getText())) {
-                    Tienda.Nombre = a.getNombre();
-                    Tienda.Id = a.getId();
-                    Tienda.NombreUsuario.setText(a.getNombre() + " id: " + Tienda.Id);
-                    Error.setText("");
-                    this.dispose();
-                } else {
-                    Error.setText("La Contraseña es incorrecta");
-                }
+                Error.setText("La Contraseña es incorrecta");
             }
-}
+        }
+    }
 
-private void SesionAdmin(){
-    Administrador a = daoA.readAdministradorCorreo(CorreoTXT1.getText());
-            if (a == null) {
-                Error.setText("No se encontro la cuenta");
+    private void SesionAdmin() {
+        Administrador a = daoA.readAdministradorCorreo(CorreoTXT1.getText());
+        if (a == null) {
+            Error.setText("No se encontro la cuenta");
+        } else {
+            if (a.getContraseña().equals(ContraseñaTxT1.getText())) {
+//                    Productos_Administracion pa = new Productos_Administracion();
+//                    pa.setVisible(true);
+                Tienda.Nombre = a.getNombre();
+                Tienda.Id = a.getId();
+                Tienda.NombreUsuario.setText(a.getNombre() + " id: " + Tienda.Id);
+                Tienda.TipoUsuario = "admin";
+                Error.setText("");
+                this.dispose();
             } else {
-                if (a.getContraseña().equals(ContraseñaTxT1.getText())) {
-                    Productos_Administracion pa = new Productos_Administracion();
-                    pa.setVisible(true);
-                    Error.setText("");    
-                    this.dispose();
-                } else {
-                    Error.setText("La Contraseña es incorrecta");
-                }
+                Error.setText("La Contraseña es incorrecta");
             }
-}
+        }
+    }
 
+    private void SesionEmpleado() {
+        Empleados a = daoE.readEmpleadosCorreo(CorreoTXT1.getText());
+        if (a == null) {
+            Error.setText("No se encontro la cuenta");
+        } else {
+            if (a.getContraseña().equals(ContraseñaTxT1.getText())) {
+//                    Productos_Administracion pa = new Productos_Administracion();
+//                    pa.Panelprincipal.remove(0);//admin
+//                    pa.Panelprincipal.remove(1);//clientes
+//                    pa.Panelprincipal.remove(2);//Empleados
+//                    pa.setVisible(true);
+                Tienda.Nombre = a.getNombre();
+                Tienda.Id = a.getId();
+                Tienda.NombreUsuario.setText(a.getNombre() + " id: " + Tienda.Id);
+                Tienda.TipoUsuario = "empleado";
+                Error.setText("");
+                this.dispose();
 
-private void SesionEmpleado(){
-    Empleados a = daoE.readEmpleadosCorreo(CorreoTXT1.getText());
-            if (a == null) {
-                Error.setText("No se encontro la cuenta");
             } else {
-                if (a.getContraseña().equals(ContraseñaTxT1.getText())) {
-                    Productos_Administracion pa = new Productos_Administracion();
-                    pa.Panelprincipal.remove(0);//admin
-                    pa.Panelprincipal.remove(1);//clientes
-                    pa.Panelprincipal.remove(2);//Empleados
-                    pa.setVisible(true);
-                    Error.setText("");    
-                    this.dispose();
-                } else {
-                    Error.setText("La Contraseña es incorrecta");
-                }
+                Error.setText("La Contraseña es incorrecta");
             }
-}
-
+        }
+    }
 
 }
