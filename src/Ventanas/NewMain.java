@@ -15,16 +15,12 @@ public class NewMain {
      */
     public static void main(String[] args) {
         
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Tienda().setVisible(true);
-            }
-        });
-        
-//        Tienda p =  new Tienda();
-//        //p.Panelprincipal.remove(0);
-//        p.setVisible(true);
+
 //        
+//        Tienda p =  new Tienda();
+//        p.Panelprincipal.remove(0);
+//        p.setVisible(true);
+        
         
     }
     

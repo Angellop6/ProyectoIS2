@@ -62,6 +62,8 @@ public class DaoAdministrador implements IAdministrador {
         Administrador g =  BuscarCorreo(Correo);
         return g;
     }
+    
+    
 
 
     private void createGerenteSQl(Administrador a){
@@ -200,6 +202,8 @@ public class DaoAdministrador implements IAdministrador {
      
      
      }
+
+    
 
     
     

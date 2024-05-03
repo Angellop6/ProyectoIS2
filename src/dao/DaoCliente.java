@@ -194,9 +194,7 @@ public class DaoCliente implements IClientes {
             
             
             
-        return a;
-     
-     
+        return a;   
      }
     
     

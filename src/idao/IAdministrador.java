@@ -19,4 +19,5 @@ public interface IAdministrador {
     void updateAdministrador(Administrador a, String id);
     void deleteAdministrador(String id);
     Administrador readAdministradorCorreo(String Correo);
+   
 }

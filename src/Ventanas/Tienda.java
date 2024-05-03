@@ -623,4 +623,5 @@ public class Tienda extends javax.swing.JFrame {
 
     }
 
+    
 }
