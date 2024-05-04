@@ -21,10 +21,11 @@ import javax.swing.JFrame;
 
 public class Tienda extends javax.swing.JFrame {
 
-    public static String Nombre = "";
-    public static Integer Id = null;
-    public static Integer IdProducto = null;
+    public static String Nombre = null;
+    public static Integer Id = null;    
     public static String TipoUsuario = null;
+    
+    public static Integer IdProducto = null;
     DaoProductos daoP = new DaoProductos();
     ArrayList<Integer> Idproductos = new ArrayList<>();
     ArrayList<Productos> productos = daoP.readProductos();
@@ -350,7 +351,8 @@ public class Tienda extends javax.swing.JFrame {
             }else if(TipoUsuario.equals("admin")){
                 Productos_Administracion pa = new Productos_Administracion();
                 pa.setVisible(true);
-            
+                
+                
             }else if(TipoUsuario.equals("empleado")){
                 Productos_Administracion pa = new Productos_Administracion();
                 pa.Panelprincipal.remove(0);//admin

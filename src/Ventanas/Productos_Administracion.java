@@ -4,18 +4,26 @@
  */
 package Ventanas;
 
+import Clases.Administrador;
+import Clases.Empleados;
+import dao.DaoAdministrador;
+import dao.DaoEmpleados;
+
 public class Productos_Administracion extends javax.swing.JFrame {
 
-    //vamos a ver que onda lol que XD 
+    DaoEmpleados daoE = new DaoEmpleados();
+    DaoAdministrador daoA = new DaoAdministrador();///vamos a ver que onda lol que XD 
+
     public Productos_Administracion() {
         initComponents();
+        EstableccerPerfil();
     }
 
-     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         Panelprincipal = new javax.swing.JTabbedPane();
         PaneldeAdministradores = new javax.swing.JPanel();
         panel_Administradores2 = new Ventanas.Panel_Administradores();
@@ -27,11 +35,18 @@ public class Productos_Administracion extends javax.swing.JFrame {
         panelProductos1 = new Ventanas.PanelProductos();
         PanelCategoria = new javax.swing.JPanel();
         panelCategorias1 = new Ventanas.PanelCategorias();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        PANombre = new javax.swing.JLabel();
+        PACorreo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         PaneldeAdministradores.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        PaneldeAdministradores.add(panel_Administradores2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        PaneldeAdministradores.add(panel_Administradores2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 350));
 
         Panelprincipal.addTab("Administradoes", PaneldeAdministradores);
 
@@ -89,24 +104,47 @@ public class Productos_Administracion extends javax.swing.JFrame {
 
         Panelprincipal.addTab("Categoria", PanelCategoria);
 
+        jPanel1.add(Panelprincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, -1, 380));
+
+        jButton1.setText("Cerrar Secion");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, -1));
+
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 90, 80));
+
+        PANombre.setText("Nombre");
+        jPanel1.add(PANombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 240, -1));
+
+        PACorreo.setText("Correo");
+        jPanel1.add(PACorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 240, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Panelprincipal)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 41, Short.MAX_VALUE)
-                .addComponent(Panelprincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Tienda.Nombre = null;
+        Tienda.Id = null;
+        Tienda.TipoUsuario = null;
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -138,23 +176,39 @@ public class Productos_Administracion extends javax.swing.JFrame {
             }
         });
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JLabel PACorreo;
+    public static javax.swing.JLabel PANombre;
     private javax.swing.JPanel PanelCategoria;
     private javax.swing.JPanel PanelEmpleados;
     private javax.swing.JPanel PaneldeAdministradores;
     private javax.swing.JPanel Paneldeclientes;
     private javax.swing.JPanel Paneldeproductos;
     public javax.swing.JTabbedPane Panelprincipal;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private Ventanas.PanelCategorias panelCategorias1;
     private Ventanas.PanelClientes panelClientes1;
     private Ventanas.PanelEmpleados panelEmpleados1;
     private Ventanas.PanelProductos panelProductos1;
     private Ventanas.Panel_Administradores panel_Administradores2;
     // End of variables declaration//GEN-END:variables
+
+    private void EstableccerPerfil() {
+        if (Tienda.TipoUsuario.equals("admin")) {
+            Administrador admin = daoA.readAdministrador(String.valueOf(Tienda.Id));
+            PACorreo.setText(admin.getCorreo());
+            PANombre.setText(admin.getNombre());
+        } else if (Tienda.TipoUsuario.equals("empleado")) {
+            Empleados empleado = daoE.readEmpleado(String.valueOf(Tienda.Id));
+            PACorreo.setText(empleado.getCorreo());
+            PANombre.setText(empleado.getNombre());
+
+        }
+
+    }
+
 }
-
-
-
