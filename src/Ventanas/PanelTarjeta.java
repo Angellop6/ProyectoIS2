@@ -67,9 +67,20 @@ public class PanelTarjeta extends javax.swing.JPanel {
 
         jLabel4.setText("Fecha de expiracion");
 
+        CVVText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CVVTextKeyTyped(evt);
+            }
+        });
+
         NombreText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NombreTextActionPerformed(evt);
+            }
+        });
+        NombreText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NombreTextKeyTyped(evt);
             }
         });
 
@@ -78,10 +89,20 @@ public class PanelTarjeta extends javax.swing.JPanel {
                 FechaTextActionPerformed(evt);
             }
         });
+        FechaText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                FechaTextKeyTyped(evt);
+            }
+        });
 
         TarjetaText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TarjetaTextActionPerformed(evt);
+            }
+        });
+        TarjetaText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TarjetaTextKeyTyped(evt);
             }
         });
 
@@ -107,17 +128,6 @@ public class PanelTarjeta extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(94, 94, 94)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(NombreText, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(Error1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CVVText))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(162, 162, 162)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(TarjetaText, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -130,7 +140,18 @@ public class PanelTarjeta extends javax.swing.JPanel {
                         .addComponent(Error4))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(169, 169, 169)
-                        .addComponent(jButton1)))
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(158, 158, 158)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(NombreText, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Error1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CVVText)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Error2)
                 .addContainerGap(53, Short.MAX_VALUE))
@@ -138,20 +159,20 @@ public class PanelTarjeta extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(68, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(NombreText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(68, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
                         .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Error1)
                             .addComponent(CVVText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Error2))))
+                            .addComponent(Error2)
+                            .addComponent(NombreText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(27, 27, 27)
                 .addComponent(jLabel3)
                 .addGap(6, 6, 6)
@@ -221,6 +242,30 @@ public class PanelTarjeta extends javax.swing.JPanel {
 
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void NombreTextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreTextKeyTyped
+        if(NombreText.getText().length() >= 50){
+            evt.consume();
+        }        
+    }//GEN-LAST:event_NombreTextKeyTyped
+
+    private void CVVTextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CVVTextKeyTyped
+        if(CVVText.getText().length() >= 3){
+            evt.consume();
+        }    
+    }//GEN-LAST:event_CVVTextKeyTyped
+
+    private void TarjetaTextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TarjetaTextKeyTyped
+        if(TarjetaText.getText().length() >= 16){
+            evt.consume();
+        }    
+    }//GEN-LAST:event_TarjetaTextKeyTyped
+
+    private void FechaTextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FechaTextKeyTyped
+        if(FechaText.getText().length() >= 7){
+            evt.consume();
+        }    
+    }//GEN-LAST:event_FechaTextKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
