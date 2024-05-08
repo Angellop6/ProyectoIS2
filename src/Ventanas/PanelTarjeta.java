@@ -4,6 +4,20 @@
  */
 package Ventanas;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.util.Date;
+
+
+
+
 import Clases.Carrito;
 import Clases.Clientes;
 import Clases.Productos;
@@ -214,6 +228,7 @@ public class PanelTarjeta extends javax.swing.JPanel {
                 + Lectura.validarFecha(FechaText.getText());
         if (res == 4) {
             restarcantidad();
+            crearticket();
             comprar();
             limpiarError();
             JOptionPane.showMessageDialog(null, "Se a Realizado la compra");
@@ -316,7 +331,78 @@ public class PanelTarjeta extends javax.swing.JPanel {
             DaoP.updateCantidad(cant, String.valueOf(Carrito.get(i).getIdProducto()));
             
         }
-
+        
     }
+    
+    private void crearticket() {
+    // Obtener la fecha actual
+    Date fechaActual = new Date();
+
+    // Crear un nuevo documento PDF
+    Document document = new Document(PageSize.A4);
+    try {
+        PdfWriter.getInstance(document, new FileOutputStream("ticket.pdf"));
+
+        // Abrir el documento
+        document.open();
+
+        // Agregar el nombre de la empresa
+        document.add(new Paragraph("eComoda\n\n"));
+
+        // Agregar la fecha actual
+        document.add(new Paragraph("Fecha: " + fechaActual.toString() + "\n\n"));
+
+        // Crear una tabla para los productos del carrito
+        PdfPTable table = new PdfPTable(8);
+
+        // Agregar encabezados de la tabla
+        table.addCell("ID");
+        table.addCell("Nombre");
+        table.addCell("Cantidad");
+        table.addCell("Precio");
+        table.addCell("Total");
+        table.addCell("Color");
+        table.addCell("Descripción");
+        table.addCell("Imagen");
+
+        // Agregar datos de productos al carrito
+        for (int i = 0; i < Carrito.size(); i++) {
+            Productos prod = DaoP.readProducto(String.valueOf(Carrito.get(i).getIdProducto()));
+
+            // Agregar fila a la tabla
+            table.addCell(String.valueOf(Carrito.get(i).getId()));
+            table.addCell(prod.getNombre());
+            table.addCell(String.valueOf(Carrito.get(i).getCantidad()));
+            table.addCell(String.valueOf(prod.getPrecio()));
+            table.addCell(String.valueOf(Carrito.get(i).getTotal()));
+            table.addCell(prod.getColor());
+            table.addCell(prod.getDescripcion());
+
+            try {
+                // Aquí puedes manejar la imagen como desees
+                // Por ejemplo, puedes agregar una celda con la ruta de la imagen
+                PdfPCell cell = new PdfPCell(new Paragraph("Ruta de la imagen"));
+                table.addCell(cell);
+            } catch (Exception e) {
+                table.addCell("no imagen");
+            }
+        }
+
+        // Agregar la tabla al documento
+        document.add(table);
+
+    } catch (DocumentException | FileNotFoundException e) {
+        e.printStackTrace();
+    } finally {
+        // Cerrar el documento
+        if (document != null) {
+            document.close();
+        }
+    }
+}
+    
+    
+    
+    
 
 }
