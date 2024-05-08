@@ -69,13 +69,13 @@ public class PanelClientes extends javax.swing.JPanel {
         jPanel8.setBackground(new java.awt.Color(153, 153, 153));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Boton_guardar.setText("Guardar");
+        Boton_guardar.setText("Crear Nuevo");
         Boton_guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Boton_guardarActionPerformed(evt);
             }
         });
-        jPanel8.add(Boton_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, -1, -1));
+        jPanel8.add(Boton_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
 
         Nuevo.setText("Nuevo");
         Nuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +91,11 @@ public class PanelClientes extends javax.swing.JPanel {
         NombreCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NombreCajaTextoActionPerformed(evt);
+            }
+        });
+        NombreCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NombreCajaTextoKeyTyped(evt);
             }
         });
         jPanel8.add(NombreCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 165, -1));
@@ -110,6 +115,11 @@ public class PanelClientes extends javax.swing.JPanel {
                 TelefonoCajaTextoActionPerformed(evt);
             }
         });
+        TelefonoCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TelefonoCajaTextoKeyTyped(evt);
+            }
+        });
         jPanel8.add(TelefonoCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 165, -1));
 
         jLabel3.setText("Telefono");
@@ -118,6 +128,11 @@ public class PanelClientes extends javax.swing.JPanel {
         EdadeCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EdadeCajaTextoActionPerformed(evt);
+            }
+        });
+        EdadeCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                EdadeCajaTextoKeyTyped(evt);
             }
         });
         jPanel8.add(EdadeCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 165, -1));
@@ -204,6 +219,11 @@ public class PanelClientes extends javax.swing.JPanel {
                 IdCajaTextoActionPerformed(evt);
             }
         });
+        IdCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                IdCajaTextoKeyTyped(evt);
+            }
+        });
         jPanel2.add(IdCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 110, -1));
 
         Boton_Buscar.setText("Buscar");
@@ -222,7 +242,7 @@ public class PanelClientes extends javax.swing.JPanel {
         });
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
 
-        jButton5.setText("Editar");
+        jButton5.setText("Guardar");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -313,7 +333,7 @@ public class PanelClientes extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if (Lectura.Lint(IdCajaTexto.getText()) == 1 && IdCajaTexto.getText() != null) {
-            if (JOptionPane.showConfirmDialog(null, "¿Desea eliminar el Administrador?", "Confirmar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            if (JOptionPane.showConfirmDialog(null, "¿Desea eliminar al Cliente?", "Confirmar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 dao.deleteCliente(IdCajaTexto.getText());
                 ActualisarTabla();
                 LimpiarError();
@@ -449,6 +469,30 @@ public class PanelClientes extends javax.swing.JPanel {
     private void ContraseñaCajaTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContraseñaCajaTextoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ContraseñaCajaTextoActionPerformed
+
+    private void NombreCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreCajaTextoKeyTyped
+        if (NombreCajaTexto.getText().length() >= 50) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_NombreCajaTextoKeyTyped
+
+    private void EdadeCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EdadeCajaTextoKeyTyped
+        if (EdadeCajaTexto.getText().length() >= 2) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_EdadeCajaTextoKeyTyped
+
+    private void TelefonoCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TelefonoCajaTextoKeyTyped
+        if (NombreCajaTexto.getText().length() >= 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_TelefonoCajaTextoKeyTyped
+
+    private void IdCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IdCajaTextoKeyTyped
+        if (IdCajaTexto.getText().length() >= 4) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_IdCajaTextoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -157,6 +157,7 @@ public class PanelCarrito extends javax.swing.JPanel {
         try {
             DaoC.deleteCarrito(IdTxT.getText());
             IdTxT.setText("");
+            Calculartotal();
             llenarTabla();
         } catch (Exception e) {
             System.out.println("no se selecciono la id o no se encontro");

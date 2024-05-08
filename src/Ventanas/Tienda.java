@@ -40,6 +40,8 @@ public class Tienda extends javax.swing.JFrame {
         Botonmenu.setIcon(SetIcono("/Imagenes/menu.png", Botonmenu));
         BotonAtras.setIcon(SetIcono("/Imagenes/Flecha.png", BotonAtras));
         BotonAdelante.setIcon(SetIcono("/Imagenes/Flecha2.png", BotonAdelante));
+        
+        
         MostrarProductos();
         //Producto1.setIcon(crearIconoDesdeBits( P.getImagen(), 100, 100));
     }
@@ -356,8 +358,11 @@ public class Tienda extends javax.swing.JFrame {
             }else if(TipoUsuario.equals("empleado")){
                 Productos_Administracion pa = new Productos_Administracion();
                 pa.Panelprincipal.remove(0);//admin
-                pa.Panelprincipal.remove(1);//clientes
-                pa.Panelprincipal.remove(2);//Empleados
+                pa.Panelprincipal.remove(0);//empleado
+                pa.Panelprincipal.remove(0);//cliente
+
+
+              
                 pa.setVisible(true);
             
             }

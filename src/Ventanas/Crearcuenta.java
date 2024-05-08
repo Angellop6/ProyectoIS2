@@ -78,11 +78,21 @@ public class Crearcuenta extends javax.swing.JDialog {
                 NombreCajaTextoActionPerformed(evt);
             }
         });
+        NombreCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NombreCajaTextoKeyTyped(evt);
+            }
+        });
         jPanel8.add(NombreCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 165, -1));
 
         DireccionCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DireccionCajaTextoActionPerformed(evt);
+            }
+        });
+        DireccionCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                DireccionCajaTextoKeyTyped(evt);
             }
         });
         jPanel8.add(DireccionCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 165, -1));
@@ -95,6 +105,11 @@ public class Crearcuenta extends javax.swing.JDialog {
                 TelefonoCajaTextoActionPerformed(evt);
             }
         });
+        TelefonoCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TelefonoCajaTextoKeyTyped(evt);
+            }
+        });
         jPanel8.add(TelefonoCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 165, -1));
 
         jLabel3.setText("Telefono");
@@ -103,6 +118,11 @@ public class Crearcuenta extends javax.swing.JDialog {
         EdadeCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EdadeCajaTextoActionPerformed(evt);
+            }
+        });
+        EdadeCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                EdadeCajaTextoKeyTyped(evt);
             }
         });
         jPanel8.add(EdadeCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 165, -1));
@@ -166,6 +186,7 @@ public class Crearcuenta extends javax.swing.JDialog {
         getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 600));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void NombreCajaTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreCajaTextoActionPerformed
@@ -248,6 +269,30 @@ public class Crearcuenta extends javax.swing.JDialog {
     private void EdadeCajaTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EdadeCajaTextoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EdadeCajaTextoActionPerformed
+
+    private void EdadeCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EdadeCajaTextoKeyTyped
+        if (EdadeCajaTexto.getText().length() >= 2) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_EdadeCajaTextoKeyTyped
+
+    private void TelefonoCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TelefonoCajaTextoKeyTyped
+        if (TelefonoCajaTexto.getText().length() >= 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_TelefonoCajaTextoKeyTyped
+
+    private void NombreCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreCajaTextoKeyTyped
+        if (NombreCajaTexto.getText().length() >= 50) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_NombreCajaTextoKeyTyped
+
+    private void DireccionCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DireccionCajaTextoKeyTyped
+        if (DireccionCajaTexto.getText().length() >= 50) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_DireccionCajaTextoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

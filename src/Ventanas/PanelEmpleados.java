@@ -76,7 +76,7 @@ public class PanelEmpleados extends javax.swing.JPanel {
                 Boton_guardarActionPerformed(evt);
             }
         });
-        jPanel8.add(Boton_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, -1, -1));
+        jPanel8.add(Boton_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, -1, -1));
 
         Nuevo.setText("Nuevo");
         Nuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -84,106 +84,129 @@ public class PanelEmpleados extends javax.swing.JPanel {
                 NuevoActionPerformed(evt);
             }
         });
-        jPanel8.add(Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
+        jPanel8.add(Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
 
         jLabel1.setText("Nombre");
-        jPanel8.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 54, -1));
+        jPanel8.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 54, -1));
 
         NombreCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NombreCajaTextoActionPerformed(evt);
             }
         });
-        jPanel8.add(NombreCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 165, -1));
+        NombreCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NombreCajaTextoKeyTyped(evt);
+            }
+        });
+        jPanel8.add(NombreCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 165, -1));
 
         DireccionCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DireccionCajaTextoActionPerformed(evt);
             }
         });
-        jPanel8.add(DireccionCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 165, -1));
+        jPanel8.add(DireccionCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 165, -1));
 
         jLabel2.setText("Direeccion");
-        jPanel8.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 70, -1));
+        jPanel8.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 70, -1));
 
         TelefonoCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TelefonoCajaTextoActionPerformed(evt);
             }
         });
-        jPanel8.add(TelefonoCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 165, -1));
+        TelefonoCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TelefonoCajaTextoKeyTyped(evt);
+            }
+        });
+        jPanel8.add(TelefonoCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 165, -1));
 
         jLabel3.setText("Telefono");
-        jPanel8.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 54, -1));
+        jPanel8.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 54, -1));
 
         EdadeCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EdadeCajaTextoActionPerformed(evt);
             }
         });
-        jPanel8.add(EdadeCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 165, -1));
+        EdadeCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EdadeCajaTextoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                EdadeCajaTextoKeyTyped(evt);
+            }
+        });
+        jPanel8.add(EdadeCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 165, -1));
 
         jLabel4.setText("Salario");
-        jPanel8.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 54, -1));
+        jPanel8.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 54, -1));
 
         SalarioCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalarioCajaTextoActionPerformed(evt);
             }
         });
-        jPanel8.add(SalarioCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 165, -1));
+        SalarioCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                SalarioCajaTextoKeyTyped(evt);
+            }
+        });
+        jPanel8.add(SalarioCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 165, -1));
 
         jLabel5.setText("Genero");
-        jPanel8.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 54, -1));
+        jPanel8.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 54, -1));
 
         jLabel6.setText("Edad");
-        jPanel8.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 54, -1));
+        jPanel8.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 54, -1));
 
         jLabel7.setText("Contraseña");
-        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 70, -1));
+        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 70, -1));
 
         CorreoCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CorreoCajaTextoActionPerformed(evt);
             }
         });
-        jPanel8.add(CorreoCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 165, -1));
+        jPanel8.add(CorreoCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 165, -1));
 
         ContraseñaCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ContraseñaCajaTextoActionPerformed(evt);
             }
         });
-        jPanel8.add(ContraseñaCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 165, -1));
+        jPanel8.add(ContraseñaCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 165, -1));
 
         jLabel8.setText("Correo");
-        jPanel8.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 54, -1));
+        jPanel8.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 54, -1));
 
         Error7.setText("jLabel9");
-        jPanel8.add(Error7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, -1, -1));
+        jPanel8.add(Error7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, -1, -1));
 
         Error1.setText("jLabel9");
-        jPanel8.add(Error1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, -1));
+        jPanel8.add(Error1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
 
         Error2.setText("jLabel9");
-        jPanel8.add(Error2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
+        jPanel8.add(Error2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, -1));
 
         Error3.setText("jLabel9");
-        jPanel8.add(Error3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, -1, -1));
+        jPanel8.add(Error3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
 
         Error4.setText("jLabel9");
-        jPanel8.add(Error4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, -1, -1));
+        jPanel8.add(Error4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, -1, -1));
 
         Error5.setText("jLabel9");
-        jPanel8.add(Error5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, 20));
+        jPanel8.add(Error5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, -1, 20));
 
         Error6.setText("jLabel9");
-        jPanel8.add(Error6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, -1, -1));
+        jPanel8.add(Error6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, -1, -1));
 
         BoxGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hombre", "Mujer" }));
-        jPanel8.add(BoxGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 170, -1));
+        jPanel8.add(BoxGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 170, -1));
 
-        add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 350));
+        add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 330));
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -211,14 +234,19 @@ public class PanelEmpleados extends javax.swing.JPanel {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 700, 120));
 
         IdLeavel.setText("Id");
-        jPanel1.add(IdLeavel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, -1));
+        jPanel1.add(IdLeavel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, -1));
 
         IdCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IdCajaTextoActionPerformed(evt);
             }
         });
-        jPanel1.add(IdCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 110, -1));
+        IdCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                IdCajaTextoKeyTyped(evt);
+            }
+        });
+        jPanel1.add(IdCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 110, -1));
 
         Boton_Buscar.setText("Buscar");
         Boton_Buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -226,7 +254,7 @@ public class PanelEmpleados extends javax.swing.JPanel {
                 Boton_BuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(Boton_Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
+        jPanel1.add(Boton_Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
 
         jButton3.setText("Eliminar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -234,7 +262,7 @@ public class PanelEmpleados extends javax.swing.JPanel {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
 
         jButton5.setText("Editar");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -242,12 +270,12 @@ public class PanelEmpleados extends javax.swing.JPanel {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, -1, -1));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, -1, -1));
 
         Error.setText("jLabel9");
-        jPanel1.add(Error, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 160, -1));
+        jPanel1.add(Error, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 160, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 770, 350));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 770, 330));
     }// </editor-fold>//GEN-END:initComponents
 
     private void Boton_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_guardarActionPerformed
@@ -324,7 +352,7 @@ public class PanelEmpleados extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if (Lectura.Lint(IdCajaTexto.getText()) == 1 && IdCajaTexto.getText() != null) {
-            if (JOptionPane.showConfirmDialog(null, "¿Desea eliminar el Administrador?", "Confirmar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            if (JOptionPane.showConfirmDialog(null, "¿Desea eliminar el Empleado?", "Confirmar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 dao.deleteEmpleado(IdCajaTexto.getText());
                 ActualisarTabla();
                 LimpiarError();
@@ -478,6 +506,40 @@ public class PanelEmpleados extends javax.swing.JPanel {
     private void ContraseñaCajaTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContraseñaCajaTextoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ContraseñaCajaTextoActionPerformed
+
+    private void NombreCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreCajaTextoKeyTyped
+        if (NombreCajaTexto.getText().length() >= 50) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_NombreCajaTextoKeyTyped
+
+    private void EdadeCajaTextoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EdadeCajaTextoKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EdadeCajaTextoKeyPressed
+
+    private void EdadeCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EdadeCajaTextoKeyTyped
+        if (EdadeCajaTexto.getText().length() >= 2) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_EdadeCajaTextoKeyTyped
+
+    private void TelefonoCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TelefonoCajaTextoKeyTyped
+        if (TelefonoCajaTexto.getText().length() >= 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_TelefonoCajaTextoKeyTyped
+
+    private void SalarioCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SalarioCajaTextoKeyTyped
+        if (SalarioCajaTexto.getText().length() >= 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_SalarioCajaTextoKeyTyped
+
+    private void IdCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IdCajaTextoKeyTyped
+        if (IdCajaTexto.getText().length() >= 4) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_IdCajaTextoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

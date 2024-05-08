@@ -98,11 +98,21 @@ public class PanelProductos extends javax.swing.JPanel {
                 NombreCajaTextoActionPerformed(evt);
             }
         });
+        NombreCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NombreCajaTextoKeyTyped(evt);
+            }
+        });
         jPanel8.add(NombreCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 165, -1));
 
         CantidadCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CantidadCajaTextoActionPerformed(evt);
+            }
+        });
+        CantidadCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CantidadCajaTextoKeyTyped(evt);
             }
         });
         jPanel8.add(CantidadCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 165, -1));
@@ -115,6 +125,11 @@ public class PanelProductos extends javax.swing.JPanel {
                 PrecioCajaTextoActionPerformed(evt);
             }
         });
+        PrecioCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                PrecioCajaTextoKeyTyped(evt);
+            }
+        });
         jPanel8.add(PrecioCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 165, -1));
 
         jLabel3.setText("Preccio");
@@ -125,11 +140,21 @@ public class PanelProductos extends javax.swing.JPanel {
                 MarcaCajaTextoActionPerformed(evt);
             }
         });
+        MarcaCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                MarcaCajaTextoKeyTyped(evt);
+            }
+        });
         jPanel8.add(MarcaCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 165, -1));
 
         ColorCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ColorCajaTextoActionPerformed(evt);
+            }
+        });
+        ColorCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ColorCajaTextoKeyTyped(evt);
             }
         });
         jPanel8.add(ColorCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 165, -1));
@@ -246,6 +271,11 @@ public class PanelProductos extends javax.swing.JPanel {
         IdCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IdCajaTextoActionPerformed(evt);
+            }
+        });
+        IdCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                IdCajaTextoKeyTyped(evt);
             }
         });
         jPanel1.add(IdCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 110, -1));
@@ -386,12 +416,12 @@ public class PanelProductos extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if (Lectura.Lint(IdCajaTexto.getText()) == 1 && IdCajaTexto.getText() != null) {
-            if (JOptionPane.showConfirmDialog(null, "¿Desea eliminar el Administrador?", "Confirmar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            if (JOptionPane.showConfirmDialog(null, "¿Desea eliminar este producto?", "Confirmar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 dao.deleteProducto(IdCajaTexto.getText());
                 ActualisarTabla();
                 LimpiarCajas();
                 LimpiarError();
-                JOptionPane.showMessageDialog(null, "Se a eliminado el Administrador correctamente");
+                JOptionPane.showMessageDialog(null, "Se a eliminado el Producto correctamente");
                 Error.setText("");
             } else {
                 LimpiarError();
@@ -532,6 +562,42 @@ public class PanelProductos extends javax.swing.JPanel {
             Imagenleavel.setIcon(mIcono);
         }
     }//GEN-LAST:event_ExaminarbotonActionPerformed
+
+    private void NombreCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreCajaTextoKeyTyped
+        if (NombreCajaTexto.getText().length() >= 50) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_NombreCajaTextoKeyTyped
+
+    private void MarcaCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MarcaCajaTextoKeyTyped
+        if (MarcaCajaTexto.getText().length() >= 20) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_MarcaCajaTextoKeyTyped
+
+    private void CantidadCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CantidadCajaTextoKeyTyped
+        if (CantidadCajaTexto.getText().length() >= 5) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_CantidadCajaTextoKeyTyped
+
+    private void ColorCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ColorCajaTextoKeyTyped
+        if (ColorCajaTexto.getText().length() >= 15) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_ColorCajaTextoKeyTyped
+
+    private void PrecioCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrecioCajaTextoKeyTyped
+        if (PrecioCajaTexto.getText().length() >= 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_PrecioCajaTextoKeyTyped
+
+    private void IdCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IdCajaTextoKeyTyped
+        if (IdCajaTexto.getText().length() >= 4) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_IdCajaTextoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

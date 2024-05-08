@@ -18,5 +18,6 @@ public interface IProductos {
     ArrayList<Productos> readProductos();
     void updateProducto(Productos a, String id);
     void deleteProducto(String id);
+    void updateCantidad(int NewCant,String id);
     
 }

@@ -28,7 +28,7 @@ public class Productos_Administracion extends javax.swing.JFrame {
         PaneldeAdministradores = new javax.swing.JPanel();
         panel_Administradores2 = new Ventanas.Panel_Administradores();
         PanelEmpleados = new javax.swing.JPanel();
-        panelEmpleados1 = new Ventanas.PanelEmpleados();
+        panelEmpleados2 = new Ventanas.PanelEmpleados();
         Paneldeclientes = new javax.swing.JPanel();
         panelClientes1 = new Ventanas.PanelClientes();
         Paneldeproductos = new javax.swing.JPanel();
@@ -51,7 +51,7 @@ public class Productos_Administracion extends javax.swing.JFrame {
         Panelprincipal.addTab("Administradoes", PaneldeAdministradores);
 
         PanelEmpleados.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        PanelEmpleados.add(panelEmpleados1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, 350));
+        PanelEmpleados.add(panelEmpleados2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         Panelprincipal.addTab("Empleados", PanelEmpleados);
 
@@ -61,7 +61,7 @@ public class Productos_Administracion extends javax.swing.JFrame {
             PaneldeclientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PaneldeclientesLayout.createSequentialGroup()
                 .addComponent(panelClientes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 10, Short.MAX_VALUE))
+                .addGap(0, 30, Short.MAX_VALUE))
         );
         PaneldeclientesLayout.setVerticalGroup(
             PaneldeclientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,7 +76,7 @@ public class Productos_Administracion extends javax.swing.JFrame {
         Paneldeproductos.setLayout(PaneldeproductosLayout);
         PaneldeproductosLayout.setHorizontalGroup(
             PaneldeproductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelProductos1, javax.swing.GroupLayout.DEFAULT_SIZE, 1130, Short.MAX_VALUE)
+            .addComponent(panelProductos1, javax.swing.GroupLayout.DEFAULT_SIZE, 1150, Short.MAX_VALUE)
         );
         PaneldeproductosLayout.setVerticalGroup(
             PaneldeproductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,7 +106,7 @@ public class Productos_Administracion extends javax.swing.JFrame {
 
         jPanel1.add(Panelprincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, -1, 380));
 
-        jButton1.setText("Cerrar Secion");
+        jButton1.setText("Cerrar Sesion");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -115,7 +115,7 @@ public class Productos_Administracion extends javax.swing.JFrame {
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, -1));
 
         jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 90, 80));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 100, 80));
 
         PANombre.setText("Nombre");
         jPanel1.add(PANombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 240, -1));
@@ -192,7 +192,7 @@ public class Productos_Administracion extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private Ventanas.PanelCategorias panelCategorias1;
     private Ventanas.PanelClientes panelClientes1;
-    private Ventanas.PanelEmpleados panelEmpleados1;
+    private Ventanas.PanelEmpleados panelEmpleados2;
     private Ventanas.PanelProductos panelProductos1;
     private Ventanas.Panel_Administradores panel_Administradores2;
     // End of variables declaration//GEN-END:variables

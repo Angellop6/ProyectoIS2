@@ -118,6 +118,9 @@ public class PanelCategorias extends javax.swing.JPanel {
             }
         });
 
+        Nompre_P.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Nompre_P.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(

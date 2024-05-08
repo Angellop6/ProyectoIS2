@@ -82,6 +82,11 @@ public class Panel_Administradores extends javax.swing.JPanel {
                 NombreCajaTextoActionPerformed(evt);
             }
         });
+        NombreCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NombreCajaTextoKeyTyped(evt);
+            }
+        });
         jPanel8.add(NombreCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 165, -1));
 
         DireccionCajaTexto.addActionListener(new java.awt.event.ActionListener() {
@@ -99,6 +104,11 @@ public class Panel_Administradores extends javax.swing.JPanel {
                 TelefonoCajaTextoActionPerformed(evt);
             }
         });
+        TelefonoCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TelefonoCajaTextoKeyTyped(evt);
+            }
+        });
         jPanel8.add(TelefonoCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 165, -1));
 
         jLabel3.setText("Telefono");
@@ -109,6 +119,11 @@ public class Panel_Administradores extends javax.swing.JPanel {
                 EdadeCajaTextoActionPerformed(evt);
             }
         });
+        EdadeCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                EdadeCajaTextoKeyTyped(evt);
+            }
+        });
         jPanel8.add(EdadeCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 165, -1));
 
         jLabel4.setText("Salario");
@@ -117,6 +132,11 @@ public class Panel_Administradores extends javax.swing.JPanel {
         SalarioCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalarioCajaTextoActionPerformed(evt);
+            }
+        });
+        SalarioCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                SalarioCajaTextoKeyTyped(evt);
             }
         });
         jPanel8.add(SalarioCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 165, -1));
@@ -220,6 +240,11 @@ public class Panel_Administradores extends javax.swing.JPanel {
         IdCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IdCajaTextoActionPerformed(evt);
+            }
+        });
+        IdCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                IdCajaTextoKeyTyped(evt);
             }
         });
         jPanel1.add(IdCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 110, -1));
@@ -476,6 +501,36 @@ public class Panel_Administradores extends javax.swing.JPanel {
 
         }
     }//GEN-LAST:event_Boton_BuscarActionPerformed
+
+    private void TelefonoCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TelefonoCajaTextoKeyTyped
+        if (TelefonoCajaTexto.getText().length() >= 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_TelefonoCajaTextoKeyTyped
+
+    private void NombreCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreCajaTextoKeyTyped
+        if (NombreCajaTexto.getText().length() >= 50) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_NombreCajaTextoKeyTyped
+
+    private void EdadeCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EdadeCajaTextoKeyTyped
+        if (EdadeCajaTexto.getText().length() >= 2) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_EdadeCajaTextoKeyTyped
+
+    private void SalarioCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SalarioCajaTextoKeyTyped
+        if (SalarioCajaTexto.getText().length() >= 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_SalarioCajaTextoKeyTyped
+
+    private void IdCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IdCajaTextoKeyTyped
+        if (IdCajaTexto.getText().length() >= 5) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_IdCajaTextoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

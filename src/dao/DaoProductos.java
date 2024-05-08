@@ -55,6 +55,11 @@ public class DaoProductos implements IProductos {
         EliminarSQL(id);
         
     }
+    
+    @Override
+    public void updateCantidad(int NewCant,String id) {
+        actualizarCantidad(NewCant, id);
+    }
 
     private void createProductoSQl(Productos a) {
         Conexion con = new Conexion();
@@ -165,5 +170,28 @@ public class DaoProductos implements IProductos {
             
         return a;
     }
+    
+    
+    
+    private void actualizarCantidad(int NewCant, String id) {
+        
+        Conexion con = new Conexion();
+        cnx = con.getConexion();
+        String sql = "update Productos set Cantidad=? where Id = ? ;";
+        PreparedStatement ps ;
+        try {
+            ps = cnx.prepareStatement(sql);
+            ps.setInt(1, NewCant);
+            ps.setString(2, id);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DaoProductos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+        
+        
+    }
+
+    
   
 }

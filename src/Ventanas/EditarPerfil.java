@@ -61,10 +61,20 @@ public class EditarPerfil extends javax.swing.JDialog {
                 NombreCajaTextoActionPerformed(evt);
             }
         });
+        NombreCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NombreCajaTextoKeyTyped(evt);
+            }
+        });
 
         DireccionCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DireccionCajaTextoActionPerformed(evt);
+            }
+        });
+        DireccionCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                DireccionCajaTextoKeyTyped(evt);
             }
         });
 
@@ -75,12 +85,22 @@ public class EditarPerfil extends javax.swing.JDialog {
                 TelefonoCajaTextoActionPerformed(evt);
             }
         });
+        TelefonoCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TelefonoCajaTextoKeyTyped(evt);
+            }
+        });
 
         jLabel3.setText("Telefono");
 
         EdadeCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EdadeCajaTextoActionPerformed(evt);
+            }
+        });
+        EdadeCajaTexto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                EdadeCajaTextoKeyTyped(evt);
             }
         });
 
@@ -218,6 +238,7 @@ public class EditarPerfil extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void NombreCajaTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreCajaTextoActionPerformed
@@ -292,47 +313,31 @@ public class EditarPerfil extends javax.swing.JDialog {
         
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditarPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditarPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditarPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditarPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void NombreCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreCajaTextoKeyTyped
+        if (NombreCajaTexto.getText().length() >= 50) {
+            evt.consume();
         }
-        //</editor-fold>
+    }//GEN-LAST:event_NombreCajaTextoKeyTyped
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                EditarPerfil dialog = new EditarPerfil(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    private void DireccionCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DireccionCajaTextoKeyTyped
+        if (DireccionCajaTexto.getText().length() >= 50) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_DireccionCajaTextoKeyTyped
+
+    private void EdadeCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EdadeCajaTextoKeyTyped
+        if (EdadeCajaTexto.getText().length() >= 2) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_EdadeCajaTextoKeyTyped
+
+    private void TelefonoCajaTextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TelefonoCajaTextoKeyTyped
+        if (TelefonoCajaTexto.getText().length() >= 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_TelefonoCajaTextoKeyTyped
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> BoxGenero;

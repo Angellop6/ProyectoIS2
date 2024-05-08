@@ -212,11 +212,12 @@ public class PanelTarjeta extends javax.swing.JPanel {
                 + Lectura.Leercvv(CVVText.getText())
                 + Lectura.LeerTarjeta(TarjetaText.getText())
                 + Lectura.validarFecha(FechaText.getText());
-
         if (res == 4) {
+            restarcantidad();
             comprar();
             limpiarError();
             JOptionPane.showMessageDialog(null, "Se a Realizado la compra");
+
         } else {
             if (Lectura.Ltext(NombreText.getText()) != 1) {
                 Error1.setText("!");
@@ -244,27 +245,27 @@ public class PanelTarjeta extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void NombreTextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreTextKeyTyped
-        if(NombreText.getText().length() >= 50){
+        if (NombreText.getText().length() >= 50) {
             evt.consume();
-        }        
+        }
     }//GEN-LAST:event_NombreTextKeyTyped
 
     private void CVVTextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CVVTextKeyTyped
-        if(CVVText.getText().length() >= 3){
+        if (CVVText.getText().length() >= 3) {
             evt.consume();
-        }    
+        }
     }//GEN-LAST:event_CVVTextKeyTyped
 
     private void TarjetaTextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TarjetaTextKeyTyped
-        if(TarjetaText.getText().length() >= 16){
+        if (TarjetaText.getText().length() >= 16) {
             evt.consume();
-        }    
+        }
     }//GEN-LAST:event_TarjetaTextKeyTyped
 
     private void FechaTextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FechaTextKeyTyped
-        if(FechaText.getText().length() >= 7){
+        if (FechaText.getText().length() >= 7) {
             evt.consume();
-        }    
+        }
     }//GEN-LAST:event_FechaTextKeyTyped
 
 
@@ -304,6 +305,18 @@ public class PanelTarjeta extends javax.swing.JPanel {
         Error2.setText("");
         Error3.setText("");
         Error4.setText("");
+    }
+
+    private void restarcantidad() {
+        Carrito = DaoCAR.readCarritos(String.valueOf(Tienda.Id));
+        for (int i = 0; i < Carrito.size(); i++) {
+            Productos prod = DaoP.readProducto(String.valueOf(Carrito.get(i).getIdProducto()));
+            int cant = 0;
+            cant =  prod.getCantidad() - Carrito.get(i).getCantidad();
+            DaoP.updateCantidad(cant, String.valueOf(Carrito.get(i).getIdProducto()));
+            
+        }
+
     }
 
 }
