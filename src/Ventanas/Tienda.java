@@ -80,7 +80,7 @@ public class Tienda extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PanelBotones.setBackground(new java.awt.Color(204, 255, 204));
+        PanelBotones.setBackground(new java.awt.Color(255, 204, 204));
 
         Perfil.setText("Perfil");
         Perfil.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +124,7 @@ public class Tienda extends javax.swing.JFrame {
 
         jPanel1.add(PanelBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 110));
 
-        PanelMuestra.setBackground(new java.awt.Color(255, 204, 204));
+        PanelMuestra.setBackground(new java.awt.Color(102, 0, 51));
 
         Producto1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
