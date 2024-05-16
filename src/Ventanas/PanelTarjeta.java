@@ -6,14 +6,21 @@ package Ventanas;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import java.io.FileNotFoundException;
+
+import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileNotFoundException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 
 
 
@@ -334,14 +341,24 @@ public class PanelTarjeta extends javax.swing.JPanel {
         
     }
     
-    private void crearticket() {
-    // Obtener la fecha actual
+    public void crearticket() {
+    // Obtener la fecha actual con formato legible
     Date fechaActual = new Date();
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
+    // Verificar que el carrito no esté vacío
+    if (Carrito.isEmpty()) {
+        System.out.println("El carrito está vacío.");
+        return;
+    }
+
+    // Obtener el ID del primer producto en el carrito para el nombre del archivo
+    String fileName = "src/PDF/Cliente_" + Carrito.get(0).getId()+ ".pdf";
 
     // Crear un nuevo documento PDF
     Document document = new Document(PageSize.A4);
     try {
-        PdfWriter.getInstance(document, new FileOutputStream("ticket.pdf"));
+        PdfWriter.getInstance(document, new FileOutputStream(fileName));
 
         // Abrir el documento
         document.open();
@@ -350,20 +367,16 @@ public class PanelTarjeta extends javax.swing.JPanel {
         document.add(new Paragraph("eComoda\n\n"));
 
         // Agregar la fecha actual
-        document.add(new Paragraph("Fecha: " + fechaActual.toString() + "\n\n"));
+        document.add(new Paragraph("Fecha: " + sdf.format(fechaActual) + "\n\n"));
 
         // Crear una tabla para los productos del carrito
         PdfPTable table = new PdfPTable(8);
 
         // Agregar encabezados de la tabla
-        table.addCell("ID");
-        table.addCell("Nombre");
-        table.addCell("Cantidad");
-        table.addCell("Precio");
-        table.addCell("Total");
-        table.addCell("Color");
-        table.addCell("Descripción");
-        table.addCell("Imagen");
+        final String[] headers = {"ID", "Nombre", "Cantidad", "Precio", "Total", "Color", "Descripción", "Imagen"};
+        for (String header : headers) {
+            table.addCell(header);
+        }
 
         // Agregar datos de productos al carrito
         for (int i = 0; i < Carrito.size(); i++) {
@@ -379,9 +392,11 @@ public class PanelTarjeta extends javax.swing.JPanel {
             table.addCell(prod.getDescripcion());
 
             try {
-                // Aquí puedes manejar la imagen como desees
-                // Por ejemplo, puedes agregar una celda con la ruta de la imagen
-                PdfPCell cell = new PdfPCell(new Paragraph("Ruta de la imagen"));
+                // Convertir el arreglo de bytes de la imagen a un objeto Image de iText
+                byte[] imageBytes = prod.getImagen();
+                BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(imageBytes));
+                Image image = Image.getInstance(bufferedImage, null);
+                PdfPCell cell = new PdfPCell(image, true);
                 table.addCell(cell);
             } catch (Exception e) {
                 table.addCell("no imagen");
@@ -394,15 +409,16 @@ public class PanelTarjeta extends javax.swing.JPanel {
     } catch (DocumentException | FileNotFoundException e) {
         e.printStackTrace();
     } finally {
-        // Cerrar el documento
-        if (document != null) {
+        // Asegurarse de cerrar el documento
+        if (document.isOpen()) {
             document.close();
         }
     }
+}
 }
     
     
     
     
 
-}
+
