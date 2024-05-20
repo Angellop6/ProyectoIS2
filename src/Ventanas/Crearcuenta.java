@@ -11,6 +11,7 @@ import Errores.Lectura;
 import dao.DaoAdministrador;
 import dao.DaoCliente;
 import dao.DaoEmpleados;
+import java.awt.Font;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -63,6 +64,7 @@ public class Crearcuenta extends javax.swing.JDialog {
         Error3 = new javax.swing.JLabel();
         Error4 = new javax.swing.JLabel();
         Error5 = new javax.swing.JLabel();
+        Ver_Contraseña = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -143,6 +145,7 @@ public class Crearcuenta extends javax.swing.JDialog {
         });
         jPanel8.add(CorreoCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 165, -1));
 
+        ContraseñaCajaTexto.setFont(new java.awt.Font("Bookshelf Symbol 7", 0, 12)); // NOI18N
         ContraseñaCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ContraseñaCajaTextoActionPerformed(evt);
@@ -182,6 +185,14 @@ public class Crearcuenta extends javax.swing.JDialog {
 
         Error5.setText("jLabel4");
         jPanel8.add(Error5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, -1, -1));
+
+        Ver_Contraseña.setText("Ver");
+        Ver_Contraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Ver_ContraseñaActionPerformed(evt);
+            }
+        });
+        jPanel8.add(Ver_Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 70, -1));
 
         getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 600));
 
@@ -294,6 +305,19 @@ public class Crearcuenta extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_DireccionCajaTextoKeyTyped
 
+    private void Ver_ContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ver_ContraseñaActionPerformed
+        Font segoeFont = new Font("Segoe UI", Font.PLAIN, 14);
+        Font bookshelfFont = new Font("Bookshelf Symbol 7", Font.PLAIN, 14);
+
+        Font currentFont = ContraseñaCajaTexto.getFont();
+
+        if (currentFont.getName().equals("Segoe UI")) {
+            ContraseñaCajaTexto.setFont(bookshelfFont);
+        } else {
+            ContraseñaCajaTexto.setFont(segoeFont);
+        }
+    }//GEN-LAST:event_Ver_ContraseñaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Boton_guardar;
@@ -311,6 +335,7 @@ public class Crearcuenta extends javax.swing.JDialog {
     private javax.swing.JLabel Error6;
     private javax.swing.JTextField NombreCajaTexto;
     private javax.swing.JTextField TelefonoCajaTexto;
+    private javax.swing.JButton Ver_Contraseña;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -353,11 +378,11 @@ private void LimpiarCajas() {
 
     private boolean ComprobarExistencia() {
         ArrayList<Clientes> Clientes = dao.readClientes();
-        
+
         for (int i = 0; i < Clientes.size(); i++) {
             if (Clientes.get(i).getCorreo().equals(CorreoCajaTexto.getText())) {
                 return false;
-            }        
+            }
         }
         return true;
     }
