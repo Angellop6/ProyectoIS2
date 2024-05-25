@@ -7,6 +7,7 @@ package Ventanas;
 import Clases.Clientes;
 import Errores.Lectura;
 import dao.DaoCliente;
+import java.awt.Font;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -53,6 +54,7 @@ public class PanelClientes extends javax.swing.JPanel {
         Error4 = new javax.swing.JLabel();
         Error5 = new javax.swing.JLabel();
         BoxGenero = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tablareportes = new javax.swing.JTable();
@@ -75,7 +77,7 @@ public class PanelClientes extends javax.swing.JPanel {
                 Boton_guardarActionPerformed(evt);
             }
         });
-        jPanel8.add(Boton_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
+        jPanel8.add(Boton_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, -1, -1));
 
         Nuevo.setText("Nuevo");
         Nuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -120,10 +122,10 @@ public class PanelClientes extends javax.swing.JPanel {
                 TelefonoCajaTextoKeyTyped(evt);
             }
         });
-        jPanel8.add(TelefonoCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 165, -1));
+        jPanel8.add(TelefonoCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 165, -1));
 
         jLabel3.setText("Telefono");
-        jPanel8.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 54, -1));
+        jPanel8.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 54, -1));
 
         EdadeCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,27 +146,27 @@ public class PanelClientes extends javax.swing.JPanel {
         jPanel8.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 54, -1));
 
         jLabel7.setText("Contraseña");
-        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 70, -1));
+        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 70, -1));
 
         CorreoCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CorreoCajaTextoActionPerformed(evt);
             }
         });
-        jPanel8.add(CorreoCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 165, -1));
+        jPanel8.add(CorreoCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 165, -1));
 
         ContraseñaCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ContraseñaCajaTextoActionPerformed(evt);
             }
         });
-        jPanel8.add(ContraseñaCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 165, -1));
+        jPanel8.add(ContraseñaCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 165, -1));
 
         jLabel8.setText("Correo");
-        jPanel8.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 54, -1));
+        jPanel8.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 54, -1));
 
         Error7.setText("jLabel9");
-        jPanel8.add(Error7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, -1));
+        jPanel8.add(Error7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
 
         Error1.setText("jLabel9");
         jPanel8.add(Error1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, -1, -1));
@@ -173,16 +175,24 @@ public class PanelClientes extends javax.swing.JPanel {
         jPanel8.add(Error2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, -1, -1));
 
         Error3.setText("jLabel9");
-        jPanel8.add(Error3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, -1, -1));
+        jPanel8.add(Error3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, -1));
 
         Error4.setText("jLabel9");
-        jPanel8.add(Error4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, -1, -1));
+        jPanel8.add(Error4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
 
         Error5.setText("jLabel9");
         jPanel8.add(Error5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, 20));
 
         BoxGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hombre", "Mujer" }));
         jPanel8.add(BoxGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 170, -1));
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, -1, -1));
 
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 350));
 
@@ -494,6 +504,19 @@ public class PanelClientes extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_IdCajaTextoKeyTyped
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Font segoeFont = new Font("Segoe UI", Font.PLAIN, 14);
+        Font bookshelfFont = new Font("Bookshelf Symbol 7", Font.PLAIN, 14);
+
+        Font currentFont = ContraseñaCajaTexto.getFont();
+
+        if (currentFont.getName().equals("Segoe UI")) {
+            ContraseñaCajaTexto.setFont(bookshelfFont);
+        } else {
+            ContraseñaCajaTexto.setFont(segoeFont);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Boton_Buscar;
@@ -516,6 +539,7 @@ public class PanelClientes extends javax.swing.JPanel {
     private javax.swing.JButton Nuevo;
     private javax.swing.JTable Tablareportes;
     private javax.swing.JTextField TelefonoCajaTexto;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;

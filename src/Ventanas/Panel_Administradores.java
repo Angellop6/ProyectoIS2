@@ -7,6 +7,7 @@ package Ventanas;
 import Clases.Administrador;
 import Errores.Lectura;
 import dao.DaoAdministrador;
+import java.awt.Font;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -59,6 +60,7 @@ public class Panel_Administradores extends javax.swing.JPanel {
         Error5 = new javax.swing.JLabel();
         Error6 = new javax.swing.JLabel();
         BoxGenero = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tablareportes = new javax.swing.JTable();
@@ -148,7 +150,7 @@ public class Panel_Administradores extends javax.swing.JPanel {
         jPanel8.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 54, -1));
 
         jLabel7.setText("Contraseña");
-        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 70, -1));
+        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 70, -1));
 
         CorreoCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,7 +164,7 @@ public class Panel_Administradores extends javax.swing.JPanel {
                 ContraseñaCajaTextoActionPerformed(evt);
             }
         });
-        jPanel8.add(ContraseñaCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 165, -1));
+        jPanel8.add(ContraseñaCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 165, -1));
 
         jLabel8.setText("Correo");
         jPanel8.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 54, -1));
@@ -173,7 +175,7 @@ public class Panel_Administradores extends javax.swing.JPanel {
                 Boton_guardarActionPerformed(evt);
             }
         });
-        jPanel8.add(Boton_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, -1, -1));
+        jPanel8.add(Boton_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, -1, -1));
 
         Nuevo.setText("Nuevo");
         Nuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -184,7 +186,7 @@ public class Panel_Administradores extends javax.swing.JPanel {
         jPanel8.add(Nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
 
         Error7.setText("jLabel9");
-        jPanel8.add(Error7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, -1));
+        jPanel8.add(Error7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, -1, -1));
 
         Error1.setText("jLabel9");
         jPanel8.add(Error1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, -1, -1));
@@ -206,6 +208,14 @@ public class Panel_Administradores extends javax.swing.JPanel {
 
         BoxGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hombre", "Mujer" }));
         jPanel8.add(BoxGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 170, -1));
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, -1, -1));
 
         add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 350));
 
@@ -532,6 +542,19 @@ public class Panel_Administradores extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_IdCajaTextoKeyTyped
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Font segoeFont = new Font("Segoe UI", Font.PLAIN, 14);
+        Font bookshelfFont = new Font("Bookshelf Symbol 7", Font.PLAIN, 14);
+
+        Font currentFont = ContraseñaCajaTexto.getFont();
+
+        if (currentFont.getName().equals("Segoe UI")) {
+            ContraseñaCajaTexto.setFont(bookshelfFont);
+        } else {
+            ContraseñaCajaTexto.setFont(segoeFont);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Boton_Buscar;
@@ -556,6 +579,7 @@ public class Panel_Administradores extends javax.swing.JPanel {
     private javax.swing.JTextField SalarioCajaTexto;
     private javax.swing.JTable Tablareportes;
     private javax.swing.JTextField TelefonoCajaTexto;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;

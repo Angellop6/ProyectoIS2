@@ -7,6 +7,7 @@ package Ventanas;
 import Clases.Clientes;
 import Errores.Lectura;
 import dao.DaoCliente;
+import java.awt.Font;
 import javax.swing.JOptionPane;
 
 public class EditarPerfil extends javax.swing.JDialog {
@@ -49,6 +50,7 @@ public class EditarPerfil extends javax.swing.JDialog {
         BoxGenero = new javax.swing.JComboBox<>();
         Correo_Caja_De_texto = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
+        Ver_Contraseña = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -139,6 +141,13 @@ public class EditarPerfil extends javax.swing.JDialog {
             }
         });
 
+        Ver_Contraseña.setText("Ver");
+        Ver_Contraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Ver_ContraseñaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -176,11 +185,14 @@ public class EditarPerfil extends javax.swing.JDialog {
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(47, 47, 47)
                                 .addComponent(Error7))
-                            .addComponent(ContraseñaCajaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(ContraseñaCajaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(Ver_Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(171, 171, 171)
                         .addComponent(jButton5)))
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,10 +232,12 @@ public class EditarPerfil extends javax.swing.JDialog {
                     .addComponent(Error7)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ContraseñaCajaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ContraseñaCajaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Ver_Contraseña))
                 .addGap(18, 18, 18)
                 .addComponent(jButton5)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -337,6 +351,19 @@ public class EditarPerfil extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_TelefonoCajaTextoKeyTyped
 
+    private void Ver_ContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ver_ContraseñaActionPerformed
+        Font segoeFont = new Font("Segoe UI", Font.PLAIN, 14);
+        Font bookshelfFont = new Font("Bookshelf Symbol 7", Font.PLAIN, 14);
+
+        Font currentFont = ContraseñaCajaTexto.getFont();
+
+        if (currentFont.getName().equals("Segoe UI")) {
+            ContraseñaCajaTexto.setFont(bookshelfFont);
+        } else {
+            ContraseñaCajaTexto.setFont(segoeFont);
+        }
+    }//GEN-LAST:event_Ver_ContraseñaActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -352,6 +379,7 @@ public class EditarPerfil extends javax.swing.JDialog {
     private javax.swing.JLabel Error7;
     private javax.swing.JTextField NombreCajaTexto;
     private javax.swing.JTextField TelefonoCajaTexto;
+    private javax.swing.JButton Ver_Contraseña;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
