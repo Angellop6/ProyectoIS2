@@ -238,6 +238,7 @@ public class PanelTarjeta extends javax.swing.JPanel {
             crearticket();
             comprar();
             limpiarError();
+         
             JOptionPane.showMessageDialog(null, "Se a Realizado la compra");
 
         } else {

@@ -5,6 +5,7 @@
 package dao;
     import java.sql.Connection;
     import java.sql.DriverManager;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Mayra
@@ -20,7 +21,8 @@ class Conexion {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con= (Connection) DriverManager.getConnection(URL, USER,CLAVE);
         }catch (Exception e){
-            System.out.println("Error "+ e.getMessage()+ " si a qui es el error");
+            JOptionPane.showMessageDialog(null, "Error en la conexion de base de ddatos");
+            System.exit(0);
         }
         return con;
     
