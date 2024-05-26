@@ -12,6 +12,10 @@ import dao.DaoAdministrador;
 import dao.DaoCliente;
 import dao.DaoEmpleados;
 import java.awt.Font;
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
 /**
@@ -27,6 +31,7 @@ public class InicioSesion extends javax.swing.JDialog {
     public InicioSesion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        Ver_Contraseña.setIcon(SetIcono("/Imagenes/ajocerrado.png", Ver_Contraseña));
     }
 
     /**
@@ -71,7 +76,7 @@ public class InicioSesion extends javax.swing.JDialog {
         jLabel4.setText("Contraseña");
 
         ContraseñaTxT1.setBackground(new java.awt.Color(204, 204, 204));
-        ContraseñaTxT1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        ContraseñaTxT1.setFont(new java.awt.Font("Bookshelf Symbol 7", 0, 24)); // NOI18N
         ContraseñaTxT1.setForeground(new java.awt.Color(0, 0, 0));
         ContraseñaTxT1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,7 +98,6 @@ public class InicioSesion extends javax.swing.JDialog {
             }
         });
 
-        Ver_Contraseña.setText("Ver");
         Ver_Contraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Ver_ContraseñaActionPerformed(evt);
@@ -118,7 +122,7 @@ public class InicioSesion extends javax.swing.JDialog {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(ContraseñaTxT1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(Ver_Contraseña))
+                                .addComponent(Ver_Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(CorreoTXT1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(64, 64, 64)
@@ -146,7 +150,7 @@ public class InicioSesion extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(ContraseñaTxT1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Ver_Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(Ver_Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -209,9 +213,11 @@ public class InicioSesion extends javax.swing.JDialog {
         Font currentFont = ContraseñaTxT1.getFont();
 
         if (currentFont.getName().equals("Segoe UI")) {
+            Ver_Contraseña.setIcon(SetIcono("/Imagenes/ajocerrado.png", Ver_Contraseña));
             ContraseñaTxT1.setFont(bookshelfFont);
         } else {
             ContraseñaTxT1.setFont(segoeFont);
+            Ver_Contraseña.setIcon(SetIcono("/Imagenes/ajoabierto.png", Ver_Contraseña));
         }
     }//GEN-LAST:event_Ver_ContraseñaActionPerformed
 
@@ -287,6 +293,15 @@ private void SesionUsuario() {
                 Error.setText("La Contraseña es incorrecta");
             }
         }
+    }
+    
+    
+    public Icon SetIcono(String url, JButton boton) {
+        ImageIcon icon = new ImageIcon(getClass().getResource(url));
+        int ancho = boton.getWidth();
+        int alto = boton.getHeight();
+        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+        return icono;
     }
 
 }

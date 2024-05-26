@@ -8,6 +8,10 @@ import Clases.Clientes;
 import Errores.Lectura;
 import dao.DaoCliente;
 import java.awt.Font;
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 public class EditarPerfil extends javax.swing.JDialog {
@@ -18,6 +22,7 @@ public class EditarPerfil extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         AsignarUsuario();
+        Ver_Contraseña.setIcon(SetIcono("/Imagenes/ajocerrado.png", Ver_Contraseña));
     }
 
     /**
@@ -112,6 +117,7 @@ public class EditarPerfil extends javax.swing.JDialog {
 
         jLabel7.setText("Contraseña");
 
+        ContraseñaCajaTexto.setFont(new java.awt.Font("Bookshelf Symbol 7", 0, 12)); // NOI18N
         ContraseñaCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ContraseñaCajaTextoActionPerformed(evt);
@@ -141,7 +147,6 @@ public class EditarPerfil extends javax.swing.JDialog {
             }
         });
 
-        Ver_Contraseña.setText("Ver");
         Ver_Contraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Ver_ContraseñaActionPerformed(evt);
@@ -188,7 +193,7 @@ public class EditarPerfil extends javax.swing.JDialog {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(ContraseñaCajaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(Ver_Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(Ver_Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(171, 171, 171)
                         .addComponent(jButton5)))
@@ -234,10 +239,10 @@ public class EditarPerfil extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ContraseñaCajaTexto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Ver_Contraseña))
+                    .addComponent(Ver_Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton5)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -358,9 +363,11 @@ public class EditarPerfil extends javax.swing.JDialog {
         Font currentFont = ContraseñaCajaTexto.getFont();
 
         if (currentFont.getName().equals("Segoe UI")) {
+            Ver_Contraseña.setIcon(SetIcono("/Imagenes/ajocerrado.png", Ver_Contraseña));
             ContraseñaCajaTexto.setFont(bookshelfFont);
         } else {
             ContraseñaCajaTexto.setFont(segoeFont);
+            Ver_Contraseña.setIcon(SetIcono("/Imagenes/ajoabierto.png", Ver_Contraseña));
         }
     }//GEN-LAST:event_Ver_ContraseñaActionPerformed
 
@@ -410,5 +417,14 @@ private void AsignarUsuario() {
         BoxGenero.setSelectedItem(c.getGenero());
         
     }
+
+    public Icon SetIcono(String url, JButton boton) {
+        ImageIcon icon = new ImageIcon(getClass().getResource(url));
+        int ancho = boton.getWidth();
+        int alto = boton.getHeight();
+        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+        return icono;
+    }
+
 
 }

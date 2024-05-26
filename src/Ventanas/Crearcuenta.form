@@ -141,7 +141,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="190" y="360" width="70" height="-1"/>
+              <AbsoluteConstraints x="200" y="370" width="70" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -279,15 +279,12 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JButton" name="Ver_Contrase&#xf1;a">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Ver"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Ver_Contrase&#xf1;aActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="370" y="390" width="70" height="-1"/>
+              <AbsoluteConstraints x="360" y="390" width="30" height="30"/>
             </Constraint>
           </Constraints>
         </Component>

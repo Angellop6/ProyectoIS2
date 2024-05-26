@@ -12,7 +12,11 @@ import dao.DaoAdministrador;
 import dao.DaoCliente;
 import dao.DaoEmpleados;
 import java.awt.Font;
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -30,6 +34,7 @@ public class Crearcuenta extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         LimpiarError();
+        Ver_Contraseña.setIcon(SetIcono("/Imagenes/ajocerrado.png", Ver_Contraseña));
     }
 
     /**
@@ -136,7 +141,7 @@ public class Crearcuenta extends javax.swing.JDialog {
         jPanel8.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 54, -1));
 
         jLabel7.setText("Contraseña");
-        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 70, -1));
+        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, 70, -1));
 
         CorreoCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,13 +191,12 @@ public class Crearcuenta extends javax.swing.JDialog {
         Error5.setText("jLabel4");
         jPanel8.add(Error5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, -1, -1));
 
-        Ver_Contraseña.setText("Ver");
         Ver_Contraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Ver_ContraseñaActionPerformed(evt);
             }
         });
-        jPanel8.add(Ver_Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 70, -1));
+        jPanel8.add(Ver_Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 390, 30, 30));
 
         getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 600));
 
@@ -312,9 +316,11 @@ public class Crearcuenta extends javax.swing.JDialog {
         Font currentFont = ContraseñaCajaTexto.getFont();
 
         if (currentFont.getName().equals("Segoe UI")) {
+            Ver_Contraseña.setIcon(SetIcono("/Imagenes/ajocerrado.png", Ver_Contraseña));
             ContraseñaCajaTexto.setFont(bookshelfFont);
         } else {
             ContraseñaCajaTexto.setFont(segoeFont);
+            Ver_Contraseña.setIcon(SetIcono("/Imagenes/ajoabierto.png", Ver_Contraseña));
         }
     }//GEN-LAST:event_Ver_ContraseñaActionPerformed
 
@@ -386,5 +392,14 @@ private void LimpiarCajas() {
         }
         return true;
     }
+    
+    public Icon SetIcono(String url, JButton boton) {
+        ImageIcon icon = new ImageIcon(getClass().getResource(url));
+        int ancho = boton.getWidth();
+        int alto = boton.getHeight();
+        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+        return icono;
+    }
+    
 
 }

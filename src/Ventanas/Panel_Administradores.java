@@ -8,7 +8,11 @@ import Clases.Administrador;
 import Errores.Lectura;
 import dao.DaoAdministrador;
 import java.awt.Font;
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -23,6 +27,9 @@ public class Panel_Administradores extends javax.swing.JPanel {
     public Panel_Administradores() {
         initComponents();
         LimpiarError();
+        Ver_Contraseña.setSize(30, 30);
+        Ver_Contraseña.setIcon(SetIcono("/Imagenes/ajocerrado.png", Ver_Contraseña));
+        
     }
 
     /**
@@ -60,7 +67,7 @@ public class Panel_Administradores extends javax.swing.JPanel {
         Error5 = new javax.swing.JLabel();
         Error6 = new javax.swing.JLabel();
         BoxGenero = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        Ver_Contraseña = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tablareportes = new javax.swing.JTable();
@@ -159,6 +166,7 @@ public class Panel_Administradores extends javax.swing.JPanel {
         });
         jPanel8.add(CorreoCajaTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 165, -1));
 
+        ContraseñaCajaTexto.setFont(new java.awt.Font("Bookshelf Symbol 7", 0, 12)); // NOI18N
         ContraseñaCajaTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ContraseñaCajaTextoActionPerformed(evt);
@@ -209,13 +217,12 @@ public class Panel_Administradores extends javax.swing.JPanel {
         BoxGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hombre", "Mujer" }));
         jPanel8.add(BoxGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 170, -1));
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Ver_Contraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                Ver_ContraseñaActionPerformed(evt);
             }
         });
-        jPanel8.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, -1, -1));
+        jPanel8.add(Ver_Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 30, 30));
 
         add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 350));
 
@@ -542,18 +549,20 @@ public class Panel_Administradores extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_IdCajaTextoKeyTyped
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void Ver_ContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ver_ContraseñaActionPerformed
         Font segoeFont = new Font("Segoe UI", Font.PLAIN, 14);
         Font bookshelfFont = new Font("Bookshelf Symbol 7", Font.PLAIN, 14);
 
         Font currentFont = ContraseñaCajaTexto.getFont();
 
         if (currentFont.getName().equals("Segoe UI")) {
+            Ver_Contraseña.setIcon(SetIcono("/Imagenes/ajocerrado.png", Ver_Contraseña));
             ContraseñaCajaTexto.setFont(bookshelfFont);
         } else {
             ContraseñaCajaTexto.setFont(segoeFont);
+            Ver_Contraseña.setIcon(SetIcono("/Imagenes/ajoabierto.png", Ver_Contraseña));
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_Ver_ContraseñaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -579,7 +588,7 @@ public class Panel_Administradores extends javax.swing.JPanel {
     private javax.swing.JTextField SalarioCajaTexto;
     private javax.swing.JTable Tablareportes;
     private javax.swing.JTextField TelefonoCajaTexto;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton Ver_Contraseña;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
@@ -651,6 +660,14 @@ public class Panel_Administradores extends javax.swing.JPanel {
             }
         }
         return true;
+    }
+    
+    public Icon SetIcono(String url, JButton boton) {
+        ImageIcon icon = new ImageIcon(getClass().getResource(url));
+        int ancho = boton.getWidth();
+        int alto = boton.getHeight();
+        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+        return icono;
     }
 
 }
