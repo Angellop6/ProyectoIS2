@@ -78,7 +78,7 @@ public class PanelTarjeta extends javax.swing.JPanel {
         Error4 = new javax.swing.JLabel();
         Error2 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(153, 153, 153));
+        setBackground(new java.awt.Color(102, 102, 102));
 
         jLabel1.setText("Nombre del titular");
 
